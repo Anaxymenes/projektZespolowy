@@ -1,0 +1,34 @@
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.deps.json
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.json
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.dev.json
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.dll
+C:\R2D2\main\NetCore\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.csprojResolveAssemblyReference.cache
+C:\R2D2\main\NetCore\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.csproj.CoreCompileInputs.cache
+C:\R2D2\main\NetCore\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfoInputs.cache
+C:\R2D2\main\NetCore\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfo.cs
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.pdb
+C:\R2D2\main\NetCore\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.dll
+C:\R2D2\main\NetCore\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.pdb
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\Data.dll
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\Services.dll
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\Services.pdb
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\Data.pdb
+C:\R2D2\main\NetCore\backend\WebApi\bin\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.deps.json
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.json
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.dev.json
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Data.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Services.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Services.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Data.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.csprojResolveAssemblyReference.cache
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.csproj.CoreCompileInputs.cache
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfoInputs.cache
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfo.cs
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.pdb
