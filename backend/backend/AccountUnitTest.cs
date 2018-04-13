@@ -10,10 +10,11 @@ using Data.DTO;
 using Repository.Interfaces;
 using Services.Services;
 using WebApi.Controllers;
+using System.Text;
 
 namespace UnitTest
 {
-    public class UnitTest1
+    public class AccountUnitTest
     {
         [Fact]
         public void ShouldReturnAccountDTOList(){
@@ -41,6 +42,26 @@ namespace UnitTest
 
             //assert
             Assert.Equal<AccountDTO>(expectedAccountList, result);
+        }
+
+        [Fact]
+        public void ShouldReturnHashedPassword() {
+            var firstPassword = "Tester";
+            var secondPassword = "Tester";
+            var _accountRepository = new Mock<IRepository<Account>>();
+            var _accountService = new AccountService(_accountRepository.Object);
+            byte[] salt = _accountService.GetSalt();
+
+            string firstHashedPassword = _accountService.GetHashedPassword(firstPassword,salt);
+            string secondHashedPassword = _accountService.GetHashedPassword(secondPassword,salt);
+
+            Assert.Equal(firstHashedPassword, secondHashedPassword);
+        }
+
+        [Fact]
+        public void ShouldReturnAccount() {
+
+            var _accountRepository = new Mock<IRepository<Account>>();
         }
     }
 }

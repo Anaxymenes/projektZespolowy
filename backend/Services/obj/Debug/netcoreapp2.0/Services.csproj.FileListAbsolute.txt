@@ -24,3 +24,5 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\obj
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.AssemblyInfo.cs
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.dll
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
