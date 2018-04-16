@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180413080253_Migration_13042018_0002.cs" />
     <Compile Remove="Migrations\20180413080600_Migration_13042018_0003.cs" />
+    <Compile Remove="Migrations\20180416205740_Migration_16042018_0001.cs" />
   </ItemGroup>
 
   <ItemGroup>

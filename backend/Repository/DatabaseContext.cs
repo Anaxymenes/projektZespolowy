@@ -17,9 +17,16 @@ namespace Repository
         public DbSet<Hobby> Hobby { get; set; }
         public DbSet<AccountDetails> AccountDetails { get; set; }
         public DbSet<AccountHobby> AccountHobby { get; set; }
-        
-        //protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        public DbSet<Post> Post { get; set; }
+        public DbSet<PostHobby> PostHobby { get; set; }
+        public DbSet<Comment> Comment { get; set; }
+        public DbSet<Conversation> Conversation { get; set; }
+        public DbSet<EventDetails> EventDetails { get; set; }
+        public DbSet<Message> Message { get; set; }
+        public DbSet<Picture> Picture { get; set; }
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            
         //}
 
     }

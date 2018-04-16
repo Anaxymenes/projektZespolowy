@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    [Route("user")]
+    [Route("user/")]
     public class AccountController : Controller{
 
         private AccountService _accountService;
@@ -28,6 +28,11 @@ namespace WebApi.Controllers
             if (_accountService.RegisterAccount(account))
                 return Ok();
             return BadRequest();
+        }
+
+        [Route("test")]
+        public IActionResult Test() {
+            return Ok();
         }
     }
 }
