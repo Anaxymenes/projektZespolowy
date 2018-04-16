@@ -7,7 +7,7 @@ namespace Data.DBModels
     public class Post : Entity
     {
         public DateTime Date { get; set; }
-        public string Type { get; set; }
+        public string PostType { get; set; }
 
         public Account Author { get; set; }
         public ICollection<Picture> Pictures { get; set; }
