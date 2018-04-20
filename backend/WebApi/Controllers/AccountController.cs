@@ -1,5 +1,6 @@
 ﻿using Data.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Services.Interfaces;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,21 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    [Route("user/")]
+    [Route("api/[controller]")]
     public class AccountController : Controller{
 
-        private AccountService _accountService;
+        private IAccountService _accountService;
 
-        public AccountController(AccountService accountService) {
+        public AccountController(IAccountService accountService) {
             _accountService = accountService;
         }
+
         [HttpGet]
-        public List<AccountDTO> GetAll() {
-            return _accountService.GetAll();
+        public IActionResult GetAll() {
+            return Ok(_accountService.GetAll());
         }
 
+        [HttpGet]
         [Route("register")]
         public IActionResult RegisterUser ([FromBody] RegisterDTO account) {
             if (account == null)
@@ -30,6 +33,7 @@ namespace WebApi.Controllers
             return BadRequest();
         }
 
+        [HttpGet]
         [Route("test")]
         public IActionResult Test() {
             return Ok();

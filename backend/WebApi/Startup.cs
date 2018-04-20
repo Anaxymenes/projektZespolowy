@@ -13,6 +13,10 @@ using Microsoft.EntityFrameworkCore;
 
 
 using Repository;
+using Services.Services;
+using Services.Interfaces;
+using Repository.Interfaces;
+using Repository.Repositories;
 
 namespace WebApi
 {
@@ -33,6 +37,8 @@ namespace WebApi
                 options.UseSqlServer(Configuration.GetConnectionString("Default"),
                 b=>b.MigrationsAssembly("Repository"))
             );
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddMvc();
             
         }

@@ -20,9 +20,17 @@ namespace Services.Services
         }
 
         public List<AccountDTO> GetAll() {
-            var accoutList = _repository.GetAll();
-            Mapper.Initialize(cfg => cfg.CreateMap<Account, AccountDTO>());
-            return Mapper.Map<IQueryable<Account>, List<AccountDTO>>(accoutList);
+            var accoutList = _repository.GetAll().ToList();
+            //Console.WriteLine(accoutList.First().Email);
+            //Mapper.Initialize(cfg => cfg.CreateMap<Account, AccountDTO>());
+            //return Mapper.Map<IQueryable<Account>, List<AccountDTO>>(accoutList);
+            var accountDTOList = new List<AccountDTO>();
+            accoutList.ForEach(x => {
+                accountDTOList.Add(new AccountDTO() {
+                    Email = x.Email, Id = x.Id, Username = x.Username
+                });
+            });
+            return accountDTOList;
         }
 
         public bool RegisterAccount(RegisterDTO registerAccount) {
