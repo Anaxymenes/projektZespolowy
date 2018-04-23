@@ -17,6 +17,7 @@ namespace Repository
         public DbSet<Hobby> Hobby { get; set; }
         public DbSet<AccountDetails> AccountDetails { get; set; }
         public DbSet<AccountHobby> AccountHobby { get; set; }
+        public DbSet<PostType> PostType { get; set; }
         public DbSet<Post> Post { get; set; }
         public DbSet<PostHobby> PostHobby { get; set; }
         public DbSet<Comment> Comment { get; set; }
@@ -24,9 +25,10 @@ namespace Repository
         public DbSet<EventDetails> EventDetails { get; set; }
         public DbSet<Message> Message { get; set; }
         public DbSet<Picture> Picture { get; set; }
+        
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            
+
         //}
 
     }
