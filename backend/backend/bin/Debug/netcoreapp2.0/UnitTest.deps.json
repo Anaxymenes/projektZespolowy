@@ -12,6 +12,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "3.2.0",
           "Data": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.6",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
           "Microsoft.NET.Test.Sdk": "15.5.0",
           "Moq": "4.8.2",
@@ -3906,6 +3907,7 @@
       "Data/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.2.2",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2"
         },
         "runtime": {
@@ -3916,6 +3918,7 @@
         "dependencies": {
           "AutoMapper": "6.2.2",
           "Data": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.2",
@@ -3930,6 +3933,7 @@
       "Services/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.2.2",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
           "Repository": "1.0.0"
         },
@@ -3941,6 +3945,7 @@
         "dependencies": {
           "AutoMapper": "6.2.2",
           "Microsoft.AspNetCore.All": "2.0.6",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
           "Services": "1.0.0",
           "Swashbuckle.AspNetCore": "2.4.0"

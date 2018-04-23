@@ -1,10 +1,12 @@
 ﻿using Data.DBModels;
 using Moq;
 using Repository.Interfaces;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WebApi.Controllers;
 using Xunit;
 
 namespace UnitTest
@@ -47,27 +49,7 @@ namespace UnitTest
         }
     }
     
-    public  class PostController {
-        private PostService _service;
+    
 
-        public PostController(PostService service) {
-            _service = service;
-        }
-
-        public IEnumerable<Post> GetAll() {
-            return _service.GetAll();
-        }
-    }
-
-    public class PostService {
-        private IRepository<Post> _repository;
-
-        public PostService(IRepository<Post> repository) {
-            _repository = repository;
-        }
-
-        public IEnumerable<Post> GetAll() {
-            return _repository.GetAll().AsEnumerable();
-        }
-    }
+    
 }
