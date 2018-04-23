@@ -17,6 +17,7 @@ using Services.Services;
 using Services.Interfaces;
 using Repository.Interfaces;
 using Repository.Repositories;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WebApi
 {
@@ -40,6 +41,12 @@ namespace WebApi
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddMvc();
+            services.AddSwaggerGen(x =>
+                x.SwaggerDoc("v1", new Info { Title = "eHobby Back-end Api" ,
+                    Description = "Swagger api for eHobby",
+                })
+
+            );
             
         }
 
@@ -52,6 +59,10 @@ namespace WebApi
             }
 
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(x =>
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger API")
+            );
         }
     }
 }

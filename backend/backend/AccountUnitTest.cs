@@ -38,7 +38,7 @@ namespace UnitTest
             var _accountController = new AccountController(_accountService);
 
             //act
-            List<AccountDTO> result = _accountController.GetAll();
+            IEnumerable<AccountDTO> result = _accountController.GetAll();
 
             //assert
             Assert.Equal<AccountDTO>(expectedAccountList, result);

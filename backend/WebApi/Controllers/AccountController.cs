@@ -19,8 +19,8 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll() {
-            return Ok(_accountService.GetAll());
+        public IEnumerable<AccountDTO> GetAll() {
+            return _accountService.GetAll();
         }
 
         [HttpGet]
