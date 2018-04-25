@@ -63,5 +63,24 @@ namespace UnitTest
 
             var _accountRepository = new Mock<IRepository<Account>>();
         }
+
+        [Fact]
+        public void ShouldReturnAllUsersContainsString() {
+            var accountList = new List<Account>() {
+                new Account {
+                    Username = "Tester", Id = 1, Email = "tester@onlyForTest.pl", Password = "T3st3r" },
+                new Account {
+                    Username = "Tester2", Id = 2, Email = "tester2@onlyForTest.pl", Password = "T3st3r" }
+            };
+            var _accountRepository = new Mock<IRepository<Account>>();
+            _accountRepository.Setup(x => x.FindAll( y => y.Username.Contains("test"))).Returns(accountList);
+            var _accountService = new AccountService(_accountRepository.Object);
+            var _accountController = new AccountController(_accountService);
+
+
+            var results = _accountController.FindAllAcountsCOntainsString("test");
+
+            Assert.Equal(accountList, results);
+        }
     }
 }

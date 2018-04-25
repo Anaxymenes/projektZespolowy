@@ -1,4 +1,5 @@
-﻿using Data.DTO;
+﻿using Data.DBModels;
+using Data.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using Services.Services;
@@ -31,6 +32,11 @@ namespace WebApi.Controllers
             if (_accountService.RegisterAccount(account))
                 return Ok();
             return BadRequest();
+        }
+        [HttpGet]
+        [Route("{asd}")]
+        public List<Account> FindAllAcountsCOntainsString(string  asd) {
+            return this._accountService.FindAllUsersContains(asd);
         }
 
         [HttpGet]

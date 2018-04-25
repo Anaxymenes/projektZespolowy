@@ -57,5 +57,9 @@ namespace Services.Services
                 ));
             return hashedPassword;
         }
+        public List<Account> FindAllUsersContains(string username) {
+            var results = _repository.FindAll(x => x.Username.Contains(username));
+            return results.ToList();
+        }
     }
 }
