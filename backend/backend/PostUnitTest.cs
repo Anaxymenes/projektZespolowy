@@ -108,7 +108,7 @@ namespace UnitTest
             };
 
             var _repository = new Mock<IRepository<Post>>();
-            _repository.Setup(x => x.Find(y => y.Id == 1)).Returns(post);
+            _repository.Setup(x => x.Get(1)).Returns(post);
             var _service = new PostService(_repository.Object);
             var _controller = new PostController(_service);
 

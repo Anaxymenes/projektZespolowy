@@ -26,7 +26,7 @@ namespace Services.Services
 
         public Post GetById(int id) 
         {
-            return _repository.Find(x => x.Id == id);
+            return _repository.Get(id);
         }
     }
 }
