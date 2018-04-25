@@ -19,5 +19,17 @@ namespace WebApi.Controllers
         public IEnumerable<Post> GetAll() {
             return _service.GetAll();
         }
+
+        //public IEnumerable<Post> GetByAuthor()
+        //{
+        //    return _service.GetByAuthor();
+        //}
+
+        [HttpGet]
+        [Route("{id}")]
+        public Post GetById(int id)
+        {
+            return _service.GetById(id);
+        }
     }
 }

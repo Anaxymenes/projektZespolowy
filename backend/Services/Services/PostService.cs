@@ -18,5 +18,15 @@ namespace Services.Services
         public IEnumerable<Post> GetAll() {
             return _repository.GetAll().AsEnumerable();
         }
+
+        //public IEnumerable<Post> GetByAuthor()
+        //{
+        //    return _repository.GetAll().Where(x => x.Author == "user").AsNumerable();
+        //}
+
+        public Post GetById(int id) 
+        {
+            return _repository.Find(x => x.Id == id);
+        }
     }
 }

@@ -32,3 +32,20 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\D
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfo.cs
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.dll
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.pdb
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.deps.json
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.json
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.dev.json
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.dll
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\WebApi.pdb
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Repository.dll
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Services.dll
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Services.pdb
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\WebApi\bin\Debug\netcoreapp2.0\Repository.pdb
+D:\www\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.csprojResolveAssemblyReference.cache
+D:\www\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.csproj.CoreCompileInputs.cache
+D:\www\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfoInputs.cache
+D:\www\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfo.cs
+D:\www\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.dll
+D:\www\Repository\projektZespolowy\backend\WebApi\obj\Debug\netcoreapp2.0\WebApi.pdb

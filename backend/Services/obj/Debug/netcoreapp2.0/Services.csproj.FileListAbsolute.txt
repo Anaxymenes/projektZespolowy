@@ -26,3 +26,16 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\obj
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.pdb
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Services.deps.json
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Services.dll
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Services.pdb
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Repository.dll
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Repository.pdb
+D:\www\Repository\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.csprojResolveAssemblyReference.cache
+D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.csproj.CoreCompileInputs.cache
+D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.AssemblyInfoInputs.cache
+D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.AssemblyInfo.cs
+D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.dll
+D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.pdb

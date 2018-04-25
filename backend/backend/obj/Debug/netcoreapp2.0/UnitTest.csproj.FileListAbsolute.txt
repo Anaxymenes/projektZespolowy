@@ -42,3 +42,25 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\backend\obj\
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.AssemblyInfo.cs
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.dll
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.pdb
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\UnitTest.deps.json
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\UnitTest.runtimeconfig.json
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\UnitTest.runtimeconfig.dev.json
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\UnitTest.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\UnitTest.pdb
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\Repository.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\Services.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\WebApi.dll
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\Repository.pdb
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\Services.pdb
+D:\www\Repository\projektZespolowy\backend\backend\bin\Debug\netcoreapp2.0\WebApi.pdb
+D:\www\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.csprojResolveAssemblyReference.cache
+D:\www\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.csproj.CoreCompileInputs.cache
+D:\www\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.AssemblyInfoInputs.cache
+D:\www\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.AssemblyInfo.cs
+D:\www\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.dll
+D:\www\Repository\projektZespolowy\backend\backend\obj\Debug\netcoreapp2.0\UnitTest.pdb
