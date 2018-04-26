@@ -1,4 +1,5 @@
-﻿using Data.DBModels;
+﻿
+using Data.DBModels;
 using Repository.Interfaces;
 using Services.Interfaces;
 using System;
@@ -8,23 +9,26 @@ using System.Text;
 
 namespace Services.Services
 {
-    public class PostService : IPostService {
+    public class PostService : IPostService
+    {
         private IRepository<Post> _repository;
 
-        public PostService(IRepository<Post> repository) {
+        public PostService(IRepository<Post> repository)
+        {
             _repository = repository;
         }
 
-        public IEnumerable<Post> GetAll() {
+        public IEnumerable<Post> GetAll()
+        {
             return _repository.GetAll().AsEnumerable();
         }
 
-        //public IEnumerable<Post> GetByAuthor()
-        //{
-        //    return _repository.GetAll().Where(x => x.Author == "user").AsNumerable();
-        //}
+        public IEnumerable<Post> GetByAuthor(int authorId)
+        {
+            return _repository.GetAllIncluding(x => x.Author.Id == authorId);
+        }
 
-        public Post GetById(int id) 
+        public Post GetById(int id)
         {
             return _repository.Get(id);
         }
