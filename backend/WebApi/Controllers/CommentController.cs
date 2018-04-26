@@ -20,17 +20,22 @@ namespace WebApi.Controllers
             return _service.GetAllForPost(postId);
         }
 
-        /*[HttpPost("add")]
-        public IActionResult Add(int postId, int authorId, string content)
+        [HttpPost("add")]
+        public void Add(int postId, int authorId, string content)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var result = _service.Add(postId, authorId, content);
+            _service.Add(postId, authorId, content);
+        }
 
+        [HttpDelete("delete")]
+        public void Delete(int commentId)
+        {
+            _service.Delete(commentId);
+        }
 
-            return Ok(result);
-        }*/
+        [HttpPut("edit")]
+        public void Update(int commentId, string content)
+        {
+            _service.Update(commentId, content);
+        }
     }
 }
