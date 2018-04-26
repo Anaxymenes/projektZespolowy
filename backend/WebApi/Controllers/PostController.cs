@@ -1,5 +1,6 @@
 ﻿using Data.DBModels;
 using Microsoft.AspNetCore.Mvc;
+using Services.Interfaces;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class PostController : Controller {
-        private PostService _service;
-        public PostController(PostService service) {
+        private IPostService _service;
+        public PostController(IPostService service) {
             _service = service;
         }
 
@@ -29,7 +30,14 @@ namespace WebApi.Controllers
         [Route("{id}")]
         public Post GetById(int id)
         {
-            return _service.GetById(id);
+            try {
+                return _service.GetById(id);
+            }catch(Exception e) {
+                var result = e;
+                
+            }
+            return null;
+
         }
     }
 }

@@ -25,8 +25,11 @@ namespace Repository
         public DbSet<EventDetails> EventDetails { get; set; }
         public DbSet<Message> Message { get; set; }
         public DbSet<Picture> Picture { get; set; }
-        
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
+            
+        }
         //protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
         //}

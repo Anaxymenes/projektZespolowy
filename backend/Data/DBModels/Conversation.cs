@@ -11,7 +11,6 @@ namespace Data.DBModels
 
         public virtual Account FirstUser { get; set; }
         public virtual Account SecondUser { get; set; }
-        public ICollection<Message> Messages { get; set; }
 
     }
 }

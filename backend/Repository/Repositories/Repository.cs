@@ -28,7 +28,7 @@ namespace Repository.Repositories
         }
 
         public virtual T Get(int id) {
-            return _context.Set<T>().Find(id);
+            return _context.Set<T>().Where(x=>x.Id == id).First();
         }
 
         public virtual async Task<T> GetAsync(int id) {

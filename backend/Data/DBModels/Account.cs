@@ -13,5 +13,6 @@ namespace Data.DBModels
         public string PasswordSalt { get; set; }
 
         public Role Role { get; set; }
+
     }
 }

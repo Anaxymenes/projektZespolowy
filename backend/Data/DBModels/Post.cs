@@ -13,7 +13,5 @@ namespace Data.DBModels
 
         public PostType PostType { get; set; }
         public Account Author { get; set; }
-        public ICollection<Picture> Pictures { get; set; }
-        public ICollection<PostHobby> Hobbies { get; set; }
     }
 }

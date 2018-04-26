@@ -12578,7 +12578,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\manti\\.nuget\\packages\\": {},
+    "C:\\Users\\czopeka\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12587,18 +12588,20 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
-      "packagesPath": "C:\\Users\\manti\\.nuget\\packages\\",
-      "outputPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\obj\\",
+      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
+      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\manti\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\czopeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

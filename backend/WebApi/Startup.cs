@@ -39,6 +39,7 @@ namespace WebApi
                 b=>b.MigrationsAssembly("Repository"))
             );
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IPostService, PostService>();
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddMvc();
             services.AddSwaggerGen(x =>

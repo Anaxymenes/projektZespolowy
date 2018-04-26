@@ -11,9 +11,10 @@ using System;
 namespace Repository.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180425212156_Migration_25042018_002")]
+    partial class Migration_25042018_002
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,13 +74,9 @@ namespace Repository.Migrations
 
                     b.Property<int?>("AccountId");
 
-                    b.Property<int?>("HobbyId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
-
-                    b.HasIndex("HobbyId");
 
                     b.ToTable("AccountHobby");
                 });
@@ -95,13 +92,9 @@ namespace Repository.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("PostId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("Comment");
                 });
@@ -155,6 +148,8 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("AccountHobbyId");
+
                     b.Property<int?>("AdministratorId");
 
                     b.Property<string>("Color");
@@ -165,9 +160,15 @@ namespace Repository.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("PostHobbyId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("AccountHobbyId");
+
                     b.HasIndex("AdministratorId");
+
+                    b.HasIndex("PostHobbyId");
 
                     b.ToTable("Hobby");
                 });
@@ -238,13 +239,9 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("HoobyId");
-
                     b.Property<int?>("PostId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("HoobyId");
 
                     b.HasIndex("PostId");
 
@@ -294,10 +291,6 @@ namespace Repository.Migrations
                     b.HasOne("Data.DBModels.Account", "Account")
                         .WithMany()
                         .HasForeignKey("AccountId");
-
-                    b.HasOne("Data.DBModels.Hobby", "Hobby")
-                        .WithMany()
-                        .HasForeignKey("HobbyId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Comment", b =>
@@ -305,10 +298,6 @@ namespace Repository.Migrations
                     b.HasOne("Data.DBModels.Account", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
-
-                    b.HasOne("Data.DBModels.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Conversation", b =>
@@ -331,9 +320,17 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Data.DBModels.Hobby", b =>
                 {
+                    b.HasOne("Data.DBModels.AccountHobby")
+                        .WithMany("Hobbies")
+                        .HasForeignKey("AccountHobbyId");
+
                     b.HasOne("Data.DBModels.Account", "Administrator")
                         .WithMany()
                         .HasForeignKey("AdministratorId");
+
+                    b.HasOne("Data.DBModels.PostHobby")
+                        .WithMany("Hoobies")
+                        .HasForeignKey("PostHobbyId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Message", b =>
@@ -343,7 +340,7 @@ namespace Repository.Migrations
                         .HasForeignKey("AuthorId");
 
                     b.HasOne("Data.DBModels.Conversation", "Conversation")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("ConversationId");
                 });
 
@@ -357,7 +354,7 @@ namespace Repository.Migrations
             modelBuilder.Entity("Data.DBModels.Post", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "Author")
-                        .WithMany()
+                        .WithMany("Posts")
                         .HasForeignKey("AuthorId");
 
                     b.HasOne("Data.DBModels.PostType", "PostType")
@@ -367,10 +364,6 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Data.DBModels.PostHobby", b =>
                 {
-                    b.HasOne("Data.DBModels.Hobby", "Hooby")
-                        .WithMany()
-                        .HasForeignKey("HoobyId");
-
                     b.HasOne("Data.DBModels.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId");
