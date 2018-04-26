@@ -20,10 +20,12 @@ namespace WebApi.Controllers
             return _service.GetAll();
         }
 
-        //public IEnumerable<Post> GetByAuthor()
-        //{
-        //    return _service.GetByAuthor();
-        //}
+        [HttpGet]
+        [Route("{author}")]
+        public IEnumerable<Post> GetByAuthor(int authorId)
+        {
+            return _service.GetByAuthor(authorId);
+        }
 
         [HttpGet]
         [Route("{id}")]
