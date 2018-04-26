@@ -25,7 +25,7 @@ namespace Services.Services
 
         public IEnumerable<Post> GetByAuthor(int authorId)
         {
-            return _repository.GetAllIncluding(x => x.Author.Id == authorId);
+            return _repository.FindAll(x => x.Author.Id == authorId);
         }
 
         public Post GetById(int id)

@@ -26,7 +26,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{author}")]
+        [Route("{authorId}")]
         public IEnumerable<Post> GetByAuthor(int authorId)
         {
             return _service.GetByAuthor(authorId);

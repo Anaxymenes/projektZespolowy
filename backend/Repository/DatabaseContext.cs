@@ -26,12 +26,20 @@ namespace Repository
         public DbSet<Message> Message { get; set; }
         public DbSet<Picture> Picture { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        //    //base.OnModelCreating(modelBuilder);
-        //    modelBuilder.Entity<Comment>()
-        //        .HasOne(x => x.Post)
-        //        .WithMany(c => c.Comments);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Comment>()
+                .HasOne(x => x.Post)
+                .WithMany(c => c.Comments);
+            modelBuilder.Entity<Picture>()
+                .HasOne(x => x.Post)
+                .WithMany(c => c.Pictures);
+            modelBuilder.Entity<PostType>()
+                .HasMany(x => x.Posts)
+                .WithOne(c => c.PostType)
+                .IsRequired(false);
+        }
 
     }
 }

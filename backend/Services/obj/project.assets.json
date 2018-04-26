@@ -13214,8 +13214,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\czopeka\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\manti\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13224,20 +13223,18 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Services\\Services.csproj",
+      "projectUniqueName": "D:\\www\\Repository\\projektZespolowy\\backend\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
-      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Services\\obj\\",
+      "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Services\\Services.csproj",
+      "packagesPath": "C:\\Users\\manti\\.nuget\\packages\\",
+      "outputPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\czopeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\manti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13249,8 +13246,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Repository\\Repository.csproj": {
-              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Repository\\Repository.csproj"
+            "D:\\www\\Repository\\projektZespolowy\\backend\\Repository\\Repository.csproj": {
+              "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Repository\\Repository.csproj"
             }
           }
         }
