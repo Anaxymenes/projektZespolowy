@@ -19,10 +19,10 @@ namespace Services.Services
             return _repository.GetAll().AsEnumerable();
         }
 
-        public IEnumerable<Post> GetByAuthor(int authorId)
-        {
-            return _repository.GetAllIncluding(x =>x.Author.Id == authorId);
-        }
+        //public IEnumerable<Post> GetByAuthor()
+        //{
+        //    return _repository.GetAll().Where(x => x.Author == "user").AsNumerable();
+        //}
 
         public Post GetById(int id) 
         {
