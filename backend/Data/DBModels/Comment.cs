@@ -10,6 +10,7 @@ namespace Data.DBModels
         public string Content { get; set; }
 
         public Account Author { get; set; }
+        public Post Post { get; set; }
 
     }
 }

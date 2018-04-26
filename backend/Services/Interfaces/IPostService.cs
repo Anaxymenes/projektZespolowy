@@ -8,5 +8,7 @@ namespace Services.Interfaces
     public interface IPostService
     {
         IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetByAuthor(int authorId);
+        Post GetById(int id);
     }
 }

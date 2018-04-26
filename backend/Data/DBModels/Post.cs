@@ -15,5 +15,6 @@ namespace Data.DBModels
         public Account Author { get; set; }
         public ICollection<Picture> Pictures { get; set; }
         public ICollection<PostHobby> Hobbies { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

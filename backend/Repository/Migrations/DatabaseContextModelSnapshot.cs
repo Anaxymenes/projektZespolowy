@@ -91,9 +91,13 @@ namespace Repository.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int?>("PostId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("PostId");
 
                     b.ToTable("Comment");
                 });
@@ -297,6 +301,10 @@ namespace Repository.Migrations
                     b.HasOne("Data.DBModels.Account", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
+
+                    b.HasOne("Data.DBModels.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Conversation", b =>
