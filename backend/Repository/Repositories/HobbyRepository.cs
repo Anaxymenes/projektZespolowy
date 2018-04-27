@@ -41,7 +41,7 @@ namespace Repository.Repositories
         }
 
         public List<PostHobby> GetAllHobbiesByPost(List<int> postIdList) {
-            return _context.Hobby.Where(x=> postIdList.Contains());
+            return null; // _context.Hobby.Where(x=> postIdList.Contains(x.Id));
         }
 
         public void Save() {

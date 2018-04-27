@@ -5824,7 +5824,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "PQj4u3zF8tETYFygtdxt0E4Fw59kK/8QgNdlhzZ/EibQdRR+xDe+FPdgqJvza1qIcOP5NOlOMak+og3dRA1P2A==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
@@ -12579,8 +12579,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\czopeka\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\manti\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12589,20 +12588,18 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\backend\\Data\\Data.csproj",
+      "projectUniqueName": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\backend\\Data\\Data.csproj",
-      "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
-      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\backend\\Data\\obj\\",
+      "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\manti\\.nuget\\packages\\",
+      "outputPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\czopeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\manti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
