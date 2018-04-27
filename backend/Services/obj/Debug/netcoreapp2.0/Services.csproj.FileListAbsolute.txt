@@ -37,3 +37,17 @@ D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Serv
 D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.AssemblyInfo.cs
 D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.dll
 D:\www\Repository\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.pdb
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.csprojResolveAssemblyReference.cache
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.csproj.CoreCompileInputs.cache
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.AssemblyInfoInputs.cache
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.AssemblyInfo.cs
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.dll
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.pdb
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Services.deps.json
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Services.dll
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Services.pdb
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Data.dll
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Repository.dll
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Repository.pdb
+E:\C#\projektZespolowy\backend\Services\bin\Debug\netcoreapp2.0\Data.pdb
+E:\C#\projektZespolowy\backend\Services\obj\Debug\netcoreapp2.0\Services.csproj.CopyComplete

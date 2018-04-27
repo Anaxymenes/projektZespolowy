@@ -31,11 +31,9 @@ namespace Services.Services
             return commentList.AsEnumerable();
         }
 
-        public void Add(int postId, int authorId, string content)
+        public void Add(string content)
         {
             Comment comment = new Comment(DateTime.Now, content);
-            comment.Author.Id = authorId;
-            comment.Post.Id = postId;
 
             _commentRepository.Add(comment);
         }

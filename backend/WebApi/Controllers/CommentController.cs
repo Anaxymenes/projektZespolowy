@@ -14,6 +14,11 @@ namespace WebApi.Controllers
     {
         private ICommentService _service;
 
+        public CommentController(ICommentService service)
+        {
+            _service = service;
+        }
+
         [HttpGet]
         public IEnumerable<Comment> GetAllForPost(int postId)
         {
@@ -21,9 +26,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("add")]
-        public void Add(int postId, int authorId, string content)
+        public void Add(string content)
         {
-            _service.Add(postId, authorId, content);
+            _service.Add(content);
         }
 
         [HttpDelete("delete")]
