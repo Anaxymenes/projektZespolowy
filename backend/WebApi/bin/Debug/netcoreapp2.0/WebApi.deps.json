@@ -27,6 +27,7 @@
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0",
           "Services": "1.0.0",
           "Swashbuckle.AspNetCore": "2.4.0"
@@ -4141,7 +4142,8 @@
           "AutoMapper": "6.2.2",
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
-          "Microsoft.EntityFrameworkCore": "2.0.2"
+          "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.2"
         },
         "runtime": {
           "Data.dll": {}
@@ -4157,6 +4159,7 @@
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.2",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.1",
@@ -4176,6 +4179,7 @@
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.2",
           "Repository": "1.0.0"
         },
         "runtime": {

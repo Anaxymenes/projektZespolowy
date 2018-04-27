@@ -31,15 +31,14 @@ D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Re
 D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
 D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.dll
 D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.pdb
-E:\C#\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.deps.json
-E:\C#\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.dll
-E:\C#\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.pdb
-E:\C#\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Data.dll
-E:\C#\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Data.pdb
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csprojResolveAssemblyReference.cache
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CoreCompileInputs.cache
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfoInputs.cache
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CopyComplete
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.dll
-E:\C#\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\bin\Debug\netcoreapp2.0\Repository.deps.json
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\bin\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\bin\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\bin\Debug\netcoreapp2.0\Data.dll
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\bin\Debug\netcoreapp2.0\Data.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csprojResolveAssemblyReference.cache
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CoreCompileInputs.cache
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfoInputs.cache
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\obj\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\Projekt zespołowy\Repository\backend\Repository\obj\Debug\netcoreapp2.0\Repository.pdb

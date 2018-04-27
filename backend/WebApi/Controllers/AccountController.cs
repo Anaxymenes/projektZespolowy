@@ -34,9 +34,12 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("test")]
-        public IActionResult Test() {
-            return Ok();
+        [Route("login")]
+        public IActionResult Login(string username, string passwd) {
+            var results = _accountService.Login(username, passwd);
+            if (results != null)
+                return Ok(results);
+            return NotFound();
         }
     }
 }

@@ -10,12 +10,9 @@ namespace Data.DBModels
         public string Content { get; set; }
 
         public Account Author { get; set; }
+        public int AuthorId { get; set; }
+        public int PostId { get; set; }
         public Post Post { get; set; }
 
-        public Comment(DateTime date, string content)
-        {
-            Date = date;
-            Content = content;
-        }
     }
 }

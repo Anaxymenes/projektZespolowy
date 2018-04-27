@@ -7,7 +7,7 @@ namespace Data.DBModels
     public class Picture : Entity
     {
         public string Path { get; set; }
-
+        public int PostId { get; set; }
         public Post Post { get; set; }
     }
 }

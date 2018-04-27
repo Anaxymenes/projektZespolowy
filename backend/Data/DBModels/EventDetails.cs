@@ -10,6 +10,6 @@ namespace Data.DBModels
         public DateTime EndAt { get; set; }
         public float Longitude { get; set; }
         public float Latitude { get; set; }
-        public virtual Post Post { get; set; }
+        public Post Post { get; set; }
     }
 }

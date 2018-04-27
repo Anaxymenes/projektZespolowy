@@ -11,5 +11,7 @@ namespace Data.DBModels
         public string Color { get; set; }
 
         public Account Administrator { get; set; }
+        public ICollection<AccountHobby> AccountHobbies { get; set; }
+        public ICollection<PostHobby> PostHobbies { get; set; }
     }
 }

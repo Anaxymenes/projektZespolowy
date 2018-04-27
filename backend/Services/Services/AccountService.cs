@@ -38,6 +38,7 @@ namespace Services.Services
             return false;
         }
 
+
         public byte[] GetSalt() {
             byte[] salt = new byte[32 / 8];
             using(var rng = RandomNumberGenerator.Create()) {
@@ -56,6 +57,17 @@ namespace Services.Services
                     numBytesRequested : 256/8
                 ));
             return hashedPassword;
+        }
+
+        public Account Login(string username, string passwd) {
+            //var temp = _repository.Find(x => x.Username == username);
+            //if (temp.Password == this.GetHashedPassword(passwd, Encoding.ASCII.GetBytes(temp.PasswordSalt)))
+            //    return temp;
+            return null;
+        }
+
+        public Account Get(int id) {
+            return _repository.Get(id);
         }
     }
 }

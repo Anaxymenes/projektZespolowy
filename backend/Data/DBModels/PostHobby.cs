@@ -7,7 +7,9 @@ namespace Data.DBModels
     public class PostHobby : Entity
     {
         public Post Post { get; set; }
-        public ICollection<Hobby> Hoobies { get; set; }
+        public int PostId { get; set; }
+        public int HobbyId { get; set; }
+        public Hobby Hooby { get; set; }
 
     }
 }

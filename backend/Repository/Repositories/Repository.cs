@@ -148,5 +148,17 @@ namespace Repository.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        void IRepository<T>.Add(T t) {
+            throw new NotImplementedException();
+        }
+
+        //void IRepository<T>.Update(T t, object key) {
+        //    throw new NotImplementedException();
+        //}
+
+        public void Update(T entity) {
+            throw new NotImplementedException();
+        }
     }
 }

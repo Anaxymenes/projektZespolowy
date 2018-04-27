@@ -11,7 +11,8 @@
           "AutoMapper": "6.2.2",
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.3",
-          "Microsoft.EntityFrameworkCore": "2.0.2"
+          "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.2"
         },
         "runtime": {
           "Data.dll": {}

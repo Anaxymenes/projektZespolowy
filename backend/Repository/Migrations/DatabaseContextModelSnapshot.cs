@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Repository;
 using System;
 
@@ -33,7 +31,7 @@ namespace Repository.Migrations
 
                     b.Property<string>("PasswordSalt");
 
-                    b.Property<int?>("RoleId");
+                    b.Property<int>("RoleId");
 
                     b.Property<string>("Username");
 
@@ -49,7 +47,7 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AccountId");
+                    b.Property<int>("AccountId");
 
                     b.Property<string>("Avatar");
 
@@ -61,7 +59,8 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountId")
+                        .IsUnique();
 
                     b.ToTable("AccountDetails");
                 });
@@ -73,9 +72,13 @@ namespace Repository.Migrations
 
                     b.Property<int?>("AccountId");
 
+                    b.Property<int?>("HobbyId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("HobbyId");
 
                     b.ToTable("AccountHobby");
                 });
@@ -85,13 +88,13 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AuthorId");
+                    b.Property<int>("AuthorId");
 
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("PostId");
+                    b.Property<int>("PostId");
 
                     b.HasKey("Id");
 
@@ -151,8 +154,6 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AccountHobbyId");
-
                     b.Property<int?>("AdministratorId");
 
                     b.Property<string>("Color");
@@ -163,15 +164,9 @@ namespace Repository.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("PostHobbyId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountHobbyId");
-
                     b.HasIndex("AdministratorId");
-
-                    b.HasIndex("PostHobbyId");
 
                     b.ToTable("Hobby");
                 });
@@ -205,7 +200,7 @@ namespace Repository.Migrations
 
                     b.Property<string>("Path");
 
-                    b.Property<int?>("PostId");
+                    b.Property<int>("PostId");
 
                     b.HasKey("Id");
 
@@ -219,14 +214,14 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AuthorId");
+                    b.Property<int>("AuthorId");
 
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PostTypeId");
+                    b.Property<int>("PostTypeId");
 
                     b.HasKey("Id");
 
@@ -242,9 +237,13 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("HoobyId");
+
                     b.Property<int?>("PostId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HoobyId");
 
                     b.HasIndex("PostId");
 
@@ -278,72 +277,72 @@ namespace Repository.Migrations
             modelBuilder.Entity("Data.DBModels.Account", b =>
                 {
                     b.HasOne("Data.DBModels.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
+                        .WithMany("Accounts")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Data.DBModels.AccountDetails", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId");
+                        .WithOne("AccountDetails")
+                        .HasForeignKey("Data.DBModels.AccountDetails", "AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Data.DBModels.AccountHobby", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "Account")
-                        .WithMany()
+                        .WithMany("AccountHobbies")
                         .HasForeignKey("AccountId");
+
+                    b.HasOne("Data.DBModels.Hobby", "Hobby")
+                        .WithMany("AccountHobbies")
+                        .HasForeignKey("HobbyId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Comment", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("Comments")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Data.DBModels.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Data.DBModels.Conversation", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "FirstUser")
-                        .WithMany()
+                        .WithMany("FirstUserConversation")
                         .HasForeignKey("FirstUserId");
 
                     b.HasOne("Data.DBModels.Account", "SecondUser")
-                        .WithMany()
+                        .WithMany("SecondUserConversation")
                         .HasForeignKey("SecondUserId");
                 });
 
             modelBuilder.Entity("Data.DBModels.EventDetails", b =>
                 {
                     b.HasOne("Data.DBModels.Post", "Post")
-                        .WithMany()
+                        .WithMany("EventDetails")
                         .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Hobby", b =>
                 {
-                    b.HasOne("Data.DBModels.AccountHobby")
-                        .WithMany("Hobbies")
-                        .HasForeignKey("AccountHobbyId");
-
                     b.HasOne("Data.DBModels.Account", "Administrator")
-                        .WithMany()
+                        .WithMany("Hobbies")
                         .HasForeignKey("AdministratorId");
-
-                    b.HasOne("Data.DBModels.PostHobby")
-                        .WithMany("Hoobies")
-                        .HasForeignKey("PostHobbyId");
                 });
 
             modelBuilder.Entity("Data.DBModels.Message", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "Author")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("AuthorId");
 
                     b.HasOne("Data.DBModels.Conversation", "Conversation")
@@ -355,24 +354,31 @@ namespace Repository.Migrations
                 {
                     b.HasOne("Data.DBModels.Post", "Post")
                         .WithMany("Pictures")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Data.DBModels.Post", b =>
                 {
                     b.HasOne("Data.DBModels.Account", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("Posts")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Data.DBModels.PostType", "PostType")
                         .WithMany("Posts")
-                        .HasForeignKey("PostTypeId");
+                        .HasForeignKey("PostTypeId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Data.DBModels.PostHobby", b =>
                 {
+                    b.HasOne("Data.DBModels.Hobby", "Hooby")
+                        .WithMany("PostHobbies")
+                        .HasForeignKey("HoobyId");
+
                     b.HasOne("Data.DBModels.Post", "Post")
-                        .WithMany("Hobbies")
+                        .WithMany("PostHobbies")
                         .HasForeignKey("PostId");
                 });
 #pragma warning restore 612, 618

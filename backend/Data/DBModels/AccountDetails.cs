@@ -9,6 +9,8 @@ namespace Data.DBModels
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public string Avatar { get; set; }
+        public int AccountId { get; set; }
+
 
         public Account Account { get; set; }
     }

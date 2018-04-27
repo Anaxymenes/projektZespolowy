@@ -18,6 +18,7 @@ using Services.Interfaces;
 using Repository.Interfaces;
 using Repository.Repositories;
 using Swashbuckle.AspNetCore.Swagger;
+using Data.DBModels;
 
 namespace WebApi
 {
@@ -39,8 +40,18 @@ namespace WebApi
                 b=>b.MigrationsAssembly("Repository"))
             );
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+            
             services.AddMvc();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IPostRepository, PostRepository>();
+
+            services.AddScoped<IPictureService, PictureService>();
+            services.AddScoped<IPictureRepository, PictureRepository>();
+
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddSwaggerGen(x =>
                 x.SwaggerDoc("v1", new Info { Title = "eHobby Back-end Api" ,
                     Description = "Swagger api for eHobby",
@@ -63,6 +74,7 @@ namespace WebApi
             app.UseSwaggerUI(x =>
                 x.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger API")
             );
+            //SeedData.Seed(app);
         }
     }
 }

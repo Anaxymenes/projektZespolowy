@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20180413080253_Migration_13042018_0002.cs" />
-    <Compile Remove="Migrations\20180413080600_Migration_13042018_0003.cs" />
-    <Compile Remove="Migrations\20180416205740_Migration_16042018_0001.cs" />
-    <Compile Remove="Migrations\20180426170236_Migration_26042018_001.cs" />
-    <Compile Remove="Migrations\20180426170648_Migration_26042818_001.cs" />
-    <Compile Remove="Migrations\20180426171355_Migration_26042018_001.cs" />
+    <Compile Remove="Migrations\20180427024029_002.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.1" />

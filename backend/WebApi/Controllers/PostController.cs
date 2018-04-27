@@ -1,5 +1,6 @@
 ﻿
 using Data.DBModels;
+using Data.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using Services.Services;
@@ -20,7 +21,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Post> GetAll()
+        public IEnumerable<PostDTO> GetAll()
         {
             return _service.GetAll();
         }

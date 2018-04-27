@@ -12574,37 +12574,41 @@
       "Microsoft.AspNetCore.All >= 2.0.6",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.0.3",
       "Microsoft.EntityFrameworkCore >= 2.0.2",
+      "Microsoft.EntityFrameworkCore.Design >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0"
     ]
   },
   "packageFolders": {
-    "D:\\Users\\Maciek\\.nuget\\packages\\": {},
-    "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
-    "D:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\czopeka\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "E:\\C#\\projektZespolowy\\backend\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\backend\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "E:\\C#\\projektZespolowy\\backend\\Data\\Data.csproj",
-      "packagesPath": "D:\\Users\\Maciek\\.nuget\\packages\\",
-      "outputPath": "E:\\C#\\projektZespolowy\\backend\\Data\\obj\\",
+      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\backend\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
+      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\backend\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
-        "D:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "D:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "D:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "D:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\czopeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12634,6 +12638,10 @@
             "version": "[2.0.3, )"
           },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
             "version": "[2.0.2, )"
           },

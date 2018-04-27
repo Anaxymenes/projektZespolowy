@@ -1,56 +1,40 @@
 ﻿using Data.DBModels;
+using Data.DTO;
 using Repository.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Services.Services
 {
-    public class CommentService : ICommentService
-    {
-        private IRepository<Comment> _commentRepository;
-        private IRepository<Post> _postRepository;
+    public class CommentService : ICommentService {
+        private readonly ICommentRepository _commentRepository;
+        private readonly IAccountService _accountService;
 
-        public CommentService(IRepository<Comment> commentRepository, IRepository<Post> postRepository)
-        {
+        public CommentService(ICommentRepository commentRepository,
+            IAccountService accountService) {
             _commentRepository = commentRepository;
-            _postRepository = postRepository;
+            _accountService = accountService;
         }
 
-        public IEnumerable<Comment> GetAllForPost(int postId)
-        {
-            var commentList = _commentRepository.FindAll(x => x.Post.Id == postId);
-
-            if (commentList == null)
-            {
+        public IEnumerable<CommentDTO> GetAllCommentByPost(int postId) {
+            List<CommentDTO> resultList = new List<CommentDTO>();
+            var results = _commentRepository.GetAllByPost(postId);
+            if (results == null)
                 return null;
+            foreach(var obj in results) {
+                resultList.Add(
+                    new CommentDTO() {
+                        Id = obj.Id,
+                        Date = obj.Date,
+                        Content = obj.Content,
+                        Author = _accountService.Get(obj.AuthorId).Username,
+                        AuthorId = obj.AuthorId
+                    }
+                );
             }
-
-            return commentList.AsEnumerable();
+            return resultList;
         }
-
-        public void Add(string content)
-        {
-            Comment comment = new Comment(DateTime.Now, content);
-
-            _commentRepository.Add(comment);
-        }
-
-        public void Delete(int commentId)
-        {
-            _commentRepository.Delete(_commentRepository.Get(commentId));
-        }
-
-        public void Update(int commentId, string content)
-        {
-            Comment comment = _commentRepository.Get(commentId);
-            comment.Content = content;
-            comment.Date = DateTime.Now;
-
-            _commentRepository.Update(comment, commentId);
-        }
-
     }
 }
