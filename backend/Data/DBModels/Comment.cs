@@ -12,5 +12,10 @@ namespace Data.DBModels
         public Account Author { get; set; }
         public Post Post { get; set; }
 
+        public Comment(DateTime date, string content)
+        {
+            Date = date;
+            Content = content;
+        }
     }
 }

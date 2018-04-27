@@ -14581,52 +14581,49 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\czopeka\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "D:\\Users\\Maciek\\.nuget\\packages\\": {},
+    "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "D:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\backend\\UnitTest.csproj",
+      "projectUniqueName": "E:\\C#\\projektZespolowy\\backend\\backend\\UnitTest.csproj",
       "projectName": "UnitTest",
-      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\backend\\UnitTest.csproj",
-      "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
-      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\backend\\obj\\",
+      "projectPath": "E:\\C#\\projektZespolowy\\backend\\backend\\UnitTest.csproj",
+      "packagesPath": "D:\\Users\\Maciek\\.nuget\\packages\\",
+      "outputPath": "E:\\C#\\projektZespolowy\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
+        "D:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\czopeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "D:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "D:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "D:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebApi\\WebApi.csproj": {
-              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebApi\\WebApi.csproj"
+            "E:\\C#\\projektZespolowy\\backend\\Data\\Data.csproj": {
+              "projectPath": "E:\\C#\\projektZespolowy\\backend\\Data\\Data.csproj"
             },
-            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Services\\Services.csproj": {
-              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Services\\Services.csproj"
+            "E:\\C#\\projektZespolowy\\backend\\Repository\\Repository.csproj": {
+              "projectPath": "E:\\C#\\projektZespolowy\\backend\\Repository\\Repository.csproj"
             },
-            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj": {
-              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj"
+            "E:\\C#\\projektZespolowy\\backend\\Services\\Services.csproj": {
+              "projectPath": "E:\\C#\\projektZespolowy\\backend\\Services\\Services.csproj"
             },
-            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Repository\\Repository.csproj": {
-              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Repository\\Repository.csproj"
+            "E:\\C#\\projektZespolowy\\backend\\WebApi\\WebApi.csproj": {
+              "projectPath": "E:\\C#\\projektZespolowy\\backend\\WebApi\\WebApi.csproj"
             }
           }
         }
