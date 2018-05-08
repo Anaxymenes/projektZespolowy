@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-//import {Menu} from 'semantic-ui-react';
+import {Menu} from 'semantic-ui-react';
 
-const Header = () => {
-    return (
-        <div>
-            <Link to="/login"> Login</Link>
-            <Link to="/register"> Register</Link>
-            <Link to="/"> Home</Link>
-            <Link to="/wall"> Wall</Link>
-            <Link to ="/addNewPost"> Dodaj Post </Link>
-            <Link to ="/addNewGroup"> Dodaj Grupe </Link>
-        </div>
-    );
-};
+class Header extends Component{
+
+    state = { activeItem: 'home' }
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+    render (){
+        const { activeItem } = this.state
+        return (
+            <Menu inverted>
+                <Link to="/login"><Menu.Item name='zaloguj' active={activeItem === 'zaloguj'} onClick={this.handleItemClick} /></Link>
+                <Link to="/register"><Menu.Item name='rejestracja' active={activeItem === 'rejestracja'} onClick={this.handleItemClick} /></Link>  
+                <Link to="/"><Menu.Item name='strona główna' active={activeItem === 'strona główna'} onClick={this.handleItemClick} /></Link>
+                <Link to="/wall"><Menu.Item name='tablica główna' active={activeItem === 'tablica główna'} onClick={this.handleItemClick} /></Link>
+                <Link to ="/addNewPost"><Menu.Item name='dodaj post' active={activeItem === 'dodaj post'} onClick={this.handleItemClick} /></Link>
+                <Link to ="/addNewGroup"><Menu.Item name='dodaj grupe' active={activeItem === 'dodaj grupe'} onClick={this.handleItemClick} /></Link>                
+            </Menu>
+        );
+    }
+}
 
 export default Header;

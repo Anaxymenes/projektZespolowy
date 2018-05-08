@@ -10,10 +10,9 @@ class App extends Component {
             <div style={{backgroundImage: "url(" + Background + ")", 
             backgroundSize: 'cover',
             overflow: 'hidden',
-            "height" : "100%",}}>
-            {/* <img src={ Background } />  */}
-            <Header />
-            <Routes />
+            height: '100vh',}}>
+                <Header />
+                <Routes />
             </div>
         );
     }

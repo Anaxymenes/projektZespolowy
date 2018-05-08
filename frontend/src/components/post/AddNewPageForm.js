@@ -6,10 +6,14 @@ import {
   Form,
   FormField,
   Container,
-  Grid
+  Grid,
+  Header,
+  Icon,
+  Segment
 } from 'semantic-ui-react';
 import Validator from 'validator';
 import PropTypes from 'prop-types';
+
 
 const options = [
   {
@@ -82,31 +86,44 @@ class AddNewPageForm extends Component {
         <Grid>
           <Grid.Row centered>
             <Grid.Column width={9}>
-              <h1 className="text-xs-center">Dodaj post</h1>
-              <Form onSubmit={this.onSubmit}>
-                <Form.Field
-                  id='form-textarea-control-opinion'
-                  name="content"
-                  placeholder="Wpisz treść posta..."
-                  value={data.content}
-                  onChange={this.onChange}
-                  control={TextArea}
-                  label='Treść posta:'
-                  />
-                <FormField>
-                  <Dropdown
-                    placeholder='Dodaj do...'
-                    name="forGroup"
-                    fluid
-                    multiple
-                    search
-                    selection
-                    options={options}
-                    value={data.toGroup}
-                    onChange={this.onChangeGroups}/>
-                </FormField>
-                <Button primary content="Dodaj post" type="submit"/>
-              </Form>
+              <Container textAlign="center" style={{'width': 600}}>
+                <Header as='h1' textAlign='center' className="text-xs-center">
+                  <Icon name='newspaper' />
+                    Dodaj post
+                </Header>
+                <Form onSubmit={this.onSubmit}>
+                  <Segment inverted>
+                    <Form.Field
+                      id='form-textarea-control-opinion'
+                      name="content"
+                      placeholder="Wpisz treść posta..."
+                      value={data.content}
+                      onChange={this.onChange}
+                      control={TextArea}
+                      label='Treść posta:'
+                      />
+                    <FormField>
+                      <Dropdown
+                        placeholder='Dodaj do...'
+                        name="forGroup"
+                        fluid
+                        multiple
+                        search
+                        selection
+                        options={options}
+                        value={data.toGroup}
+                        onChange={this.onChangeGroups}/>
+                    </FormField>
+                    </Segment>
+                    <Button 
+                        color='black'
+                        size="huge"  
+                        type="submit">
+                        Dodaj post
+                      </Button> 
+                  
+                </Form>
+              </Container>
             </Grid.Column>
           </Grid.Row>
         </Grid>

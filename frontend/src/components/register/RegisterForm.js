@@ -3,6 +3,23 @@ import {Link} from 'react-router-dom';
 import Validator from 'validator';
 import InlineError from '../common/InlineError';
 import PropTypes from 'prop-types';
+import { Container, Header, Icon, Form, Button, Segment } from 'semantic-ui-react';
+
+const styles = {
+  root: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '98vh',
+    flexDirection: 'column'
+  }
+}
+
+const fontSize = {
+  root: {
+    "fontSize": "20px"
+  }
+}
 
 class RegisterForm extends React.Component {
   state = {
@@ -15,7 +32,7 @@ class RegisterForm extends React.Component {
       birthdate: ""
     },
     errors: {},
-    isError: true,
+    isError: false,
     loading: false
   };
 
@@ -30,19 +47,18 @@ class RegisterForm extends React.Component {
     event.preventDefault();
     const errors = this.validate(this.state.data);
     this.setState({errors});
-    if (!this.state.isError) {
+    if (!this.state.data.isError) {
       this.setState({loading: true});
       this
         .props
         .submit(this.state.data)
-        //.catch(err => this.setState({errors: err.response.data.errors, loading: false}))
-        ;
+        .catch(err => this.setState({errors: err.response.data.errors, loading: false}));
     }
   }
 
   validate = (data) => {
     const errors = {};
-    this.setState({isError: false});
+    //this.setState({isError: false});
     //FirstNameValidation
     errors.firstName = "";
     if (!Validator.isAlpha(data.firstName, 'pl-PL') && (!Validator.isEmpty(data.firstName))) {
@@ -97,98 +113,116 @@ class RegisterForm extends React.Component {
       <div className="auth-page">
         <div className="container page">
           <div className="row">
-            <div className="col-md-6 offset-md-3 col-xs-12">
-              <h1 className="text-xs-center">Sign Up</h1>
-              <p className="text-xs-center">
-                <Link to="/login">
-                  Have an account?
-                </Link>
-              </p>
+            <div style={styles.root}>
+              <Container textAlign="center" style={{'width': 600}}>
+                <Header as='h1' textAlign='center' className="text-xs-center">
+                <Icon name='signup' />
+                  Zarejestruj
+                </Header>
+                <p style={fontSize.root}>
+                  <Link to="/login">
+                    Masz konto?
+                  </Link>
+                </p>
 
-              <form onSubmit={this.onSubmit}>
-                <fieldset>
+                <Form onSubmit={this.onSubmit}>
+                  
+                  <Segment inverted>
+                    <Form.Field>
+                      <label style={fontSize.root}>Imię</label>
+                      <input
+                        className="form-control form-control-lg"
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="Imie..."
+                        value={data.firstName}
+                        onChange={this.onChange}/>
+                      <InlineError text={errors.firstName}/>
+                    </Form.Field>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      placeholder="Imie..."
-                      value={data.firstName}
-                      onChange={this.onChange}/>
-                    <InlineError text={errors.firstName}/>
-                  </fieldset>
+                    <Form.Field>
+                      <label style={fontSize.root}>Nazwisko</label>
+                      <input
+                        className="form-control form-control-lg"
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Nazwisko..."
+                        value={data.lastName}
+                        onChange={this.onChange}/>
+                      <InlineError text={errors.lastName}/>
+                    </Form.Field>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      placeholder="Nazwisko..."
-                      value={data.lastName}
-                      onChange={this.onChange}/>
-                    <InlineError text={errors.lastName}/>
-                  </fieldset>
+                    <Form.Field>
+                      <label style={fontSize.root}>E-mail</label>
+                      <input
+                        className="form-control form-control-lg"
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="Email..."
+                        value={data.email}
+                        onChange={this.onChange}/>
+                      <InlineError text={errors.email}/>
+                    </Form.Field>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      id="email"
-                      name="email"
-                      placeholder="Email..."
-                      value={data.email}
-                      onChange={this.onChange}/>
-                    <InlineError text={errors.email}/>
-                  </fieldset>
+                    <Form.Field>
+                      <label style={fontSize.root}>Hasło</label>
+                      <input
+                        className="form-control form-control-lg"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Hasło..."
+                        value={data.password}
+                        onChange={this.onChange}/>
+                      <InlineError text={errors.password}/>
+                    </Form.Field>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="password"
-                      id="password"
-                      name="password"
-                      placeholder="Hasło..."
-                      value={data.password}
-                      onChange={this.onChange}/>
-                    <InlineError text={errors.password}/>
-                  </fieldset>
+                    <Form.Field>
+                      <label style={fontSize.root}>Powtórz hasło</label>
+                      <input
+                        className="form-control form-control-lg"
+                        type="password"
+                        id="repeatedPassword"
+                        name="repeatedPassword"
+                        placeholder="Powtórz hasło..."
+                        value={data.repeatedPassword}
+                        onChange={this.onChange}/>
+                      <InlineError text={errors.repeatedPassword}/>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="password"
-                      id="repeatedPassword"
-                      name="repeatedPassword"
-                      placeholder="Powtórz hasło..."
-                      value={data.repeatedPassword}
-                      onChange={this.onChange}/>
-                    <InlineError text={errors.repeatedPassword}/>
+                    </Form.Field>
 
-                  </fieldset>
+                    <Form.Field>
+                      <label style={fontSize.root}>Data urodzenia</label>
+                      <input
+                        className="form-control form-control-lg"
+                        id="birthdate"
+                        name="birthdate"
+                        placeholder="Data urodzenia RRRR.MM.DD"
+                        type="text"
+                        value={data.birthdate}
+                        onChange={this.onChange}/>
+                      <InlineError text={errors.birthdate}/>
+                    </Form.Field>
 
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      id="birthdate"
-                      name="birthdate"
-                      placeholder="Data urodzenia RRRR.MM.DD"
-                      type="text"
-                      value={data.birthdate}
-                      onChange={this.onChange}/>
-                    <InlineError text={errors.birthdate}/>
-                  </fieldset>
+                    </Segment>
 
-                  <button className="btn btn-lg btn-primary pull-xs-right" type="submit">
-                    Sign up
-                  </button>
+                    <Button animated="vertical"
+                        color='black'
+                        size="huge"  
+                        type="submit">
+                        <Button.Content visible>Zarejestruj</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name="signup" />
+                        </Button.Content>
+                      </Button> 
 
-                </fieldset>
-              </form>
+                  
+                </Form>
+              </Container>
             </div>
-
           </div>
         </div>
       </div>
