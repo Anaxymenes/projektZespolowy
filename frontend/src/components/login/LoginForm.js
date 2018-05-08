@@ -14,13 +14,27 @@ const styles = {
     alignItems: 'center',
     height: '98vh',
     flexDirection: 'column'
+  },
+  segment: {
+    
+  },
+  input: {
+    'border-bottom':"3px solid #333333"
   }
 }
-const fontSize = {
+const font = {
   root: {
-    "fontSize": "20px"
+    "fontSize": "20px",
+    color: "white"
+  },
+  linkFont: {
+    "fontSize": "20px",
+    color:"rgb(190,190,190)"
   }
 }
+
+
+
 class LoginForm extends React.Component {
   state = {
     data: {
@@ -79,29 +93,28 @@ class LoginForm extends React.Component {
   render() {
     const { data, errors } = this.state;
     return (
-      <div className="auth-page">
-        <div className="container page">
-          <div className="row">
+
 
             <div style={styles.root}>
+            <Segment inverted style={styles.segment}>
               <Container textAlign="center" style={{'width': 600}}>
-                <Header as='h1' textAlign='center' className="text-xs-center" >
+                <Header as='h1' textAlign='center' className="text-xs-center" inverted >
                 <Icon name='sign in' />
                   Zaloguj
                 </Header>
 
-                <p style={fontSize.root}>
-                  <Link to="/register">
+                <p style={font.root}>
+                  <Link to="/register" style={font.linkFont}>
                     Nie masz konta?
                   </Link>
                 </p>
 
                 <Form onSubmit={this.onSubmit}>
                   
-                    <Segment inverted>
+                    
                       <Form.Field >
-                      <label style={fontSize.root}>E-mail</label>  
-                      <Input 
+                      <label style={font.root}>E-mail</label>  
+                      <Input transparent style={styles.input} inverted
                           icon="mail"
                           iconPosition="left"
                           className="form-control form-control-lg"
@@ -109,14 +122,15 @@ class LoginForm extends React.Component {
                           id="email"
                           name="email"
                           placeholder="Email..."
+                          
                           value={data.email}
                           onChange={this.onChange} />
                         <InlineError text={errors.email} />
                       </Form.Field>
                     
                       <Form.Field className="form-group">
-                        <label style={fontSize.root}>Hasło</label>
-                        <Input error={errors.password}
+                        <label style={font.root}>Hasło</label>
+                        <Input error={errors.password} transparent inverted style={styles.input} 
                           icon="lock"
                           iconPosition="left"
                           className="form-control form-control-lg"
@@ -128,7 +142,7 @@ class LoginForm extends React.Component {
                           onChange={this.onChange} />
                         <InlineError text={errors.password} />
                       </Form.Field>
-                    </Segment>
+                    
                       <Button animated="vertical"
                         color='black'
                         size="huge"  
@@ -143,11 +157,9 @@ class LoginForm extends React.Component {
                     
                 </Form>
               </Container>
+              </Segment>
             </div>
 
-          </div>
-        </div>
-      </div>
     );
   }
 }

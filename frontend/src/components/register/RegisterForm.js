@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Validator from 'validator';
 import InlineError from '../common/InlineError';
 import PropTypes from 'prop-types';
-import { Container, Header, Icon, Form, Button, Segment } from 'semantic-ui-react';
+import { Container, Header, Icon, Form, Button, Segment, Input } from 'semantic-ui-react';
 
 const styles = {
   root: {
@@ -12,12 +12,20 @@ const styles = {
     alignItems: 'center',
     height: '98vh',
     flexDirection: 'column'
+  },
+  input:{
+      'border-bottom':"3px solid #333333"
   }
 }
 
-const fontSize = {
+const font = {
   root: {
-    "fontSize": "20px"
+    "fontSize": "20px",
+    color: "white"
+  },
+  linkFont: {
+    "fontSize": "20px",
+    color:"rgb(190,190,190)"
   }
 }
 
@@ -110,27 +118,26 @@ class RegisterForm extends React.Component {
   render() {
     const {data, errors} = this.state;
     return (
-      <div className="auth-page">
-        <div className="container page">
-          <div className="row">
+
             <div style={styles.root}>
+            <Segment inverted>
               <Container textAlign="center" style={{'width': 600}}>
-                <Header as='h1' textAlign='center' className="text-xs-center">
+                <Header as='h1' textAlign='center' className="text-xs-center" inverted>
                 <Icon name='signup' />
                   Zarejestruj
                 </Header>
-                <p style={fontSize.root}>
-                  <Link to="/login">
+                <p style={font.root}>
+                  <Link to="/login" style={font.linkFont}>
                     Masz konto?
                   </Link>
                 </p>
 
                 <Form onSubmit={this.onSubmit}>
                   
-                  <Segment inverted>
+
                     <Form.Field>
-                      <label style={fontSize.root}>Imię</label>
-                      <input
+                      <label style={font.root}>Imię</label>
+                      <Input transparent style={styles.input}
                         className="form-control form-control-lg"
                         type="text"
                         id="firstName"
@@ -142,8 +149,8 @@ class RegisterForm extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                      <label style={fontSize.root}>Nazwisko</label>
-                      <input
+                      <label style={font.root}>Nazwisko</label>
+                      <Input transparent style={styles.input}
                         className="form-control form-control-lg"
                         type="text"
                         id="lastName"
@@ -155,8 +162,8 @@ class RegisterForm extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                      <label style={fontSize.root}>E-mail</label>
-                      <input
+                      <label style={font.root}>E-mail</label>
+                      <Input transparent style={styles.input}
                         className="form-control form-control-lg"
                         type="text"
                         id="email"
@@ -168,8 +175,8 @@ class RegisterForm extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                      <label style={fontSize.root}>Hasło</label>
-                      <input
+                      <label style={font.root}>Hasło</label>
+                      <Input transparent style={styles.input}
                         className="form-control form-control-lg"
                         type="password"
                         id="password"
@@ -181,13 +188,14 @@ class RegisterForm extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                      <label style={fontSize.root}>Powtórz hasło</label>
-                      <input
+                      <label style={font.root}>Powtórz hasło</label>
+                      <Input transparent style={styles.input}
                         className="form-control form-control-lg"
                         type="password"
                         id="repeatedPassword"
                         name="repeatedPassword"
                         placeholder="Powtórz hasło..."
+                        border-bottom= "1px white"
                         value={data.repeatedPassword}
                         onChange={this.onChange}/>
                       <InlineError text={errors.repeatedPassword}/>
@@ -195,8 +203,8 @@ class RegisterForm extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                      <label style={fontSize.root}>Data urodzenia</label>
-                      <input
+                      <label style={font.root}>Data urodzenia</label>
+                      <Input transparent style={styles.input}
                         className="form-control form-control-lg"
                         id="birthdate"
                         name="birthdate"
@@ -207,7 +215,7 @@ class RegisterForm extends React.Component {
                       <InlineError text={errors.birthdate}/>
                     </Form.Field>
 
-                    </Segment>
+
 
                     <Button animated="vertical"
                         color='black'
@@ -222,10 +230,9 @@ class RegisterForm extends React.Component {
                   
                 </Form>
               </Container>
+              </Segment>
             </div>
-          </div>
-        </div>
-      </div>
+
     );
   }
 }
