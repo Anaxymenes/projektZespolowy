@@ -5,6 +5,7 @@ import RegisterPage from './register/RegisterPage';
 import Home from './home/Home';
 import WallPage from './wall/WallPage';
 import AddNewPostPage from './post/AddNewPostPage';
+import AddNewGroupContainer from './group/AddGroupContainer';
 
 const Routes = () => {
     return (
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route path='/register' component={RegisterPage}/>
       <Route path='/wall' component={WallPage}/>
       <Route path='/addNewPost' component={AddNewPostPage} />
+      <Route path='/addNewGroup' component ={AddNewGroupContainer} />
     </Switch>
     );
 };

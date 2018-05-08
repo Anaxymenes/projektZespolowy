@@ -10,6 +10,7 @@ const Header = () => {
             <Link to="/"> Home</Link>
             <Link to="/wall"> Wall</Link>
             <Link to ="/addNewPost"> Dodaj Post </Link>
+            <Link to ="/addNewGroup"> Dodaj Grupe </Link>
         </div>
     );
 };
