@@ -6,7 +6,12 @@ import {
   Form,
   FormField,
   Container,
-  Grid
+  Grid,
+  Checkbox,
+  Divider, 
+  Input,
+  Label,
+  Image
 } from 'semantic-ui-react';
 import Validator from 'validator';
 import PropTypes from 'prop-types';
@@ -27,22 +32,53 @@ const options = [
   }
 ]
 
+
+
+
 class AddNewPageForm extends Component {
   componentWillMount() {
     this.setState({
       data: {
         content: '',
-        toGroup: []
-      }
+        postPhoto: [],
+        imageUrl: '',
+        toGroup: [],
+        place: ''
+      },
+      withPhoto: false,
+      withPlace: false
+      
+      
     })
+    this.onCheckBoxChangePhoto=this.onCheckBoxChangePhoto.bind(this);
+    this.onCheckBoxChangePlace=this.onCheckBoxChangePlace.bind(this);
   }
 
-  onChange = e => this.setState({
+
+
+
+  onChange = e => {
+    this.setState({
     data: {
       ...this.state.data,
       [e.target.name]: e.target.value
-    }
+    },
   });
+}
+
+  onCheckBoxChangePhoto(e) {
+    this.setState({
+      withPhoto: !this.state.withPhoto,
+      data:{
+        postPhoto: [],
+        imageUrl: ''
+      }   
+    });
+    
+  }
+  onCheckBoxChangePlace(e) {
+    this.setState({withPlace: !this.state.withPlace});
+  }
 
   onChangeGroups = (e, {value}) => this.setState({
     data: {
@@ -75,14 +111,38 @@ class AddNewPageForm extends Component {
     errors.forGroups = "";
     return errors;
   }
+
+  fileSelectedHandler = (e,value) => {
+    const file    = e.target.files[0];
+    const reader  = new FileReader();
+  
+    reader.onloadend = () => {
+        this.setState({
+            imageUrl: reader.result
+        })
+    }
+    if (file) {
+        reader.readAsDataURL(file);
+        this.setState({
+            imageUrl :reader.result,
+            postPhoto: file
+        })
+    } 
+    else {
+        this.setState({
+            imageUrl: ""
+        })
+    }
+  }
+
   render() {
-    const {data} = this.state;
+    const {data, withPhoto, withPlace} = this.state;
     return (
       <Container>
         <Grid>
           <Grid.Row centered>
             <Grid.Column width={9}>
-              <h1 className="text-xs-center">Dodaj post</h1>
+              <h1>Dodaj post</h1>
               <Form onSubmit={this.onSubmit}>
                 <Form.Field
                   id='form-textarea-control-opinion'
@@ -93,6 +153,53 @@ class AddNewPageForm extends Component {
                   control={TextArea}
                   label='Treść posta:'
                   />
+
+                <Form.Field>
+                  <Checkbox
+                  name="withPhoto" 
+                  label='Chcę dołączyć zdjęcie'
+                  value={withPhoto}
+                  onChange={this.onCheckBoxChangePhoto}                  
+                  />
+                </Form.Field>
+                {withPhoto && <div>
+                  <Form.Field>
+                    <label>Wybierz zdjęcie
+                    </label>
+                    <Input 
+                    type='file'
+                    accept="image/*"
+                    name='postPhoto' 
+                    onChange={this.fileSelectedHandler}
+                    />
+                  </Form.Field>
+                    <Label> Podgląd obrazka</Label>
+                    <Image src={this.state.imageUrl} size='small' />                  
+                </div>}
+
+
+                <Form.Field>
+                  <Checkbox
+                  name="withPlace" 
+                  label='Chcę dołączyć miejsce'
+                  value={withPlace}
+                  onChange={this.onCheckBoxChangePlace}                  
+                  />
+                </Form.Field>
+                {withPlace && <div>
+                  <Form.Field>
+                        <Label>Miejsce</Label>
+                        <Input 
+                        placeholder='Dodaj miejsce...'
+                        name='place'
+                        value={data.place}
+                        onChange={this.onChange}
+                        />
+                    </Form.Field>
+                  
+                </div>}
+
+                
                 <FormField>
                   <Dropdown
                     placeholder='Dodaj do...'
