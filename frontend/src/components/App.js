@@ -10,7 +10,8 @@ class App extends Component {
             <div style={{backgroundImage: "url(" + Background + ")", 
             backgroundSize: 'cover',
             overflow: 'hidden',
-            height: '100vh',}}>
+            height: '100vh',
+            }}>
                 <Header />
                 <Routes />
             </div>

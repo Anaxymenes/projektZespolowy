@@ -11,7 +11,11 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '98vh',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    "line-height": "1.6"
+  },
+  segment: {
+    background: "rgba(0, 0, 0, 0.6)"
   },
   input:{
       'border-bottom':"3px solid #333333"
@@ -120,7 +124,7 @@ class RegisterForm extends React.Component {
     return (
 
             <div style={styles.root}>
-            <Segment inverted>
+            <Segment inverted style={styles.segment}>
               <Container textAlign="center" style={{'width': 600}}>
                 <Header as='h1' textAlign='center' className="text-xs-center" inverted>
                 <Icon name='signup' />
@@ -218,7 +222,6 @@ class RegisterForm extends React.Component {
 
 
                     <Button animated="vertical"
-                        color='black'
                         size="huge"  
                         type="submit">
                         <Button.Content visible>Zarejestruj</Button.Content>

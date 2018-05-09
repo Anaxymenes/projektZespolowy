@@ -13,10 +13,11 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '98vh',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    "line-height": "1.6"
   },
   segment: {
-    
+    background: "rgba(0, 0, 0, 0.6)"
   },
   input: {
     'border-bottom':"3px solid #333333"
@@ -144,7 +145,6 @@ class LoginForm extends React.Component {
                       </Form.Field>
                     
                       <Button animated="vertical"
-                        color='black'
                         size="huge"  
                         type="submit">
                         <Button.Content visible>Zaloguj</Button.Content>
