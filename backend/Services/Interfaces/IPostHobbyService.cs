@@ -1,4 +1,5 @@
 ﻿using Data.DBModels;
+using Data.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,6 @@ namespace Services.Interfaces
 {
     public interface IPostHobbyService
     {
-        IEnumerable<PostHobby> GetAllByPost(int id);
+        IEnumerable<PostHobbyDTO> GetAllByPost(int postId);
     }
 }

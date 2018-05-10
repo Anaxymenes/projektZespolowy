@@ -82,9 +82,9 @@ namespace Repository
 
             modelBuilder.Entity<Hobby>()
                 .HasMany(c => c.PostHobbies)
-                .WithOne(e => e.Hooby);
-                //.HasForeignKey(b => b.HobbyId)
-                //.OnDelete(DeleteBehavior.Restrict);
+                .WithOne(e => e.Hooby)
+                .HasForeignKey(b => b.HobbyId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Conversation>()
                 .HasMany(c => c.Messages)
@@ -98,9 +98,9 @@ namespace Repository
 
             modelBuilder.Entity<Post>()
                 .HasMany(c => c.PostHobbies)
-                .WithOne(e => e.Post);
-                //.HasForeignKey(b => b.PostId)
-                //.OnDelete(DeleteBehavior.Restrict);
+                .WithOne(e => e.Post)
+                .HasForeignKey(b => b.PostId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Post>()
                 .HasMany(c => c.Comments)

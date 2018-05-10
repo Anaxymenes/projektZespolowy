@@ -1,4 +1,5 @@
-﻿using Repository.Interfaces;
+﻿using Data.DBModels;
+using Repository.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,8 @@ namespace Services.Services
             _postHobbyService = postHobbyService;
         }
 
+        public Hobby GetHobbyById(int id) {
+            return _hobbyRepository.Get(id);
+        }
     }
 }

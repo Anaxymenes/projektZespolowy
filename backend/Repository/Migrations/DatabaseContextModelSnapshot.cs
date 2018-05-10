@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Repository;
 using System;
 
@@ -237,13 +239,13 @@ namespace Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("HoobyId");
+                    b.Property<int>("HobbyId");
 
-                    b.Property<int?>("PostId");
+                    b.Property<int>("PostId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HoobyId");
+                    b.HasIndex("HobbyId");
 
                     b.HasIndex("PostId");
 
@@ -375,11 +377,13 @@ namespace Repository.Migrations
                 {
                     b.HasOne("Data.DBModels.Hobby", "Hooby")
                         .WithMany("PostHobbies")
-                        .HasForeignKey("HoobyId");
+                        .HasForeignKey("HobbyId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Data.DBModels.Post", "Post")
                         .WithMany("PostHobbies")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

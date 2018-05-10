@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +18,8 @@ using Repository.Interfaces;
 using Repository.Repositories;
 using Swashbuckle.AspNetCore.Swagger;
 using Data.DBModels;
+using Data.DTO;
+using AutoMapper;
 
 namespace WebApi
 {
@@ -58,7 +59,7 @@ namespace WebApi
                 })
 
             );
-            
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +75,7 @@ namespace WebApi
             app.UseSwaggerUI(x =>
                 x.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger API")
             );
+            
             //SeedData.Seed(app);
         }
     }

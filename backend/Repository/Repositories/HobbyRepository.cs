@@ -31,7 +31,7 @@ namespace Repository.Repositories
         }
 
         public Hobby Get(int id) {
-            throw new NotImplementedException();
+            return _context.Hobby.FirstOrDefault(x => x.Id == id);
         }
 
 
@@ -42,6 +42,10 @@ namespace Repository.Repositories
 
         public List<PostHobby> GetAllHobbiesByPost(List<int> postIdList) {
             return null; // _context.Hobby.Where(x=> postIdList.Contains(x.Id));
+        }
+
+        public IQueryable<Hobby> GetAllHobbiesForIdList(List<int> hobbyIdList) {
+            return _context.Hobby.Where(r => hobbyIdList.Contains(r.Id)).AsQueryable();
         }
 
         public void Save() {

@@ -7,7 +7,7 @@ namespace Data.DTO
     public class PostHobbyDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Color { get; set; }
+        public int HobbyId { get; set; }
+        public int PostId { get; set; }
     }
 }

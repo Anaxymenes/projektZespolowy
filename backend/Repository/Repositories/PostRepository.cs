@@ -1,4 +1,5 @@
 ﻿using Data.DBModels;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace Repository.Repositories
         }
 
         public IQueryable<Post> GetAll() {
-            return _context.Post;
+            return _context.Post.Include(x=>x.PostHobbies);
         }
 
         public void Save() {

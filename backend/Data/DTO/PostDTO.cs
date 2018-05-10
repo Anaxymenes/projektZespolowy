@@ -11,7 +11,7 @@ namespace Data.DTO
         public DateTime Date { get; set; }
         public string Content { get; set; }
         public List<PictureDTO> Pictures { get; set; }
-        //public List<HobbyPost> Hobbies { get; set; }
+        public virtual List<HobbyDTO> Hobbies { get; set; }
         public List<CommentDTO> Comments { get; set; }
 
     }
