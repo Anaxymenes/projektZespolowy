@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
-
-
+using Microsoft.IdentityModel.Tokens;
 using Repository;
-using Services.Services;
-using Services.Interfaces;
 using Repository.Interfaces;
 using Repository.Repositories;
+using Service.Interfaces;
+using Service.Services;
 using Swashbuckle.AspNetCore.Swagger;
-using Data.DBModels;
-using Data.DTO;
-using AutoMapper;
+using WebAPI.Utils;
 
-namespace WebApi
+namespace WebAPI
 {
     public class Startup
     {
@@ -38,28 +37,54 @@ namespace WebApi
             services.AddCors();
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Default"),
-                b=>b.MigrationsAssembly("Repository"))
+                b => b.MigrationsAssembly("Repository"))
             );
-            services.AddScoped<IAccountService, AccountService>();
-            
             services.AddMvc();
-            services.AddScoped<IPostService, PostService>();
-            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddSwaggerGen(x => {
+                x.SwaggerDoc("v1", new Info {
+                    Title = "eHobby Back-end Api",
+                    Description = "Swagger api for eHobby",
+                });
+                var security = new Dictionary<string, IEnumerable<string>>
+                {
+                    {"Bearer", new string[] { }},
+                };
 
-            services.AddScoped<IPictureService, PictureService>();
-            services.AddScoped<IPictureRepository, PictureRepository>();
+                x.AddSecurityDefinition("Bearer", new ApiKeyScheme {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                x.AddSecurityRequirement(security);
+            });
+            services.AddScoped<IPostHobbyService, PostHobbyService>();
+            services.AddScoped<IPostHobbyRepository, PostHobbyRepository>();
 
-            services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IHobbyService, HobbyService>();
+            services.AddScoped<IHobbyRepository, HobbyRepository>();
+
+            services.AddScoped<IAuthService, AuthService>();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddSwaggerGen(x =>
-                x.SwaggerDoc("v1", new Info { Title = "eHobby Back-end Api" ,
-                    Description = "Swagger api for eHobby",
-                })
 
-            );
-            services.AddAutoMapper();
+            //Token Param
+
+            var tokenParams = new TokenValidationParameters() {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidIssuer = Configuration["JWT:issuer"],
+                ValidAudience = Configuration["JWT:audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(Configuration["JWT:key"]))
+            };
+
+            //AUTH
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(jwtconfig => {
+                    jwtconfig.TokenValidationParameters = tokenParams;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,14 +94,18 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
+            app.UseAuthentication();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(x =>
                 x.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger API")
             );
-            
-            //SeedData.Seed(app);
         }
     }
 }

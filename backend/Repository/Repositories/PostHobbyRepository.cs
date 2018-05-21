@@ -1,4 +1,5 @@
-﻿using Data.DBModels;
+﻿using Data.DBModel;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,40 +15,12 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public void Add(PostHobby t) {
-            throw new NotImplementedException();
-        }
-
-        public int Count() {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(PostHobby entity) {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose() {
-            throw new NotImplementedException();
-        }
-
-        public PostHobby Get(int id) {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<PostHobby> GetAll() {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<PostHobby> GetAllByPost(int postId) {
-            return _context.PostHobby.Where(x => x.Post.Id == postId);
-        }
-
-        public void Save() {
-            throw new NotImplementedException();
-        }
-
-        public void Update(PostHobby entity) {
-            throw new NotImplementedException();
+            return _context.PostHobby.AsQueryable()
+                .Include(postHobby => postHobby.Hobby)
+                .ThenInclude(hobby=> hobby.Administrator)
+                .Include(c => c.Post)
+                .ThenInclude(v=>v.Author);
         }
     }
 }
