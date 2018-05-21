@@ -14,6 +14,7 @@ namespace Data.DBModel
         public PostType PostType { get; set; }
         public int AuthorId { get; set; }
         public Account Author { get; set; }
+        [JsonIgnore]
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Picture> Pictures { get; set; }
         [JsonIgnore]

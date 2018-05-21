@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Data.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
@@ -20,5 +21,10 @@ namespace WebAPI.Controllers
         public List<PostHobby> GetAll() {
             return _postHobbyService.GetAll();
         }
+        
+        //public List<PostDTO> GetAllPostsByHobbyId(int id)
+        //{
+        //    return _postHobbyService.GetAllPostsByHobbyId(id);
+        //}
     }
 }

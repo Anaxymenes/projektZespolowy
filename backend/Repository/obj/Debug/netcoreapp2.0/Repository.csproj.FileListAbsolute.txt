@@ -9,3 +9,14 @@ C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.Ass
 C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
 C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.dll
 C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.pdb
+D:\www\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.deps.json
+D:\www\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.dll
+D:\www\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.pdb
+D:\www\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csprojResolveAssemblyReference.cache
+D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CoreCompileInputs.cache
+D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfoInputs.cache
+D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
+D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.dll
+D:\www\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.pdb

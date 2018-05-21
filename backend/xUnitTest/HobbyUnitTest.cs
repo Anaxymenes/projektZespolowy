@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using WebAPI.Controllers;
 using Xunit;
-using static Repository.DatabaseContex;
+using static Repository.DatabaseContext;
 
 namespace xUnitTest
 {

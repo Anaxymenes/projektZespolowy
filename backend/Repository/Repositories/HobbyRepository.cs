@@ -12,7 +12,6 @@ namespace Repository.Repositories
 
         public HobbyRepository(DatabaseContext context) {
             _context = context;
-
         }
         public IQueryable<Hobby> GetAll() {
             throw new NotImplementedException();

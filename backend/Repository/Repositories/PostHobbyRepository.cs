@@ -18,9 +18,12 @@ namespace Repository.Repositories
         public IQueryable<PostHobby> GetAll() {
             return _context.PostHobby.AsQueryable()
                 .Include(postHobby => postHobby.Hobby)
-                .ThenInclude(hobby=> hobby.Administrator)
+                .ThenInclude(hobby => hobby.Administrator)
                 .Include(c => c.Post)
-                .ThenInclude(v=>v.Author);
+                .ThenInclude(v => v.Author)
+                .Include(c => c.Post)
+                .ThenInclude(v => v.Comments);
         }
+        
     }
 }
