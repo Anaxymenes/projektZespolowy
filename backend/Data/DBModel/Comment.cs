@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,6 +11,7 @@ namespace Data.DBModel
         public int AuthorId { get; set; }
         public Account Author { get; set; }
         public int PostId { get; set; }
+        [JsonIgnore]
         public Post Post { get; set; }
 
     }

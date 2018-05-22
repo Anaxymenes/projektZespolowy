@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Service",
+    "\\Service\\bin",
+    "\\Service\\bin\\Debug",
+    "\\Service\\bin\\Debug\\netcoreapp2.0",
+    "\\Service\\Interfaces",
+    "\\Service\\Services",
+    "\\WebApi",
+    "\\WebApi\\bin\\Debug",
+    "\\WebApi\\bin\\Debug\\netcoreapp2.0",
+    "\\xUnitTest\\bin\\Debug",
+    "\\xUnitTest\\bin\\Debug\\netcoreapp2.0"
+  ],
+  "SelectedNode": "\\WebApi\\Startup.cs",
+  "PreviewInSolutionExplorer": false
+}

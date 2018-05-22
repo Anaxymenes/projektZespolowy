@@ -22,7 +22,8 @@ namespace Repository.Repositories
                 .Include(c => c.Post)
                 .ThenInclude(v => v.Author)
                 .Include(c => c.Post)
-                .ThenInclude(v => v.Comments);
+                .ThenInclude(v => v.Comments)
+                .ThenInclude(b=>b.Author);
         }
         
     }
