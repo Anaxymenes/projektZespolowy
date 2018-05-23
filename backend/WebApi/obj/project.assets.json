@@ -6434,7 +6434,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "PQj4u3zF8tETYFygtdxt0E4Fw59kK/8QgNdlhzZ/EibQdRR+xDe+FPdgqJvza1qIcOP5NOlOMak+og3dRA1P2A==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
@@ -13664,8 +13664,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\czopeka\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\manti\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13674,20 +13673,26 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
       "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
       "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebAPI\\obj\\",
+=======
+      "projectUniqueName": "D:\\www\\Repository\\projektZespolowy\\backend\\WebAPI\\WebAPI.csproj",
+      "projectName": "WebAPI",
+      "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\WebAPI\\WebAPI.csproj",
+      "packagesPath": "C:\\Users\\manti\\.nuget\\packages\\",
+      "outputPath": "D:\\www\\Repository\\projektZespolowy\\backend\\WebAPI\\obj\\",
+>>>>>>> MateuszV2
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\czopeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\manti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13699,11 +13704,19 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Service\\Service.csproj": {
               "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Service\\Service.csproj"
             },
             "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj": {
               "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj"
+=======
+            "D:\\www\\Repository\\projektZespolowy\\backend\\Service\\Service.csproj": {
+              "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Service\\Service.csproj"
+            },
+            "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj": {
+              "projectPath": "D:\\www\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj"
+>>>>>>> MateuszV2
             }
           }
         }

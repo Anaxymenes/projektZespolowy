@@ -66,6 +66,9 @@ namespace WebAPI
 
             services.AddScoped<IAuthService, AuthService>();
 
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IPostRepository, PostRepository>();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //Token Param

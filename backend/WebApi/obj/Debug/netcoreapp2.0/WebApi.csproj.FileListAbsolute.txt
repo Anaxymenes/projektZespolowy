@@ -15,6 +15,7 @@ C:\R2D2\main\REPOSITORY\eHobby\WebAPI\bin\Debug\netcoreapp2.0\Repository.pdb
 C:\R2D2\main\REPOSITORY\eHobby\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.csprojResolveAssemblyReference.cache
 C:\R2D2\main\REPOSITORY\eHobby\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.dll
 C:\R2D2\main\REPOSITORY\eHobby\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.pdb
+<<<<<<< HEAD
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.deps.json
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.runtimeconfig.json
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.runtimeconfig.dev.json
@@ -32,3 +33,22 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\obj\D
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.AssemblyInfo.cs
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.dll
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.pdb
+=======
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.deps.json
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.runtimeconfig.json
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.runtimeconfig.dev.json
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.dll
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.pdb
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Repository.dll
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Service.dll
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Service.pdb
+D:\www\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Repository.pdb
+D:\www\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.csprojResolveAssemblyReference.cache
+D:\www\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.csproj.CoreCompileInputs.cache
+D:\www\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.AssemblyInfoInputs.cache
+D:\www\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.AssemblyInfo.cs
+D:\www\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.dll
+D:\www\Repository\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.pdb
+>>>>>>> MateuszV2

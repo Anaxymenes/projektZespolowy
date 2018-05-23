@@ -1,5 +1,9 @@
 {
   "version": 1,
+<<<<<<< HEAD
   "dgSpecHash": "4j3g9oePPny4Acff/JXzgqiL4thnyTSpwZxotyXdpcJJUwc9zobvgvnxS/RmYMTLGCuD1EqR6HMg9bmnnHhk3g==",
+=======
+  "dgSpecHash": "G7C9JI6N1jgn8gPICE3i1T9ZAS1+yW2eSVHGUMv3hLkk7ZSs7yBq1sHvJDe3eGTT1g+vxc/WGvHX2w4OXD+eoA==",
+>>>>>>> MateuszV2
   "success": true
 }

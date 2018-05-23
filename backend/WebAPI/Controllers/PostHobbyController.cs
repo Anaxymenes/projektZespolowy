@@ -1,6 +1,8 @@
 ﻿using Data.DBModel;
+using Data.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace WebAPI.Controllers
     public class PostHobbyController : Controller {
         private IPostHobbyService _postHobbyService;
 
+        private PostHobbyService _context;
+
         public PostHobbyController(IPostHobbyService postHobbyService) {
             _postHobbyService = postHobbyService;
         }
@@ -19,6 +23,24 @@ namespace WebAPI.Controllers
         [HttpGet("")]
         public List<PostHobby> GetAll() {
             return _postHobbyService.GetAll();
+        }
+
+        [HttpPost("create")]
+        public IActionResult CreatePostHobby([FromBody] PostDTO post)
+        {
+            if (post == null )
+            {
+                return BadRequest("errorr");
+            }
+            _postHobbyService.CreatePostHobby(post);
+            return Ok();
+        }
+
+        [HttpGet("findPostByHobbyId")]
+        public IActionResult GetAllPostsByHobbyId(int id)
+        {
+           _postHobbyService.GetAllPostsByHobbyId(id);
+            return Ok();
         }
     }
 }
