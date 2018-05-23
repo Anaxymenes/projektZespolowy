@@ -1,0 +1,22 @@
+C:\R2D2\main\REPOSITORY\eHobby\Repository\bin\Debug\netcoreapp2.0\Repository.deps.json
+C:\R2D2\main\REPOSITORY\eHobby\Repository\bin\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\REPOSITORY\eHobby\Repository\bin\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\REPOSITORY\eHobby\Repository\bin\Debug\netcoreapp2.0\Data.dll
+C:\R2D2\main\REPOSITORY\eHobby\Repository\bin\Debug\netcoreapp2.0\Data.pdb
+C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.csprojResolveAssemblyReference.cache
+C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CoreCompileInputs.cache
+C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfoInputs.cache
+C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
+C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\REPOSITORY\eHobby\Repository\obj\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.deps.json
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Repository.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Data.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\bin\Debug\netcoreapp2.0\Data.pdb
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csprojResolveAssemblyReference.cache
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CoreCompileInputs.cache
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfoInputs.cache
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.dll
+C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\Repository\obj\Debug\netcoreapp2.0\Repository.pdb
