@@ -1,5 +1,4 @@
-﻿using Data.DBModel;
-using Microsoft.EntityFrameworkCore;
+﻿using Data.DBModels;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,28 @@ namespace Repository.Repositories
             _context = context;
         }
 
+        public void Add(PostHobby t) {
+            throw new NotImplementedException();
+        }
+
+        public int Count() {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(PostHobby entity) {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose() {
+            throw new NotImplementedException();
+        }
+
+        public PostHobby Get(int id) {
+            throw new NotImplementedException();
+        }
+
         public IQueryable<PostHobby> GetAll() {
+<<<<<<< HEAD
             return _context.PostHobby.AsQueryable()
                 .Include(postHobby => postHobby.Hobby)
                 .ThenInclude(hobby=> hobby.Administrator)
@@ -23,6 +43,21 @@ namespace Repository.Repositories
                 .ThenInclude(v=>v.Author)
                 .Include(c=>c.Post)
                 .ThenInclude(v=>v.Comments);
+=======
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<PostHobby> GetAllByPost(int postId) {
+            return _context.PostHobby.Where(x => x.Post.Id == postId);
+        }
+
+        public void Save() {
+            throw new NotImplementedException();
+        }
+
+        public void Update(PostHobby entity) {
+            throw new NotImplementedException();
+>>>>>>> parent of 907ef6e... Many changes
         }
     }
 }
