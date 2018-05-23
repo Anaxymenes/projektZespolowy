@@ -1,22 +1,17 @@
-﻿using Data.DBModel;
-using Microsoft.AspNetCore.Mvc;
-using Service.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAPI.Controllers
+namespace WebApi.Controllers
 {
-    public class HobbyController : Controller {
-        private  readonly IHobbyService _hobbyService;
+    [Route("api/[controller]")]
+    public class HobbyController : Controller{
 
-        public HobbyController(IHobbyService hobbyService) {
-           _hobbyService = hobbyService;
-        }
+        private IHobbyService _service;
 
-        public List<Hobby> GetAll() {
-            return _hobbyService.GetAll();
-        }
+
     }
 }

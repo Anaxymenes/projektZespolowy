@@ -1,9 +1,13 @@
 {
   "version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "/g6vUiJKj/BkmvPDj5XEAtZsNG1QrU4seHpXrw7ozBuUDB2cy+Sd159bzSMWukdzKVaSlLfcGjcHU2d49EW49w==",
 =======
   "dgSpecHash": "nFB98kQDe6qUK118rHdOkMi+PgSAwQNUmnHapP8BfXmiN5qEKksmloBVJy98/6RttlDQRR5k7ius+otA8dLZ/A==",
 >>>>>>> MateuszV2
+=======
+  "dgSpecHash": "wiqxguEQEm7oXPpog8Ior87P6qSRY5SsbE/+rqcuImPJGCAjUjY5jQi5nHUWyo+McvQ6kN0PLu9MTuP0uhAOIg==",
+>>>>>>> parent of 907ef6e... Many changes
   "success": true
 }

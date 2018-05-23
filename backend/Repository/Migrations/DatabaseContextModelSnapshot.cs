@@ -17,10 +17,17 @@ namespace Repository.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+<<<<<<< HEAD
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Data.DBModel.Account", b =>
+=======
+                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Data.DBModels.Account", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -44,7 +51,11 @@ namespace Repository.Migrations
                     b.ToTable("Account");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.AccountDetails", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.AccountDetails", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -67,14 +78,24 @@ namespace Repository.Migrations
                     b.ToTable("AccountDetails");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.AccountHobby", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.AccountHobby", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+<<<<<<< HEAD
                     b.Property<int>("AccountId");
 
                     b.Property<int>("HobbyId");
+=======
+                    b.Property<int?>("AccountId");
+
+                    b.Property<int?>("HobbyId");
+>>>>>>> parent of 907ef6e... Many changes
 
                     b.HasKey("Id");
 
@@ -85,6 +106,7 @@ namespace Repository.Migrations
                     b.ToTable("AccountHobby");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.AccountRole", b =>
                 {
                     b.Property<int>("Id")
@@ -98,6 +120,9 @@ namespace Repository.Migrations
                 });
 
             modelBuilder.Entity("Data.DBModel.Comment", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.Comment", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -119,16 +144,28 @@ namespace Repository.Migrations
                     b.ToTable("Comment");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Conversation", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.Conversation", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+<<<<<<< HEAD
                     b.Property<int>("FirstUserId");
 
                     b.Property<string>("Name");
 
                     b.Property<int>("SecondUserId");
+=======
+                    b.Property<int?>("FirstUserId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("SecondUserId");
+>>>>>>> parent of 907ef6e... Many changes
 
                     b.Property<DateTime>("StartDate");
 
@@ -141,7 +178,11 @@ namespace Repository.Migrations
                     b.ToTable("Conversation");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.EventDetails", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.EventDetails", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -152,24 +193,40 @@ namespace Repository.Migrations
 
                     b.Property<float>("Longitude");
 
+<<<<<<< HEAD
                     b.Property<int>("PostId");
+=======
+                    b.Property<int?>("PostId");
+>>>>>>> parent of 907ef6e... Many changes
 
                     b.Property<DateTime>("StartAt");
 
                     b.HasKey("Id");
 
+<<<<<<< HEAD
                     b.HasIndex("PostId")
                         .IsUnique();
+=======
+                    b.HasIndex("PostId");
+>>>>>>> parent of 907ef6e... Many changes
 
                     b.ToTable("EventDetails");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Hobby", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.Hobby", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+<<<<<<< HEAD
                     b.Property<int>("AdministratorId");
+=======
+                    b.Property<int?>("AdministratorId");
+>>>>>>> parent of 907ef6e... Many changes
 
                     b.Property<string>("Color");
 
@@ -186,16 +243,28 @@ namespace Repository.Migrations
                     b.ToTable("Hobby");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Message", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.Message", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+<<<<<<< HEAD
                     b.Property<int>("AuthorId");
 
                     b.Property<string>("Content");
 
                     b.Property<int>("ConversationId");
+=======
+                    b.Property<int?>("AuthorId");
+
+                    b.Property<string>("Content");
+
+                    b.Property<int?>("ConversationId");
+>>>>>>> parent of 907ef6e... Many changes
 
                     b.Property<DateTime>("Date");
 
@@ -208,7 +277,11 @@ namespace Repository.Migrations
                     b.ToTable("Message");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Picture", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.Picture", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -224,7 +297,11 @@ namespace Repository.Migrations
                     b.ToTable("Picture");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Post", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.Post", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -247,7 +324,11 @@ namespace Repository.Migrations
                     b.ToTable("Post");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.PostHobby", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.PostHobby", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -265,7 +346,11 @@ namespace Repository.Migrations
                     b.ToTable("PostHobby");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.PostType", b =>
+=======
+            modelBuilder.Entity("Data.DBModels.PostType", b =>
+>>>>>>> parent of 907ef6e... Many changes
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -277,14 +362,33 @@ namespace Repository.Migrations
                     b.ToTable("PostType");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Account", b =>
                 {
                     b.HasOne("Data.DBModel.AccountRole", "AccountRole")
+=======
+            modelBuilder.Entity("Data.DBModels.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("Data.DBModels.Account", b =>
+                {
+                    b.HasOne("Data.DBModels.Role", "Role")
+>>>>>>> parent of 907ef6e... Many changes
                         .WithMany("Accounts")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.AccountDetails", b =>
                 {
                     b.HasOne("Data.DBModel.Account", "Account")
@@ -309,16 +413,45 @@ namespace Repository.Migrations
             modelBuilder.Entity("Data.DBModel.Comment", b =>
                 {
                     b.HasOne("Data.DBModel.Account", "Author")
+=======
+            modelBuilder.Entity("Data.DBModels.AccountDetails", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "Account")
+                        .WithOne("AccountDetails")
+                        .HasForeignKey("Data.DBModels.AccountDetails", "AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Data.DBModels.AccountHobby", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "Account")
+                        .WithMany("AccountHobbies")
+                        .HasForeignKey("AccountId");
+
+                    b.HasOne("Data.DBModels.Hobby", "Hobby")
+                        .WithMany("AccountHobbies")
+                        .HasForeignKey("HobbyId");
+                });
+
+            modelBuilder.Entity("Data.DBModels.Comment", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "Author")
+>>>>>>> parent of 907ef6e... Many changes
                         .WithMany("Comments")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+<<<<<<< HEAD
                     b.HasOne("Data.DBModel.Post", "Post")
+=======
+                    b.HasOne("Data.DBModels.Post", "Post")
+>>>>>>> parent of 907ef6e... Many changes
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.Conversation", b =>
                 {
                     b.HasOne("Data.DBModel.Account", "FirstUser")
@@ -377,11 +510,66 @@ namespace Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Data.DBModel.PostType", "PostType")
+=======
+            modelBuilder.Entity("Data.DBModels.Conversation", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "FirstUser")
+                        .WithMany("FirstUserConversation")
+                        .HasForeignKey("FirstUserId");
+
+                    b.HasOne("Data.DBModels.Account", "SecondUser")
+                        .WithMany("SecondUserConversation")
+                        .HasForeignKey("SecondUserId");
+                });
+
+            modelBuilder.Entity("Data.DBModels.EventDetails", b =>
+                {
+                    b.HasOne("Data.DBModels.Post", "Post")
+                        .WithMany("EventDetails")
+                        .HasForeignKey("PostId");
+                });
+
+            modelBuilder.Entity("Data.DBModels.Hobby", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "Administrator")
+                        .WithMany("Hobbies")
+                        .HasForeignKey("AdministratorId");
+                });
+
+            modelBuilder.Entity("Data.DBModels.Message", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "Author")
+                        .WithMany("Messages")
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("Data.DBModels.Conversation", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId");
+                });
+
+            modelBuilder.Entity("Data.DBModels.Picture", b =>
+                {
+                    b.HasOne("Data.DBModels.Post", "Post")
+                        .WithMany("Pictures")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Data.DBModels.Post", b =>
+                {
+                    b.HasOne("Data.DBModels.Account", "Author")
+                        .WithMany("Posts")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Data.DBModels.PostType", "PostType")
+>>>>>>> parent of 907ef6e... Many changes
                         .WithMany("Posts")
                         .HasForeignKey("PostTypeId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Data.DBModel.PostHobby", b =>
                 {
                     b.HasOne("Data.DBModel.Hobby", "Hobby")
@@ -393,6 +581,19 @@ namespace Repository.Migrations
                         .WithMany("PostHobbies")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
+=======
+            modelBuilder.Entity("Data.DBModels.PostHobby", b =>
+                {
+                    b.HasOne("Data.DBModels.Hobby", "Hooby")
+                        .WithMany("PostHobbies")
+                        .HasForeignKey("HobbyId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Data.DBModels.Post", "Post")
+                        .WithMany("PostHobbies")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict);
+>>>>>>> parent of 907ef6e... Many changes
                 });
 #pragma warning restore 612, 618
         }
