@@ -12997,11 +12997,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Data\\Data.csproj",
+      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
-      "outputPath": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Data\\obj\\",
+      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

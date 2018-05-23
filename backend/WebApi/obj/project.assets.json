@@ -13674,11 +13674,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\WebAPI\\WebAPI.csproj",
+      "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\czopeka\\.nuget\\packages\\",
-      "outputPath": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\WebAPI\\obj\\",
+      "outputPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -13699,11 +13699,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Service\\Service.csproj": {
-              "projectPath": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Service\\Service.csproj"
+            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Service\\Service.csproj": {
+              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Service\\Service.csproj"
             },
-            "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Data\\Data.csproj": {
-              "projectPath": "C:\\R2D2\\main\\REPOSITORY\\eHobby\\Data\\Data.csproj"
+            "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj": {
+              "projectPath": "C:\\R2D2\\main\\Projekt zespołowy\\Repository\\projektZespolowy\\backend\\Data\\Data.csproj"
             }
           }
         }

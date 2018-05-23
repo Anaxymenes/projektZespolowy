@@ -20,7 +20,9 @@ namespace Repository.Repositories
                 .Include(postHobby => postHobby.Hobby)
                 .ThenInclude(hobby=> hobby.Administrator)
                 .Include(c => c.Post)
-                .ThenInclude(v=>v.Author);
+                .ThenInclude(v=>v.Author)
+                .Include(c=>c.Post)
+                .ThenInclude(v=>v.Comments);
         }
     }
 }

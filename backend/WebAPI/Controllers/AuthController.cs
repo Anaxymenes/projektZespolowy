@@ -24,12 +24,22 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult CreateToken([FromBody] LoginDTO loginDTO) {
+        public IActionResult LoginAndGetToken([FromBody] LoginDTO loginDTO) {
             IActionResult response = Unauthorized();
-            if (loginDTO != null) {
-                response = Ok(new { access_token=_authService.GetToken()});
-            }
+            if (loginDTO == null)
+                return BadRequest("Błąd przesyłu danych");
+            AccountDTO user = _authService.GetUserByUserNameOrEmail(loginDTO);
+            if (user == null)
+                return NotFound("Konto nie istnieje");
+            if (!_authService.isValid(user, loginDTO))
+                return BadRequest("Błędny username lub password");
+            response = Ok(_authService.GetToken());
             return response;
+        }
+
+        [HttpGet("test")]
+        public IActionResult Test([FromHeader] string header) {
+            return Ok(header);
         }
 
         

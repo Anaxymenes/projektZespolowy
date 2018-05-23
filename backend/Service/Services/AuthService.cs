@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Data.DTO;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Service.Interfaces;
 using System;
@@ -17,11 +18,19 @@ namespace Service.Services
             Configuration = config;
         }
 
-        public string GetToken() {
+        public JWTBearerToken GetToken() {
             return this.JwtTokenBuilder();
         }
 
-        private string JwtTokenBuilder() {
+        public bool isValid(AccountDTO user, LoginDTO loginDTO) {
+            throw new NotImplementedException();
+        }
+
+        public AccountDTO GetUserByUserNameOrEmail(LoginDTO loginDTO) {
+            throw new NotImplementedException();
+        }
+
+        private JWTBearerToken JwtTokenBuilder() {
             var key = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(Configuration["JWT:key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -29,8 +38,10 @@ namespace Service.Services
                 audience: Configuration["JWT:audience"],
                 signingCredentials: credentials,
                 expires: DateTime.Now.AddSeconds(20));
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            JWTBearerToken jwTBearerToken = new JWTBearerToken();
+            jwTBearerToken.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            jwTBearerToken.Expires = token.ValidTo;
+            return jwTBearerToken;
         }
     }
 }
