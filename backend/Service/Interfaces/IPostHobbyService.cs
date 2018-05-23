@@ -8,6 +8,9 @@ namespace Service.Interfaces
 {
     public interface IPostHobbyService {
         List<PostHobby> GetAll();
-        //List<PostDTO> GetAllPostsByHobbyId(int id);
+        void CreatePostHobby(PostDTO postDTO);
+        List<PostHobby> GetAllPostsByHobbyId(int id);
+
+        
     }
 }

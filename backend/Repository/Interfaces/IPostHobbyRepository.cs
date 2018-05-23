@@ -8,6 +8,6 @@ namespace Repository.Interfaces
 {
     public interface IPostHobbyRepository : IRepository<PostHobby>
     {
-        //IQueryable<PostHobby> GetAllPostByHobbyId(int v);
+        IQueryable<PostHobby> GetAllPostByHobbyId(int v);
     }
 }

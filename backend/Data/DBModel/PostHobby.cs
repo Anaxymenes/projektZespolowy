@@ -10,6 +10,5 @@ namespace Data.DBModel
 
         public Hobby Hobby { get; set; }
         public Post Post { get; set; }
-
     }
 }

@@ -10,7 +10,8 @@ namespace Data.DTO
         public DateTime Date { get; set; }
         public string Content { get; set; }
         public string Author { get; set; }
-        public HobbyForPostDTO Hobby { get; set; }
+        public int AuthorId { get; set; }
+        public List<HobbyForPostDTO> Hobbys { get; set; }
         public List<string> Pictures { get; set; }
         public EventDTO Event { get; set; }    
     }

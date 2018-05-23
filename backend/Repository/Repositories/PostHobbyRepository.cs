@@ -15,6 +15,23 @@ namespace Repository.Repositories
             _context = context;
         }
 
+        public PostHobby Add(PostHobby entity)
+        {
+            _context.PostHobby.Add(entity);
+            return _context.PostHobby.Last();
+
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PostHobby Edit(PostHobby entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public IQueryable<PostHobby> GetAll() {
             return _context.PostHobby.AsQueryable()
                 .Include(postHobby => postHobby.Hobby)
@@ -25,6 +42,15 @@ namespace Repository.Repositories
                 .ThenInclude(v => v.Comments)
                 .ThenInclude(b=>b.Author);
         }
-        
+
+        public IQueryable<PostHobby> GetAllPostByHobbyId(int v)
+        {
+            return _context.PostHobby.AsQueryable().Where(x => x.HobbyId == v);
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,7 +13,28 @@ namespace Repository.Repositories
         public HobbyRepository(DatabaseContext context) {
             _context = context;
         }
+
+        public Hobby Add(Hobby entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Hobby Edit(Hobby entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public IQueryable<Hobby> GetAll() {
+            throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
             throw new NotImplementedException();
         }
     }
