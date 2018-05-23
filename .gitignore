@@ -28,3 +28,7 @@ backend/Service/bin/Debug/netcoreapp2.0/Service.pdb
 backend/Service/bin/Debug/netcoreapp2.0/Service.deps.json
 backend/Service/bin/Debug/netcoreapp2.0/Repository.dll
 backend/Service/bin/Debug/netcoreapp2.0/Data.dll
+backend/.vs/config/applicationhost.config
+backend/Service/bin/Debug/netcoreapp2.0/Service.deps.json
+backend/Service/obj/Debug/netcoreapp2.0/Service.csproj.FileListAbsolute.txt
+backend/WebApi/bin/Debug/netcoreapp2.0/WebApi.runtimeconfig.dev.json
