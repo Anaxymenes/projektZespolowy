@@ -4,6 +4,7 @@ using Repository.Interfaces;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Service.Services
@@ -29,6 +30,26 @@ namespace Service.Services
                 post.PostTypeId = 1;
             }
             return _postRespository.Add(post);
+        }
+
+        public void Delete(int id)
+        {
+            _postRespository.Delete(id);
+        }
+
+        public PostDTO GetPost(int id)
+        {
+            var results = _postRespository.GetPost(id);
+            PostDTO post = new PostDTO()
+            {
+                //post.Author = results.
+            };
+            return post;
+        }
+
+        public List<Post> GetPosts()
+        {
+            return _postRespository.GetAll().ToList();
         }
 
         public void Test(Post post)

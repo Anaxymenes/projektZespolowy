@@ -43,9 +43,9 @@ namespace Repository.Repositories
                 .ThenInclude(b=>b.Author);
         }
 
-        public IQueryable<PostHobby> GetAllPostByHobbyId(int v)
+        public IQueryable<PostHobby> GetAllPostByHobbyId(int hobbyId)
         {
-            return _context.PostHobby.AsQueryable().Where(x => x.HobbyId == v);
+            return _context.PostHobby.AsQueryable().Where(x => x.HobbyId == hobbyId);
         }
 
         public void Save()

@@ -37,18 +37,13 @@ namespace Service.Services
             }
         }
 
-        public List<PostDTO> GetAllPostsByHobbyId(int id)
+        public List<PostDTO> GetAllPostsByHobbyId(int hobbyId)
         {
-            var resultsDB = _postHobbyRepository.GetAllPostByHobbyId(id);
+            var resultsDB = _postHobbyRepository.GetAllPostByHobbyId(hobbyId);
             List<PostDTO> results = new List<PostDTO>();
             foreach (var obj in resultsDB)
             {
-                HobbyForPostDTO hobby = new HobbyForPostDTO()
-                {
-                    Color = obj.Hobby.Color,
-                    Name = obj.Hobby.Name
-
-                };
+                
                 EventDTO events = new EventDTO()
                 {
                     EndAt = obj.Post.EventDetalis.EndAt,
@@ -62,16 +57,17 @@ namespace Service.Services
                     Author = obj.Post.Author.Username,
                     Content = obj.Post.Content,
                     Date = obj.Post.Date,
-                    //Hobbys = hobby,
                     Event = events
                 };
+                results.Add(post);
             }
-            return null;
+            return results;
         }
-
+        /*
         List<PostHobby> IPostHobbyService.GetAllPostsByHobbyId(int id)
         {
             throw new NotImplementedException();
         }
+        */
     }
 }

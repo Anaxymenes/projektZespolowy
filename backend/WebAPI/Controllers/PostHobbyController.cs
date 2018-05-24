@@ -36,11 +36,10 @@ namespace WebAPI.Controllers
             return Ok();
         }
 
-        [HttpGet("findPostByHobbyId")]
-        public IActionResult GetAllPostsByHobbyId(int id)
+        [HttpGet("findHobbyPosts")]
+        public List<PostDTO> GetAllPostsByHobbyId(int hobbyId)
         {
-           _postHobbyService.GetAllPostsByHobbyId(id);
-            return Ok();
+           return _postHobbyService.GetAllPostsByHobbyId(hobbyId);
         }
     }
 }

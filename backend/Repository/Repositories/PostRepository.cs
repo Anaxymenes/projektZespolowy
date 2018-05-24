@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace Repository.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Post post = _context.Post.SingleOrDefault(x => x.Id == id);
+            _context.Remove(post);
+            _context.SaveChanges();
         }
 
         public Post Edit(Post entity)
@@ -35,7 +38,18 @@ namespace Repository.Repositories
 
         public IQueryable<Post> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Post.AsQueryable()
+                .Include(comment => comment.Comments)
+                .ThenInclude(author => author.Author)
+                .Include(author => author.Author);
+        }
+
+        public IQueryable GetPost(int id)
+        {
+            return _context.Post.Where(x => x.Id == id)
+                .Include(comment => comment.Comments)
+                .ThenInclude(author => author.Author)
+                .Include(author => author.Author);
         }
 
         public void Save()

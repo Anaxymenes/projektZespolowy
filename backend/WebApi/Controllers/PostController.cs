@@ -25,15 +25,33 @@ namespace WebAPI.Controllers
             return _postService.Add(postDTO);
         }
 
+        [HttpDelete("delete")]
+        public void Delete(int id)
+        {
+            _postService.Delete(id);
+        }
+
         [HttpPost("test")]
         public void Test()
         {
             Post post = new Post();
             post.AuthorId = 1;
             post.PostTypeId = 1;
-            post.Content = "ddddddud";
+            post.Content = "Testowa treść...";
             post.Date = DateTime.Now;
             _postService.Test(post);
+        }
+
+        [HttpGet("getPost")]
+        public PostDTO GetPost(int id)
+        {
+            return _postService.GetPost(id);
+        }
+
+        [HttpGet("getPosts")]
+        public List<Post> GetPosts()
+        {
+            return _postService.GetPosts();
         }
 
     }
