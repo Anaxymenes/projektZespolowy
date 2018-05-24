@@ -24,6 +24,7 @@ namespace WebAPI
                 var context = services.GetService<DatabaseContext>();
 
             }
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
