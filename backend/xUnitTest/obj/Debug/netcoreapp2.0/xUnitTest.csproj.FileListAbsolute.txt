@@ -42,3 +42,26 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\xUnitTest\bi
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Service.pdb
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\WebAPI.pdb
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Data.pdb
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xUnitTest.deps.json
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xUnitTest.runtimeconfig.json
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xUnitTest.runtimeconfig.dev.json
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xUnitTest.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\xUnitTest.pdb
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Data.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Repository.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Service.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\WebAPI.dll
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Repository.pdb
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Service.pdb
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\WebAPI.pdb
+E:\C#\projektZespolowy\backend\xUnitTest\bin\Debug\netcoreapp2.0\Data.pdb
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.csprojResolveAssemblyReference.cache
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.csproj.CoreCompileInputs.cache
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.AssemblyInfoInputs.cache
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.AssemblyInfo.cs
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.csproj.CopyComplete
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.dll
+E:\C#\projektZespolowy\backend\xUnitTest\obj\Debug\netcoreapp2.0\xUnitTest.pdb

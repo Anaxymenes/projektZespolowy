@@ -28,5 +28,11 @@ namespace WebAPI.Controllers
         {
             _commentService.Delete(id, accountId);
         }
+
+        [HttpPut("update")]
+        public void Edit(string content, int commentId, int accountId)
+        {
+            _commentService.Edit(content, commentId, accountId);
+        }
     }
 }

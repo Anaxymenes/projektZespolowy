@@ -49,3 +49,21 @@ C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\D
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Data.pdb
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Service.pdb
 C:\R2D2\main\Projekt zespołowy\Repository\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Repository.pdb
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.deps.json
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.runtimeconfig.json
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.runtimeconfig.dev.json
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.dll
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\WebAPI.pdb
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Data.dll
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Repository.dll
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Service.dll
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Data.pdb
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Service.pdb
+E:\C#\projektZespolowy\backend\WebAPI\bin\Debug\netcoreapp2.0\Repository.pdb
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.csprojResolveAssemblyReference.cache
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.csproj.CoreCompileInputs.cache
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.AssemblyInfoInputs.cache
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.AssemblyInfo.cs
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.csproj.CopyComplete
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.dll
+E:\C#\projektZespolowy\backend\WebAPI\obj\Debug\netcoreapp2.0\WebAPI.pdb

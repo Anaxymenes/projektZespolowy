@@ -8,6 +8,6 @@ namespace Repository.Interfaces
     public interface ICommentRepository : IRepository<Comment>
     {
         void Delete(int id, int accountId);
-        Comment Edit(Comment comment, int accountId);
+       // void Edit(string content, int commentId, int accountId);
     }
 }

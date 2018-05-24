@@ -44,5 +44,20 @@ namespace Service.Services
             }
         }
 
+        public void Edit(string content, int id, int accountId)
+        {
+            Comment comment = _context.Comment.Find(id);
+            Account account = _context.Account.Find(accountId);
+
+            if (account != null && comment != null)
+            {
+                if (comment.AuthorId == accountId || account.RoleId == 1)
+                {
+                    comment.Content = content;
+                    _commentRepository.Edit(comment);
+                }
+            }
+        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace Service.Interfaces
     {
         Comment Add(CommentDTO comment);
         void Delete(int id, int accountId);
+        void Edit(string content, int id, int accountId);
     }
 }

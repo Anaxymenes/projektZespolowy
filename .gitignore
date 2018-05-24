@@ -2,6 +2,7 @@
 backend/Services/obj/Debug/*
 *.config
 *.ide-wal
+backend/.vs
 backend/.vs/VSWorkspaceState.json
 backend/.vs/slnx.sqlite
 backend/.vs/eHobby/v15/Server/sqlite3/storage.ide-wal
