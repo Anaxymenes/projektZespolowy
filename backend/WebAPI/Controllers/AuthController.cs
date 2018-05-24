@@ -43,6 +43,13 @@ namespace WebAPI.Controllers
             return Ok(header);
         }
 
+        [HttpPost("hashPassword")]
+        public IActionResult GetHashedPassword(string password) {
+            if(password != null)
+                return Ok(_authService.GetHasedPassword(password));
+            return BadRequest();
+        }
+
         
     }
 }

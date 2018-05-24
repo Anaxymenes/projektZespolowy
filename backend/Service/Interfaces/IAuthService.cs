@@ -11,5 +11,6 @@ namespace Service.Interfaces
         JWTBearerToken GetToken(Account user);
         Account GetUserByUserNameOrEmail(LoginDTO loginDTO);
         bool isValid(Account user, LoginDTO loginDTO);
+        HashedPassword GetHasedPassword(string password);
     }
 }

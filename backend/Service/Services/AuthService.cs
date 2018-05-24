@@ -31,18 +31,17 @@ namespace Service.Services
         }
 
         public bool isValid(Account user, LoginDTO loginDTO) {
-            return user.Password.Equals(this.GetHashedPassword(loginDTO.password, Encoding.UTF8.GetBytes(user.PasswordSalt)));
+            return user.Password.Equals(this.GetHashedPassword(loginDTO.Password, Encoding.UTF8.GetBytes(user.PasswordSalt)));
         }
 
         public Account GetUserByUserNameOrEmail(LoginDTO loginDTO) {
-            return _accountRepository.GetUserByUsernameOrEmail(loginDTO.username);
+            return _accountRepository.GetUserByUsernameOrEmail(loginDTO.Email);
         }
 
         private JWTBearerToken JwtTokenBuilder(Account user) {
             var key = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(Configuration["JWT:key"]));
             var claims = new[] {
-                new Claim(ClaimTypes.Name,  user.Username),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
             };
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -58,7 +57,7 @@ namespace Service.Services
         }
 
         public byte[] GetSalt() {
-            byte[] salt = new byte[32 / 8];
+            byte[] salt = new byte[32];
             using (var rng = RandomNumberGenerator.Create()) {
                 rng.GetBytes(salt);
             }
@@ -77,5 +76,14 @@ namespace Service.Services
             return hashedPassword;
         }
 
+        public HashedPassword GetHasedPassword(string password) {
+            byte[] salt = this.GetSalt();
+            HashedPassword result = new HashedPassword();
+            result.Password = password;
+            result.Salt = Encoding.UTF8.GetString(salt);
+            result.PasswordHashed = this.GetHashedPassword(password, salt);
+
+            return result;
+        }
     }
 }

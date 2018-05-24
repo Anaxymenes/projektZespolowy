@@ -48,7 +48,7 @@ namespace Service.Services
 
                 };
                 PostDTO post = new PostDTO() {
-                    Author = obj.Post.Author.Username,
+                    //Author = obj.Post.Author.Username,
                     Content = obj.Post.Content,
                     Date = obj.Post.Date,
                     Event = events
