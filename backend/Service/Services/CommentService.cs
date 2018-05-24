@@ -27,7 +27,12 @@ namespace Service.Services
             comment.AuthorId = commentDto.AuthorId;
             comment.PostId = commentDto.PostId;
 
-            return _commentRepository.Add(comment);
+            if (_context.Post.Find(comment.PostId) != null && _context.Account.Find(comment.AuthorId) != null)
+            {
+                return _commentRepository.Add(comment);
+            }
+
+            return null;
         }
 
         public void Delete(int id, int accountId)

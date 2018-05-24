@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.DTO
 {
-    public class CommentDTO : Entity
+    public class CommentDTO
     {
         public DateTime Date { get; set; }
         public string Content { get; set; }
