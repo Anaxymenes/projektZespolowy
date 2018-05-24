@@ -1,24 +1,16 @@
 import React, {Component} from 'react';
 import {
   Button,
-  TextArea,
   Dropdown,
-  Form,
   FormField,
-  Container,
-  Grid,
-  Checkbox,
-  Divider, 
-  Input,
-  Label,
-  Image,
-  Segment,
-  Icon,
-  Header,
-  Modal,
+  Form,
+  Input
 } from 'semantic-ui-react';
 import Validator from 'validator';
 import PropTypes from 'prop-types';
+import '../../style/style.css';
+
+
 
 const options = [
   {
@@ -35,54 +27,48 @@ const options = [
     text: 'Zbieranie Grzybow'
   }
 ]
-
+/*
 const styles = {
-  root: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: '98vh',
-    flexDirection: 'column',
-    "line-height": "1.6"
+  column:{
+    'padding-top': '35px',
+    'padding-bottom': '75px',
+    'padding-left': '75px',
+    'padding-right': '75px'
   },
-  segment: {
-    background: "rgba(0, 0, 0, 0.6)"
+  container:{
+    'background-color': 'rgba(0,0,0,0.7)',
+    padding:"20px"
+  },
+  h1:{
+    'text-align':'center',
+    color: 'white',
+    'font-size': '25px'
+  },
+  h2:{
+    'text-align':'center',
+    color: 'white',
+    'font-size': '25px'
+  },
+  h3:{
+    'text-align':'left',
+    color: 'white',
+    'font-size': '15px'
+  },
+  textArea:{
+    background:'rgba(0,0,0,0.7)',
+    color: 'white',
   },
   input:{
-      'border-bottom':"3px solid #333333",
-      background:"transparent"
+    background:'rgba(0,0,0,0.7)',
+    border: '1px solid white',
   },
-  button: {
-    "text-align": "center"
-  },
-  modal: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flexDirection: 'column',
-    "line-height": "1.6"
+  button:{
+    color:'rgb(0,0,0)',
+    margin: '15px',
+    
   }
-}
-
-const font = {
-  root: {
-    "fontSize": "20px",
-    color: "white"
-  },
-  linkFont: {
-    "fontSize": "20px",
-    color:"rgb(190,190,190)"
-  },
-  h1: {
-    "text-align": "center"
-  },
-  checkbox: {
-    "fontSize": "15px",
-    color: "white"
-  }
-}
-
-
+};
+*/
 
 
 class AddNewPageForm extends Component {
@@ -103,9 +89,6 @@ class AddNewPageForm extends Component {
     this.onCheckBoxChangePhoto=this.onCheckBoxChangePhoto.bind(this);
     this.onCheckBoxChangePlace=this.onCheckBoxChangePlace.bind(this);
   }
-
-
-
 
   onChange = e => {
     this.setState({
@@ -184,107 +167,23 @@ class AddNewPageForm extends Component {
         })
     }
   }
+  
 
   render() {
     const {data, withPhoto, withPlace} = this.state;
     return (
-      <div style = {styles.root}>
-        <Segment inverted style = {styles.segment}>
-          <Container style={{'width': 900}}> 
-            {/* <Grid>   */}
-              {/* <Grid.Row centered> */}
-                {/* <Grid.Column width={9}> */}
-                <Header as='h1' textAlign='center' inverted >
-                <Icon name='newspaper' />
-                  Dodaj post
-                </Header>
-                  <Form onSubmit={this.onSubmit} >
-                    <Form.Field>
-                    <label style = {font.root}>Treść postu: </label>
-                    </Form.Field>
-                    <Form.Field style = {styles.input}
-                      id='form-textarea-control-opinion'
-                      name="content"
-                      placeholder="Wpisz treść posta..."
-                      value={data.content}
-                      onChange={this.onChange}
-                      control={TextArea}
-                      //label='Treść posta:'
-                      />
-
-                    {/* <Divider /> */}
-                    <Form.Field>
-                      <Container>
-                      <label style = {font.checkbox}>Chcę dołączyć zdjęcie </label>
-                      <Checkbox style = {font.root} 
-                      name="withPhoto" 
-                      //label='Chcę dołączyć zdjęcie' 
-                      value={withPhoto}
-                      onChange={this.onCheckBoxChangePhoto}                  
-                      />
-                    </Container>
-                    </Form.Field>
-                    {withPhoto && <div>
-                      <Form.Field>
-                        <label style = {font.root}>Wybierz zdjęcie:</label>
-                        <Input transparent
-                        type='file'
-                        accept="image/*"
-                        name='postPhoto' 
-                        onChange={this.fileSelectedHandler}
-                        />
-                      
-                        <label style = {font.root}> Podgląd obrazka</label>
-                        <Image src={this.state.imageUrl} size='small' bordered/>
-                        {/* <Divider />   */}
-                        </Form.Field>                
-                    </div>} 
-                    
-                    
-                    {/* <Modal trigger={<Button>Show Modal</Button>} >
-                    <Container style={styles.root}>
-                      <Modal.Header>Select a Photo</Modal.Header>
-                      <Modal.Content image >
-                        <Image wrapped size='medium' src='/assets/images/avatar/large/rachel.png' />
-                        <Modal.Description>
-                          <Header>Default Profile Image</Header>
-                          <p>We've found the following gravatar image associated with your e-mail address.</p>
-                          <p>Is it okay to use this photo?</p>
-                        </Modal.Description>
-                      </Modal.Content>
-                    </Container>
-                    </Modal>  */}
-                    
-
-                    <Form.Field >
-                      <Container>
-                      <label style = {font.checkbox}>Chcę dodać miejsce </label>
-                      <Checkbox style = {font.root}
-                      name="withPlace" 
-                      //label='Chcę dołączyć miejsce'
-                      value={withPlace}
-                      onChange={this.onCheckBoxChangePlace}                  
-                      />
-                      </Container>
-                    </Form.Field>
-                    {withPlace && <div>
-                      <Form.Field>
-                            <label style = {font.root}>Miejsce:</label>
-                            {/* <Divider hidden /> */}
-                            <Input transparent
-                            placeholder='Dodaj miejsce...'
-                            name='place'
-                            value={data.place}
-                            onChange={this.onChange}
-                            />
-                        </Form.Field>
-                      
-                    </div>}
-                    {/* <Divider /> */}
-                    
-                    <FormField>
-                      <label style = {font.root}>Wybierz grupę: </label>
-                      <Dropdown style = {styles.input}
+      <div className="container mw-100 h-100">
+        <div className="row h-100">
+          <div className="col border column">
+            <div className="container h-100 container1 border">
+              <h1 className="h1">Dodaj post</h1>
+              <div className="form-group">
+                <h3 className="h3">Treść</h3>
+                <textarea className="form-control textArea"  rows="4"></textarea>
+              </div>
+              <h3 className="h3">Dodaj grupy</h3>
+              <FormField>
+                      <Dropdown className="input"
                         placeholder='Dodaj do...'
                         name="forGroup"
                         fluid
@@ -294,24 +193,28 @@ class AddNewPageForm extends Component {
                         options={options}
                         value={data.toGroup}
                         onChange={this.onChangeGroups}/>
-                    </FormField>
-                    <Container textAlign="center">
-                    <Button animated="vertical" 
-                        size="huge"  
-                        type="submit">
-                        <Button.Content visible>Dodaj</Button.Content>
-                        <Button.Content hidden>
-                          <Icon name="add" />
-                        </Button.Content>
-                      </Button>
-                    </Container> 
-                  </Form>
-                {/* </Grid.Column> */}
-              {/* </Grid.Row> */}
-            {/* </Grid> */}
-            
-          </Container>
-        </Segment>
+              </FormField> 
+              <div className="row">
+                <div className="col">
+                <input className="button"
+                    type='file'
+                    accept="image/*"
+                    name='postPhoto'
+                    onChange={this.fileSelectedHandler}
+                    />
+                </div> 
+                <div className="col">
+                  <Button className="button" floated="left" content='Miejsce' icon='map' color='grey' labelPosition='left' />
+                </div>  
+              </div>   
+            </div> 
+          </div> 
+          <div className="col column border">
+            <div className="container h-100 container1 border">
+               <h2 className="h2">Podgląd</h2>
+            </div> 
+          </div>
+        </div>
       </div>
     );
   }

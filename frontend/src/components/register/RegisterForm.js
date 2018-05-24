@@ -64,7 +64,8 @@ class RegisterForm extends React.Component {
       this
         .props
         .submit(this.state.data)
-        .catch(err => this.setState({errors: err.response.data.errors, loading: false}));
+        //.catch(err => this.setState({errors: err.response.data.errors, loading: false})
+      ;
     }
   }
 
@@ -141,7 +142,7 @@ class RegisterForm extends React.Component {
 
                     <Form.Field>
                       <label style={font.root}>Imię</label>
-                      <Input transparent style={styles.input}
+                      <Input transparent inverted style={styles.input}
                         className="form-control form-control-lg"
                         type="text"
                         id="firstName"
@@ -154,7 +155,7 @@ class RegisterForm extends React.Component {
 
                     <Form.Field>
                       <label style={font.root}>Nazwisko</label>
-                      <Input transparent style={styles.input}
+                      <Input transparent inverted style={styles.input}
                         className="form-control form-control-lg"
                         type="text"
                         id="lastName"
@@ -167,7 +168,7 @@ class RegisterForm extends React.Component {
 
                     <Form.Field>
                       <label style={font.root}>E-mail</label>
-                      <Input transparent style={styles.input}
+                      <Input transparent inverted style={styles.input}
                         className="form-control form-control-lg"
                         type="text"
                         id="email"
@@ -180,7 +181,7 @@ class RegisterForm extends React.Component {
 
                     <Form.Field>
                       <label style={font.root}>Hasło</label>
-                      <Input transparent style={styles.input}
+                      <Input transparent inverted style={styles.input}
                         className="form-control form-control-lg"
                         type="password"
                         id="password"
@@ -193,7 +194,7 @@ class RegisterForm extends React.Component {
 
                     <Form.Field>
                       <label style={font.root}>Powtórz hasło</label>
-                      <Input transparent style={styles.input}
+                      <Input transparent inverted style={styles.input}
                         className="form-control form-control-lg"
                         type="password"
                         id="repeatedPassword"
@@ -208,7 +209,7 @@ class RegisterForm extends React.Component {
 
                     <Form.Field>
                       <label style={font.root}>Data urodzenia</label>
-                      <Input transparent style={styles.input}
+                      <Input transparent inverted style={styles.input}
                         className="form-control form-control-lg"
                         id="birthdate"
                         name="birthdate"

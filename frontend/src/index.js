@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import 'semantic-ui-css/semantic.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
