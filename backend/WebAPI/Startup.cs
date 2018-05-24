@@ -70,6 +70,9 @@ namespace WebAPI
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IPostRepository, PostRepository>();
 
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ICommentRepository, ICommentRepository>();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //Token Param
