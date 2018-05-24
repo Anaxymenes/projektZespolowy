@@ -1,11 +1,14 @@
-﻿using Data.DTO;
+﻿using Data.DBModel;
+using Data.DTO;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Repository.Interfaces;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -13,32 +16,40 @@ namespace Service.Services
 {
     public class AuthService : IAuthService {
         private IConfiguration Configuration;
+        private readonly IAccountRepository _accountRepository;
 
         public AuthService(
-            IConfiguration config
+            IConfiguration config,
+            IAccountRepository accountRepository
             ) {
             Configuration = config;
+            _accountRepository = accountRepository;
         }
 
-        public JWTBearerToken GetToken() {
-            return this.JwtTokenBuilder();
+        public JWTBearerToken GetToken(Account user) {
+            return this.JwtTokenBuilder(user);
         }
 
-        public bool isValid(AccountDTO user, LoginDTO loginDTO) {
-            throw new NotImplementedException();
+        public bool isValid(Account user, LoginDTO loginDTO) {
+            return user.Password.Equals(this.GetHashedPassword(loginDTO.password, Encoding.UTF8.GetBytes(user.PasswordSalt)));
         }
 
-        public AccountDTO GetUserByUserNameOrEmail(LoginDTO loginDTO) {
-            throw new NotImplementedException();
+        public Account GetUserByUserNameOrEmail(LoginDTO loginDTO) {
+            return _accountRepository.GetUserByUsernameOrEmail(loginDTO.username);
         }
 
-        private JWTBearerToken JwtTokenBuilder() {
+        private JWTBearerToken JwtTokenBuilder(Account user) {
             var key = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(Configuration["JWT:key"]));
+            var claims = new[] {
+                new Claim(ClaimTypes.Name,  user.Username),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            };
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(issuer: Configuration["JWT:issuer"],
                 audience: Configuration["JWT:audience"],
                 signingCredentials: credentials,
+                claims:claims,
                 expires: DateTime.Now.AddSeconds(20));
             JWTBearerToken jwTBearerToken = new JWTBearerToken();
             jwTBearerToken.Token = new JwtSecurityTokenHandler().WriteToken(token);

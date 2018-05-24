@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.DBModel;
 using Data.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -28,12 +29,12 @@ namespace WebAPI.Controllers
             IActionResult response = Unauthorized();
             if (loginDTO == null)
                 return BadRequest("Błąd przesyłu danych");
-            AccountDTO user = _authService.GetUserByUserNameOrEmail(loginDTO);
+            Account user = _authService.GetUserByUserNameOrEmail(loginDTO);
             if (user == null)
                 return NotFound("Konto nie istnieje");
             if (!_authService.isValid(user, loginDTO))
                 return BadRequest("Błędny username lub password");
-            response = Ok(_authService.GetToken());
+            response = Ok(_authService.GetToken(user));
             return response;
         }
 

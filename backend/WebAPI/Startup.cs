@@ -65,6 +65,7 @@ namespace WebAPI
             services.AddScoped<IHobbyRepository, HobbyRepository>();
 
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
 
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IPostRepository, PostRepository>();
