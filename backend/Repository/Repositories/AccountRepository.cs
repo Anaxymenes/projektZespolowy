@@ -31,7 +31,12 @@ namespace Repository.Repositories
         }
 
         public Account GetUserByUsernameOrEmail(string value) {
-            return _context.Account.First(x =>  x.Email == value);
+            try {
+                return _context.Account.First(x => x.Email == value);
+            }catch(Exception e) {
+                return null;
+            }
+            
         }
 
         public void Save() {

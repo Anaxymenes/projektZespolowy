@@ -67,5 +67,15 @@ namespace Repository
             }
         }
 
+        public static void SeedHobby(DatabaseContext context) {
+            if (!context.Hobby.Any()) {
+                var entityList = new List<Hobby>() {
+
+                };
+                context.AddRange(entityList);
+                context.SaveChanges();
+            }
+        }
+
     }
 }
