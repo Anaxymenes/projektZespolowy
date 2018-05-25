@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Data.Edit;
 using Repository;
 using Repository.Interfaces;
 using Service.Interfaces;
@@ -21,6 +22,18 @@ namespace Service.Services
 
         public List<Hobby> GetAll() {
             return _hobbyRepository.GetAll().ToList();
+        }
+
+        public Hobby Get(int id)
+        {
+            Hobby hobby = _context.Hobby.Find(id);
+
+            if(hobby != null)
+            {
+                return _hobbyRepository.GetHobby(id);
+            }
+
+            return null;
         }
 
         public Hobby Add(HobbyDTO hobbyDto)
@@ -54,19 +67,23 @@ namespace Service.Services
             }
         }
 
-        public void Edit(string name, string color, int id, int accountId, int newAdminId)
+        public Hobby Edit(HobbyEdit hobbyEdit)
         {
-            Hobby hobby = _context.Hobby.Find(id);
+            Hobby hobby = _context.Hobby.Find(hobbyEdit.Id);
 
             if(hobby != null)
             {
-                if (hobby.AdministratorId == accountId)
+                if (hobby.AdministratorId == hobbyEdit.accountId)
                 {
-                    hobby.Name = name;
-                    hobby.Color = color;
-                    hobby.AdministratorId = newAdminId;
+                    hobby.Name = hobbyEdit.name;
+                    hobby.Color = hobbyEdit.color;
+                    hobby.AdministratorId = hobbyEdit.newAdminId;
+                    hobby.Description = hobbyEdit.description;
+                    return _hobbyRepository.Edit(hobby);
                 }
             }
+
+            return null;
         }
     }
 }

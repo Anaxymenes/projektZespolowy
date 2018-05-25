@@ -33,7 +33,12 @@ namespace Repository.Repositories
         }
 
         public IQueryable<Hobby> GetAll() {
-            throw new NotImplementedException();
+            return _context.Hobby.AsQueryable();
+        }
+
+        public Hobby GetHobby(int id)
+        {
+            return _context.Hobby.Find(id);
         }
 
         public void Save() {

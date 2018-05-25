@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Data.EditViewModel;
 using Repository;
 using Repository.Interfaces;
 using Service.Interfaces;
@@ -49,19 +50,20 @@ namespace Service.Services
             }
         }
 
-        public void Edit(string content, int id, int accountId)
+        public Comment Edit(CommentEdit commentEdit)
         {
-            Comment comment = _context.Comment.Find(id);
-            Account account = _context.Account.Find(accountId);
+            Comment comment = _context.Comment.Find(commentEdit.Id);
+            Account account = _context.Account.Find(commentEdit.accountId);
 
             if (account != null && comment != null)
             {
-                if (comment.AuthorId == accountId || account.RoleId == 1)
+                if (comment.AuthorId == commentEdit.accountId || account.RoleId == 1)
                 {
-                    comment.Content = content;
-                    _commentRepository.Edit(comment);
+                    comment.Content = commentEdit.content;
+                    return _commentRepository.Edit(comment);
                 }
             }
+            return null;
         }
 
     }
