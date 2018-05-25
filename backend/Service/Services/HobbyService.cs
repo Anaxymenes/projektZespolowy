@@ -40,5 +40,33 @@ namespace Service.Services
 
             return null;
         }
+
+        public void Delete(int id, int accountId)
+        {
+            Hobby hobby = _context.Hobby.Find(id);
+
+            if (hobby != null) 
+            {
+                if (hobby.AdministratorId == accountId) 
+                {
+                    _hobbyRepository.Delete(id);
+                }
+            }
+        }
+
+        public void Edit(string name, string color, int id, int accountId, int newAdminId)
+        {
+            Hobby hobby = _context.Hobby.Find(id);
+
+            if(hobby != null)
+            {
+                if (hobby.AdministratorId == accountId)
+                {
+                    hobby.Name = name;
+                    hobby.Color = color;
+                    hobby.AdministratorId = newAdminId;
+                }
+            }
+        }
     }
 }

@@ -28,5 +28,16 @@ namespace WebAPI.Controllers
             return _hobbyService.Add(hobbyDto);
         }
 
+        [HttpDelete("delete")]
+        public void Delete(int id, int accountId)
+        {
+            _hobbyService.Delete(id, accountId);
+        }
+
+        [HttpPut("update")]
+        public void Edit(string name, string color, int id, int accountId, int newAdminId)
+        {
+            _hobbyService.Edit(name, color, id, accountId, newAdminId);
+        }
     }
 }
