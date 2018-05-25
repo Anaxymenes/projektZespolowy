@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Data.Edit;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
@@ -17,9 +18,15 @@ namespace WebAPI.Controllers
            _hobbyService = hobbyService;
         }
 
-        [HttpGet("get")]
+        [HttpGet("getall")]
         public List<Hobby> GetAll() {
             return _hobbyService.GetAll();
+        }
+
+        [HttpGet("get")]
+        public Hobby Get(int id)
+        {
+            return _hobbyService.Get(id);
         }
 
         [HttpPost("add")]
@@ -28,5 +35,16 @@ namespace WebAPI.Controllers
             return _hobbyService.Add(hobbyDto);
         }
 
+        [HttpDelete("delete")]
+        public void Delete(int id, int accountId)
+        {
+            _hobbyService.Delete(id, accountId);
+        }
+
+        [HttpPut("update")]
+        public Hobby Edit([FromBody]HobbyEdit hobbyEdit)
+        {
+            return _hobbyService.Edit(hobbyEdit);
+        }
     }
 }

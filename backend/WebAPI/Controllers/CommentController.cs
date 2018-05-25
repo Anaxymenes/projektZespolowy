@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Data.EditViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
@@ -30,9 +31,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public void Edit(string content, int commentId, int accountId)
+        public Comment Edit([FromBody]CommentEdit commentEdit)
         {
-            _commentService.Edit(content, commentId, accountId);
+            return _commentService.Edit(commentEdit);
         }
     }
 }

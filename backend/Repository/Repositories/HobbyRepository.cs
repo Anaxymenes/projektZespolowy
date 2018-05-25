@@ -21,15 +21,24 @@ namespace Repository.Repositories
         }
 
         public void Delete(int id) {
-            throw new NotImplementedException();
+            Hobby hobby = _context.Hobby.SingleOrDefault(x => x.Id == id);
+            _context.Remove(hobby);
+            _context.SaveChanges();
         }
 
         public Hobby Edit(Hobby entity) {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            _context.SaveChanges();
+            return _context.Hobby.Last();
         }
 
         public IQueryable<Hobby> GetAll() {
-            throw new NotImplementedException();
+            return _context.Hobby.AsQueryable();
+        }
+
+        public Hobby GetHobby(int id)
+        {
+            return _context.Hobby.Find(id);
         }
 
         public void Save() {

@@ -22,23 +22,11 @@ namespace Repository.Repositories
             return _context.Comment.Last();
         }
 
-        public void Delete(int id, int accountId) {
+        public void Delete(int id) {
             Comment comment = _context.Comment.SingleOrDefault(x => x.Id == id);
             _context.Remove(comment);
             _context.SaveChanges();
         }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        //public void Edit(string content, int commentId, int accountId)
-        //{
-        //    Comment comment = _context.Comment.SingleOrDefault(x => x.Id == commentId);
-        //    _context.Update(comment);
-        //    _context.SaveChanges();
-        //}
 
         public Comment Edit(Comment entity) {
             _context.Update(entity);
