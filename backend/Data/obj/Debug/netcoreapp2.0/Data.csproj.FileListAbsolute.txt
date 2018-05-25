@@ -25,3 +25,12 @@ E:\C#\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.AssemblyInfoInp
 E:\C#\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.AssemblyInfo.cs
 E:\C#\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.dll
 E:\C#\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\Data\bin\Debug\netcoreapp2.0\Data.deps.json
+D:\www\Repository\projektZespolowy\backend\Data\bin\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\Data\bin\Debug\netcoreapp2.0\Data.pdb
+D:\www\Repository\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.csprojResolveAssemblyReference.cache
+D:\www\Repository\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.csproj.CoreCompileInputs.cache
+D:\www\Repository\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.AssemblyInfoInputs.cache
+D:\www\Repository\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.AssemblyInfo.cs
+D:\www\Repository\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.dll
+D:\www\Repository\projektZespolowy\backend\Data\obj\Debug\netcoreapp2.0\Data.pdb

@@ -10,21 +10,26 @@ using System.Threading.Tasks;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class PostHobbyController : Controller {
+    public class PostHobbyController : Controller
+    {
         private IPostHobbyService _postHobbyService;
 
-        public PostHobbyController(IPostHobbyService postHobbyService) {
+        public PostHobbyController(IPostHobbyService postHobbyService)
+        {
             _postHobbyService = postHobbyService;
         }
 
         [HttpGet("")]
-        public List<PostHobby> GetAll() {
+        public List<PostHobby> GetAll()
+        {
             return _postHobbyService.GetAll();
         }
 
         [HttpPost("create")]
-        public IActionResult CreatePostHobby([FromBody] PostDTO post) {
-            if (post == null) {
+        public IActionResult CreatePostHobby([FromBody] PostDTO post)
+        {
+            if (post == null)
+            {
                 return BadRequest("errorr");
             }
             _postHobbyService.CreatePostHobby(post);
@@ -32,8 +37,15 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("findHobbyPosts")]
-        public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
-            return _postHobbyService.GetAllPostsByHobbyId(hobbyId);
+        public List<PostDTO> GetAllPostsHobbyByHobbyId(int hobbyId)
+        {
+            return _postHobbyService.GetAllPostsHobbyByHobbyId(hobbyId);
+        }
+
+        [HttpDelete("delete")]
+        public void Delete(int id, int accountId)
+        {
+            _postHobbyService.Delete(id, accountId);
         }
     }
 }

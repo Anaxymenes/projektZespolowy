@@ -7,6 +7,7 @@ using System.Text;
 namespace Repository.Interfaces
 {
     public interface IPostHobbyRepository : IRepository<PostHobby> {
-        IQueryable<PostHobby> GetAllPostByHobbyId(int v);
+        IQueryable<PostHobby> GetAllPostsHobbyByHobbyId(int hobbyId);
+        IQueryable<PostHobby> GetHobbysByPostId(PostHobby postHobby);
     }
 }
