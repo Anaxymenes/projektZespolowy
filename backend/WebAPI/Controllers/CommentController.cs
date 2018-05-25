@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Data.DBModel;
+using Data.DTO;
+using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,24 @@ namespace WebAPI.Controllers
         private readonly ICommentService _commentService;
         public CommentController(ICommentService commentService) {
             _commentService = commentService;
+        }
+
+        [HttpPost("add")]
+        public Comment Add([FromBody]CommentDTO commentDto)
+        {
+            return _commentService.Add(commentDto);
+        }
+
+        [HttpDelete("delete")]
+        public void Delete(int id, int accountId)
+        {
+            _commentService.Delete(id, accountId);
+        }
+
+        [HttpPut("update")]
+        public void Edit(string content, int commentId, int accountId)
+        {
+            _commentService.Edit(content, commentId, accountId);
         }
     }
 }

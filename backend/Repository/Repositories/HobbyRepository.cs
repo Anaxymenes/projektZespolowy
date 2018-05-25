@@ -15,7 +15,9 @@ namespace Repository.Repositories
         }
 
         public Hobby Add(Hobby entity) {
-            throw new NotImplementedException();
+            _context.Hobby.Add(entity);
+            _context.SaveChanges();
+            return _context.Hobby.Last();
         }
 
         public void Delete(int id) {

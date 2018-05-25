@@ -8,16 +8,42 @@ using System.Text;
 namespace Repository.Repositories
 {
     public class CommentRepository : ICommentRepository {
+
+        private readonly DatabaseContext _context;
+
+        public CommentRepository(DatabaseContext context)
+        {
+            _context = context;
+        }
+
         public Comment Add(Comment entity) {
+            _context.Comment.Add(entity);
+            _context.SaveChanges();
+            return _context.Comment.Last();
+        }
+
+        public void Delete(int id, int accountId) {
+            Comment comment = _context.Comment.SingleOrDefault(x => x.Id == id);
+            _context.Remove(comment);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
             throw new NotImplementedException();
         }
 
-        public void Delete(int id) {
-            throw new NotImplementedException();
-        }
+        //public void Edit(string content, int commentId, int accountId)
+        //{
+        //    Comment comment = _context.Comment.SingleOrDefault(x => x.Id == commentId);
+        //    _context.Update(comment);
+        //    _context.SaveChanges();
+        //}
 
         public Comment Edit(Comment entity) {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            _context.SaveChanges();
+            return _context.Comment.Last();
         }
 
         public IQueryable<Comment> GetAll() {
