@@ -24,8 +24,8 @@ namespace Repository {
             public DbSet<Conversation> Conversation { get; set; }
             public DbSet<EventDetails> EventDetails { get; set; }
             public DbSet<Picture> Picture { get; set; }
-        public DbSet<AccountVerification> AccountVerification { get; set; }
-        public DbSet<AccountToken> AccountToken { get; set; }
+            public DbSet<AccountVerification> AccountVerification { get; set; }
+            public DbSet<AccountToken> AccountToken { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
                 //base.OnModelCreating(modelBuilder);
@@ -88,6 +88,7 @@ namespace Repository {
                     .WithOne(c => c.Account)
                     .HasForeignKey<AccountVerification>(b => b.AccountId)
                     .OnDelete(DeleteBehavior.Cascade);
+
                 modelBuilder.Entity<Account>()
                     .HasOne(x => x.AccountToken)
                     .WithOne(c => c.Account)

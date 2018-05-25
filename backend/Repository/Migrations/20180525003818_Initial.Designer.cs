@@ -11,8 +11,8 @@ using System;
 namespace Repository.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180524212025_Migration_RemoveUsername")]
-    partial class Migration_RemoveUsername
+    [Migration("20180525003818_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,6 +94,46 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AccountRole");
+                });
+
+            modelBuilder.Entity("Data.DBModel.AccountToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccountId");
+
+                    b.Property<string>("AuthToken");
+
+                    b.Property<DateTime>("AuthTokenExpires");
+
+                    b.Property<string>("RefreshToken");
+
+                    b.Property<DateTime>("RefreshTokenExpires");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
+                    b.ToTable("AccountToken");
+                });
+
+            modelBuilder.Entity("Data.DBModel.AccountVerification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccountId");
+
+                    b.Property<string>("CodeVerification");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
+                    b.ToTable("AccountVerification");
                 });
 
             modelBuilder.Entity("Data.DBModel.Comment", b =>
@@ -302,6 +342,22 @@ namespace Repository.Migrations
                     b.HasOne("Data.DBModel.Hobby", "Hobby")
                         .WithMany("AccountHobbies")
                         .HasForeignKey("HobbyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Data.DBModel.AccountToken", b =>
+                {
+                    b.HasOne("Data.DBModel.Account", "Account")
+                        .WithOne("AccountToken")
+                        .HasForeignKey("Data.DBModel.AccountToken", "AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Data.DBModel.AccountVerification", b =>
+                {
+                    b.HasOne("Data.DBModel.Account", "Account")
+                        .WithOne("AccountVerification")
+                        .HasForeignKey("Data.DBModel.AccountVerification", "AccountId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
