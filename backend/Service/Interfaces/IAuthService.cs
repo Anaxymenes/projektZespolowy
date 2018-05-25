@@ -12,5 +12,8 @@ namespace Service.Interfaces
         Account GetUserByUserNameOrEmail(LoginDTO loginDTO);
         bool isValid(Account user, LoginDTO loginDTO);
         HashedPassword GetHasedPassword(string password);
+        bool ExistUser(RegisterAccountDTO registerAccountDTO);
+        bool RegisterUser(RegisterAccountDTO registerAccountDTO);
+        bool SendVerificationEmail(string email);
     }
 }

@@ -26,6 +26,10 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
+        public bool ExistEmail(string email) {
+            return _context.Account.Any(x => x.Email == email);
+        }
+
         public IQueryable<Account> GetAll() {
             throw new NotImplementedException();
         }

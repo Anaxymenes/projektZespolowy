@@ -7,5 +7,6 @@ namespace Repository.Interfaces
 {
     public interface IAccountRepository : IRepository<Account> {
         Account GetUserByUsernameOrEmail(string value);
+        bool ExistEmail(string email);
     }
 }
