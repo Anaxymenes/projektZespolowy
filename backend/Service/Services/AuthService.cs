@@ -153,8 +153,8 @@ namespace Service.Services
         }
 
         public bool SendVerificationEmail(string email) {
-            var acountVerification = _accountVerificationService.GetVerificationCodeForUserByEmail(email);
             try {
+                var acountVerification = _accountVerificationService.GetVerificationCodeForUserByEmail(email);
                 using (var client = new SmtpClient() {
                     Host = "smtp.gmail.com",
                     Port = 587, // Port 
@@ -172,6 +172,17 @@ namespace Service.Services
             }catch(Exception e) {
                 return false;
             }
+        }
+
+        public bool SendVerificationEmail(IEnumerable<ClaimDTO> claimDTOEnumarable) {
+            foreach (var claim in claimDTOEnumarable)
+                if (claim.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"))
+                    return this.SendVerificationEmail(claim.Value);
+            return false;
+        }
+
+        public bool ActiveAccount(ActivatedAccount activatedAccount) {
+            return _accountRepository.ActiveAccount(activatedAccount);
         }
     }
 }

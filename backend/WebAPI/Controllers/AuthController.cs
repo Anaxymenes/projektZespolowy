@@ -73,10 +73,18 @@ namespace WebAPI.Controllers
             
         }
 
-        //[Authorize]
-        //[HttpPost("sendVerificationEmail")]
-        //public IActionResult SendVerificationEmail([FromHeader] string header) {
-        //    _authService.SendVerificationEmail(header.Where)
-        //}
+        [HttpPost("sendVerificationEmail")]
+        public IActionResult SendVerificationEmail([FromBody] string email) {
+            if(_authService.SendVerificationEmail(email))
+                return Ok("Email aktywacyjny wysłany");
+            return BadRequest("Email aktywacyjny nie został wysłany");
+        }
+
+        [HttpPost("activeAccount")]
+        public IActionResult ActivatedAccount([FromBody] ActivatedAccount activatedAccount) {
+            if (_authService.ActiveAccount(activatedAccount))
+                return Ok("Konto pomyślnie aktywowane");
+            return BadRequest("Błąd aktywacji");
+        }
     }
 }

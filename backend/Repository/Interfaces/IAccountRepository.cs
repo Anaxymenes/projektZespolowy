@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Data.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Repository.Interfaces
         Account GetUserByUsernameOrEmail(string value);
         bool ExistEmail(string email);
         void RegisterUser(Account account, AccountDetails accountDetails, AccountVerification accountVerification);
+        bool ActiveAccount(ActivatedAccount activatedAccount);
     }
 }

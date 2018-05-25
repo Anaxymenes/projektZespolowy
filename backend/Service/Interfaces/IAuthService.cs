@@ -15,5 +15,7 @@ namespace Service.Interfaces
         bool ExistUser(RegisterAccountDTO registerAccountDTO);
         bool RegisterUser(RegisterAccountDTO registerAccountDTO);
         bool SendVerificationEmail(string email);
+        bool SendVerificationEmail(IEnumerable<ClaimDTO> claimDTOEnumarable);
+        bool ActiveAccount(ActivatedAccount activatedAccount);
     }
 }

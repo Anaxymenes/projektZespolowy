@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Data.DTO;
 using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
@@ -13,6 +14,23 @@ namespace Repository.Repositories
 
         public AccountRepository(DatabaseContext context) {
             _context = context;
+        }
+
+        public bool ActiveAccount(ActivatedAccount activatedAccount) {
+            if(_context.AccountVerification.Any(x=> x.Account.Email == activatedAccount.Email && x.CodeVerification == activatedAccount.CodeVerification)) {
+                try {
+                    _context.Account.First(c => c.Email == activatedAccount.Email).Active = true;
+                    var accountVerification = _context.AccountVerification.First(v =>
+                    v.Account.Email == activatedAccount.Email &&
+                    v.CodeVerification == activatedAccount.CodeVerification);
+                    _context.AccountVerification.Remove(accountVerification);
+                    _context.SaveChanges();
+                    return true;
+                }catch(Exception e) {
+                    return false;
+                }
+            }
+            return false;
         }
 
         public Account Add(Account entity) {
