@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -34,13 +35,28 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
-        public Account GetUserByUsernameOrEmail(string value) {
+        public  Account GetUserByUsernameOrEmail(string value) {
             try {
-                return _context.Account.First(x => x.Email == value);
+                var results = _context.Account.AsQueryable()
+                    .Include(accountDetails => accountDetails.AccountDetails)
+                    .Include(role=>role.AccountRole);
+                return results.Where(x => x.Email == value).Single();
+
             }catch(Exception e) {
                 return null;
             }
             
+        }
+
+        public void RegisterUser(Account account, AccountDetails accountDetails, AccountVerification accountVerification) {
+            _context.Add(account);
+            _context.SaveChanges();
+            var addedAccount = _context.Account.First(x => x.Email == account.Email);
+            accountDetails.AccountId = addedAccount.Id;
+            _context.Add(accountDetails);
+            accountVerification.AccountId = addedAccount.Id;
+            _context.Add(accountVerification);
+            _context.SaveChanges();
         }
 
         public void Save() {

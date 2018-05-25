@@ -40,6 +40,15 @@ namespace WebAPI
                 b => b.MigrationsAssembly("Repository"))
             );
             services.AddMvc();
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+                options.Cookie.HttpOnly = true;
+            });
+
             services.AddSwaggerGen(x => {
                 x.SwaggerDoc("v1", new Info {
                     Title = "eHobby Back-end Api",
@@ -72,6 +81,9 @@ namespace WebAPI
 
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+
+            services.AddScoped<IAccountVerificationRepository, AccountVerificationRepository>();
+            services.AddScoped<IAccountVerificationService, AccountVerificationService>();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -108,6 +120,7 @@ namespace WebAPI
                 .AllowCredentials());
 
             app.UseAuthentication();
+            app.UseSession();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(x =>

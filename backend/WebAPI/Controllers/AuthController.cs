@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.DBModel;
 using Data.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -29,20 +30,26 @@ namespace WebAPI.Controllers
             IActionResult response = Unauthorized();
             if (loginDTO == null)
                 return BadRequest("Błąd przesyłu danych");
-            Account user = _authService.GetUserByUserNameOrEmail(loginDTO);
+            var user = _authService.GetUserByUserNameOrEmail(loginDTO);
             if (user == null)
                 return NotFound("Konto nie istnieje");
             if (user.Active == false)
                 return BadRequest("Konto nie aktywne!");
-            if (!_authService.isValid(user, loginDTO))
+            if (!_authService.IsValid(user, loginDTO))
                 return BadRequest("Błędny username lub password");
             response = Ok(_authService.GetToken(user));
             return response;
         }
 
+        [Authorize]
         [HttpGet("test")]
-        public IActionResult Test([FromHeader] string header, string email) {
-            return Ok(_authService.SendVerificationEmail(email));
+        public IActionResult Test(string email) {
+            //return Ok(_authService.SendVerificationEmail(email));
+            return Ok(HttpContext.User.Claims.Select(x => new {
+                Type = x.Type,
+                Value = x.Value
+            }
+                ));
         }
 
         [HttpPost("hashPassword")]
@@ -53,7 +60,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult RegisterNewAccount(RegisterAccountDTO registerAccountDTO) {
+        public IActionResult RegisterNewAccount([FromBody]RegisterAccountDTO registerAccountDTO) {
             if (registerAccountDTO == null)
                 return BadRequest("Błąd przesyłu danych");
             if (_authService.ExistUser(registerAccountDTO))
@@ -66,6 +73,10 @@ namespace WebAPI.Controllers
             
         }
 
-        
+        //[Authorize]
+        //[HttpPost("sendVerificationEmail")]
+        //public IActionResult SendVerificationEmail([FromHeader] string header) {
+        //    _authService.SendVerificationEmail(header.Where)
+        //}
     }
 }

@@ -19,39 +19,58 @@ namespace Service.Services
     public class AuthService : IAuthService {
         private IConfiguration Configuration;
         private readonly IAccountRepository _accountRepository;
+        private readonly IAccountVerificationService _accountVerificationService;
 
         public AuthService(
             IConfiguration config,
-            IAccountRepository accountRepository
+            IAccountRepository accountRepository,
+            IAccountVerificationService accountVerificationService
             ) {
             Configuration = config;
             _accountRepository = accountRepository;
+            _accountVerificationService = accountVerificationService;
         }
 
-        public JWTBearerToken GetToken(Account user) {
+        public JWTBearerToken GetToken(AccountLoginVerificationDTO user) {
             return this.JwtTokenBuilder(user);
         }
 
-        public bool isValid(Account user, LoginDTO loginDTO) {
+        public bool IsValid(AccountLoginVerificationDTO user, LoginDTO loginDTO) {
             return user.Password.Equals(this.GetHashedPassword(loginDTO.Password, Encoding.UTF8.GetBytes(user.PasswordSalt)));
         }
 
-        public Account GetUserByUserNameOrEmail(LoginDTO loginDTO) {
-            return _accountRepository.GetUserByUsernameOrEmail(loginDTO.Email);
+        public AccountLoginVerificationDTO GetUserByUserNameOrEmail(LoginDTO loginDTO) {
+            var results = _accountRepository.GetUserByUsernameOrEmail(loginDTO.Email);
+            if (results == null)
+                return null;
+            return new AccountLoginVerificationDTO() {
+               Id = results.Id,
+               Active = results.Active,
+               Avatar = results.AccountDetails.Avatar,
+               Email = results.Email,
+               FirstName = results.AccountDetails.Name,
+               LastName = results.AccountDetails.LastName,
+               Password = results.Password,
+               PasswordSalt = results.PasswordSalt,
+               Role = results.AccountRole.Name
+            };
         }
 
-        private JWTBearerToken JwtTokenBuilder(Account user) {
+        private JWTBearerToken JwtTokenBuilder(AccountLoginVerificationDTO user) {
             var key = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(Configuration["JWT:key"]));
             var claims = new[] {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString(),"Id"),
+                new Claim(ClaimTypes.Email,user.Email,"Email"),
+                new Claim(ClaimTypes.Name, user.FirstName+" " + user.LastName,"FirstName"),
+                new Claim(ClaimTypes.Role, user.Role, "Role")
             };
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(issuer: Configuration["JWT:issuer"],
                 audience: Configuration["JWT:audience"],
                 signingCredentials: credentials,
                 claims:claims,
-                expires: DateTime.Now.AddSeconds(20));
+                expires: DateTime.Now.AddMinutes(5));
             JWTBearerToken jwTBearerToken = new JWTBearerToken();
             jwTBearerToken.Token = new JwtSecurityTokenHandler().WriteToken(token);
             jwTBearerToken.Expires = token.ValidTo;
@@ -66,6 +85,16 @@ namespace Service.Services
             string result = Convert.ToBase64String(salt);
             return Encoding.ASCII.GetBytes(result);
         }
+
+        protected byte[] GetCodeVerification() {
+            byte[] salt = new byte[32/4];
+            using (var rng = RandomNumberGenerator.Create()) {
+                rng.GetBytes(salt);
+            }
+            string result = Convert.ToBase64String(salt);
+            return Encoding.ASCII.GetBytes(result);
+        }
+
         protected string EncodeByteToString(byte[] value) {
             return Encoding.UTF8.GetString(value);
         }
@@ -111,11 +140,20 @@ namespace Service.Services
                 LastName = registerAccountDTO.LastName,
                 Name = registerAccountDTO.FirstName
             };
-
-            return false;
+            AccountVerification accountVerification = new AccountVerification() {
+                CodeVerification = this.EncodeByteToString(this.GetCodeVerification())
+            };
+            try {
+                _accountRepository.RegisterUser(account, accountDetails, accountVerification);
+                this.SendVerificationEmail(account.Email);
+                return true;
+            }catch(Exception e) {
+                return false;
+            }
         }
 
         public bool SendVerificationEmail(string email) {
+            var acountVerification = _accountVerificationService.GetVerificationCodeForUserByEmail(email);
             try {
                 using (var client = new SmtpClient() {
                     Host = "smtp.gmail.com",
@@ -126,7 +164,7 @@ namespace Service.Services
                     MailMessage mailMessage = new MailMessage();
                     mailMessage.From = new MailAddress("adm.ehobby@gmail.com");
                     mailMessage.To.Add(email);
-                    mailMessage.Body = "Only test";
+                    mailMessage.Body = "Your verification code is : " + acountVerification.CodeVerification;
                     mailMessage.Subject = "eHobby Account Verification";
                     client.Send(mailMessage);
                     return true;

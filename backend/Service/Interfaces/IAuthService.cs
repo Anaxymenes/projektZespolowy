@@ -8,9 +8,9 @@ namespace Service.Interfaces
 {
     public interface IAuthService
     {
-        JWTBearerToken GetToken(Account user);
-        Account GetUserByUserNameOrEmail(LoginDTO loginDTO);
-        bool isValid(Account user, LoginDTO loginDTO);
+        JWTBearerToken GetToken(AccountLoginVerificationDTO user);
+        AccountLoginVerificationDTO GetUserByUserNameOrEmail(LoginDTO loginDTO);
+        bool IsValid(AccountLoginVerificationDTO user, LoginDTO loginDTO);
         HashedPassword GetHasedPassword(string password);
         bool ExistUser(RegisterAccountDTO registerAccountDTO);
         bool RegisterUser(RegisterAccountDTO registerAccountDTO);
