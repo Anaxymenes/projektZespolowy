@@ -70,7 +70,7 @@ namespace Service.Services
                 audience: Configuration["JWT:audience"],
                 signingCredentials: credentials,
                 claims:claims,
-                expires: DateTime.Now.AddMinutes(5));
+                expires: DateTime.Now.AddHours(5));
             JWTBearerToken jwTBearerToken = new JWTBearerToken();
             jwTBearerToken.Token = new JwtSecurityTokenHandler().WriteToken(token);
             jwTBearerToken.Expires = token.ValidTo;
