@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "9c3a3f3ef9a1f51148c91ebe98ffcaafeb0ed13c"
+    "signature": "a7e631e98fb739919ec1f5b4815191d9f26d4208"
   },
   "compilationOptions": {
     "defines": [
@@ -37,7 +37,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.1",
           "Moq": "4.8.2",
           "Service": "1.0.0",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "runtime": {
           "WebAPI.dll": {}
@@ -2886,6 +2887,18 @@
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
         }
       },
+      "Swashbuckle.AspNetCore.Examples/2.9.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "2.4.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Examples.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Examples.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore.Swagger/2.4.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.0.4",
@@ -4228,7 +4241,8 @@
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.2",
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "runtime": {
           "Data.dll": {}
@@ -4250,7 +4264,8 @@
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.2",
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "runtime": {
           "Repository.dll": {}
@@ -4273,7 +4288,8 @@
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
           "Repository": "1.0.0",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "runtime": {
           "Service.dll": {}
@@ -5928,6 +5944,13 @@
       "sha512": "sha512-zsFkF1NPnRk41NQ3B/SOhp2zhF+AiCitWALqgEP+jy2fgIyslBLNSZMtBctKnJKqzGgyiye3no7GJrJ0MTHXdg==",
       "path": "swashbuckle.aspnetcore/2.4.0",
       "hashPath": "swashbuckle.aspnetcore.2.4.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Examples/2.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MCVCoOgvvaTk/X3vaCX94xv7lh4Sy3ahwyGbiXyqSedHs29Fe88IQzeSlWL3K8POtf3Tc2DErugELqNmj3AcKw==",
+      "path": "swashbuckle.aspnetcore.examples/2.9.0",
+      "hashPath": "swashbuckle.aspnetcore.examples.2.9.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/2.4.0": {
       "type": "package",

@@ -3342,6 +3342,19 @@
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
         }
       },
+      "Swashbuckle.AspNetCore.Examples/2.9.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Examples.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Examples.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore.Swagger/2.4.0": {
         "type": "package",
         "dependencies": {
@@ -5206,7 +5219,8 @@
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.2",
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "compile": {
           "bin/placeholder/Data.dll": {}
@@ -5230,7 +5244,8 @@
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.2",
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "compile": {
           "bin/placeholder/Repository.dll": {}
@@ -5255,7 +5270,8 @@
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
           "Repository": "1.0.0",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "compile": {
           "bin/placeholder/Service.dll": {}
@@ -8865,6 +8881,17 @@
         "lib/netstandard1.6/Swashbuckle.AspNetCore.dll",
         "swashbuckle.aspnetcore.2.4.0.nupkg.sha512",
         "swashbuckle.aspnetcore.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Examples/2.9.0": {
+      "sha512": "MCVCoOgvvaTk/X3vaCX94xv7lh4Sy3ahwyGbiXyqSedHs29Fe88IQzeSlWL3K8POtf3Tc2DErugELqNmj3AcKw==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.examples/2.9.0",
+      "files": [
+        "lib/net451/Swashbuckle.AspNetCore.Examples.dll",
+        "lib/netstandard1.6/Swashbuckle.AspNetCore.Examples.dll",
+        "swashbuckle.aspnetcore.examples.2.9.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.examples.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore.Swagger/2.4.0": {
@@ -13660,7 +13687,8 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1",
       "Moq >= 4.8.2",
       "Service >= 1.0.0",
-      "Swashbuckle.AspNetCore >= 2.4.0"
+      "Swashbuckle.AspNetCore >= 2.4.0",
+      "Swashbuckle.AspNetCore.Examples >= 2.9.0"
     ]
   },
   "packageFolders": {
@@ -13769,6 +13797,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[2.4.0, )"
+          },
+          "Swashbuckle.AspNetCore.Examples": {
+            "target": "Package",
+            "version": "[2.9.0, )"
           }
         },
         "imports": [

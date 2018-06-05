@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "8ed534e6a45f958ee5c1251fd7b4d0cffe593794"
+    "signature": "83668cd146881f88bfc9cf8b1b59e7553a4d1d34"
   },
   "compilationOptions": {},
   "targets": {
@@ -2556,6 +2556,14 @@
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
         }
       },
+      "Swashbuckle.AspNetCore.Examples/2.9.0": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.SwaggerGen": "2.4.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/Swashbuckle.AspNetCore.Examples.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore.Swagger/2.4.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.0.4",
@@ -3939,7 +3947,8 @@
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.2",
           "Microsoft.Extensions.Configuration.Json": "2.0.2",
           "Moq": "4.8.2",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "Swashbuckle.AspNetCore.Examples": "2.9.0"
         },
         "runtime": {
           "Repository.dll": {}
@@ -5484,6 +5493,13 @@
       "sha512": "sha512-zsFkF1NPnRk41NQ3B/SOhp2zhF+AiCitWALqgEP+jy2fgIyslBLNSZMtBctKnJKqzGgyiye3no7GJrJ0MTHXdg==",
       "path": "swashbuckle.aspnetcore/2.4.0",
       "hashPath": "swashbuckle.aspnetcore.2.4.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Examples/2.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MCVCoOgvvaTk/X3vaCX94xv7lh4Sy3ahwyGbiXyqSedHs29Fe88IQzeSlWL3K8POtf3Tc2DErugELqNmj3AcKw==",
+      "path": "swashbuckle.aspnetcore.examples/2.9.0",
+      "hashPath": "swashbuckle.aspnetcore.examples.2.9.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/2.4.0": {
       "type": "package",

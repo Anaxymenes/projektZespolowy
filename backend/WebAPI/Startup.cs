@@ -20,6 +20,7 @@ using Repository.Interfaces;
 using Repository.Repositories;
 using Service.Interfaces;
 using Service.Services;
+using Swashbuckle.AspNetCore.Examples;
 using Swashbuckle.AspNetCore.Swagger;
 using WebAPI.Utils;
 
@@ -69,6 +70,7 @@ namespace WebAPI
                     Type = "apiKey"
                 });
                 x.AddSecurityRequirement(security);
+                x.OperationFilter<AddFileParamTypesOperationFilter>();
             });
             services.AddScoped<IPostHobbyService, PostHobbyService>();
             services.AddScoped<IPostHobbyRepository, PostHobbyRepository>();

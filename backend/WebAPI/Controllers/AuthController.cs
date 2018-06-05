@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using Data.DBModel;
 using Data.DTO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Service.Interfaces;
+using Swashbuckle.AspNetCore.Examples;
 
 namespace WebAPI.Controllers
 {
@@ -60,7 +62,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult RegisterNewAccount([FromBody]RegisterAccountDTO registerAccountDTO) {
+        [AddSwaggerFileUploadButton]
+        public IActionResult RegisterNewAccount([FromBody]RegisterAccountDTO registerAccountDTO, IFormFile file) {
             if (registerAccountDTO == null)
                 return BadRequest("Błąd przesyłu danych");
             if (_authService.ExistUser(registerAccountDTO))
