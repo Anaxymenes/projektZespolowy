@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.DBModel;
 using Data.DTO;
+using Data.Edit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,22 +35,11 @@ namespace WebAPI.Controllers
             if (loginDTO == null)
                 return BadRequest("Błąd przesyłu danych");
             var user = _authService.GetUserByUserNameOrEmail(loginDTO);
-            if (user == null)
-                return NotFound("Konto nie istnieje");
-            if (user.Active == false)
-                return BadRequest("Konto nie aktywne!");
-            if (!_authService.IsValid(user, loginDTO))
-                return BadRequest("Błędny username lub password");
+            if (!_authService.IsValid(user, loginDTO) || user.Active == false || user == null)
+                return BadRequest("Wystąpił błąd. Użytkonik nie istnieje, nie jest aktywny bądź błędne dane logowania");
             response = Ok(_authService.GetToken(user));
             return response;
         }
-
-        //[HttpPost("test")]
-        //[AddSwaggerFileUploadButton]
-        //public  async Task<IActionResult> Test(IFormFile file) {
-        //    await FileManagement.UploadFile(file, "test","asd");
-        //    return Ok();
-        //}
 
         [HttpPost("hashPassword")]
         public IActionResult GetHashedPassword(string password) {
@@ -60,14 +50,9 @@ namespace WebAPI.Controllers
 
         [HttpPost("register")]
         public IActionResult RegisterNewAccount([FromBody]RegisterAccountDTO registerAccountDTO) {
-            if (registerAccountDTO == null)
-                return BadRequest("Błąd przesyłu danych");
-            if (_authService.ExistUser(registerAccountDTO))
-                return BadRequest("Zarejestrowano konto na adres email : " + registerAccountDTO.Email);
-            if (!registerAccountDTO.IsValid())
-                return BadRequest("Błąd przesyłu danych");
-            if (_authService.RegisterUser(registerAccountDTO) == false)
-                return BadRequest("Nie mogę dodać użytkownika do bazy. Spróbuj ponownie później.");
+            if (registerAccountDTO == null || !registerAccountDTO.IsValid() ||
+                _authService.ExistUser(registerAccountDTO) || _authService.RegisterUser(registerAccountDTO) == false)
+                return BadRequest("Nie można zarejestrować użytkownika");
             return Ok();
             
         }
@@ -84,6 +69,24 @@ namespace WebAPI.Controllers
             if (_authService.ActiveAccount(activatedAccount))
                 return Ok("Konto pomyślnie aktywowane");
             return BadRequest("Błąd aktywacji");
+        }
+
+        [Authorize]
+        [HttpPost("upload")]
+        [AddSwaggerFileUploadButton]
+        public async Task<IActionResult> UloadFile(IFormFile file) {
+            string result = await _authService.UploadFile(file);
+            if (result != "")
+                return Ok(result);
+            return BadRequest();
+        }
+
+        [Authorize]
+        [HttpPost("changePasswd")]
+        public IActionResult ChangePassword([FromBody] PasswordEdit passwordEdit) {
+            if (passwordEdit == null || !_authService.ChangePasswd(passwordEdit))
+                return BadRequest();
+            return Ok();
         }
     }
 }

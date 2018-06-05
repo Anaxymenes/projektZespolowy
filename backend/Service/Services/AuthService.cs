@@ -1,6 +1,7 @@
 ﻿using Data.DBModel;
 using Data.DTO;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Repository.Interfaces;
@@ -13,6 +14,8 @@ using System.Net.Mail;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using WebAPI.Utils;
 
 namespace Service.Services
 {
@@ -20,6 +23,7 @@ namespace Service.Services
         private IConfiguration Configuration;
         private readonly IAccountRepository _accountRepository;
         private readonly IAccountVerificationService _accountVerificationService;
+        private readonly string _module = "account";
 
         public AuthService(
             IConfiguration config,
@@ -183,6 +187,15 @@ namespace Service.Services
 
         public bool ActiveAccount(ActivatedAccount activatedAccount) {
             return _accountRepository.ActiveAccount(activatedAccount);
+        }
+
+        public async  Task<string> UploadFile(IFormFile file) {
+            if (file != null && file.Length > 0) {
+                var filename = FileManagement.GetFileName(file);
+                await FileManagement.UploadFile(file, _module, filename);
+                return FileManagement.GetFilePathForDatabase(filename, _module);
+            }
+            return "";
         }
     }
 }

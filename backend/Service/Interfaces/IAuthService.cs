@@ -1,8 +1,11 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Data.Edit;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Service.Interfaces
 {
@@ -17,5 +20,7 @@ namespace Service.Interfaces
         bool SendVerificationEmail(string email);
         bool SendVerificationEmail(IEnumerable<ClaimDTO> claimDTOEnumarable);
         bool ActiveAccount(ActivatedAccount activatedAccount);
+        Task<string> UploadFile(IFormFile file);
+        bool ChangePasswd(PasswordEdit passwordEdit);
     }
 }
