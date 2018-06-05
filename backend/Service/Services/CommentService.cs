@@ -57,19 +57,13 @@ namespace Service.Services
             }
         }
 
-        public Comment Edit(CommentEdit commentEdit)
+        public CommentDTO Edit(CommentEditV2 commentEdit, List<ClaimDTO> claimsList)
         {
-            Comment comment = _context.Comment.Find(commentEdit.Id);
-            Account account = _context.Account.Find(commentEdit.accountId);
+            var comment = _mapper.Map<Comment>(commentEdit);
 
-            if (account != null && comment != null)
-            {
-                if (comment.AuthorId == commentEdit.accountId || account.RoleId == 1)
-                {
-                    comment.Content = commentEdit.content;
-                    return _commentRepository.Edit(comment);
-                }
-            }
+            var results = _commentRepository.Edit(comment, Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value));
+            if (results != null)
+                return _mapper.Map<CommentDTO>(results);
             return null;
         }
 

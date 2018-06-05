@@ -44,12 +44,12 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [HttpPost("test")]
-        [AddSwaggerFileUploadButton]
-        public  async Task<IActionResult> Test(IFormFile file) {
-            await FileManagement.UploadFile(file, "test","asd");
-            return Ok();
-        }
+        //[HttpPost("test")]
+        //[AddSwaggerFileUploadButton]
+        //public  async Task<IActionResult> Test(IFormFile file) {
+        //    await FileManagement.UploadFile(file, "test","asd");
+        //    return Ok();
+        //}
 
         [HttpPost("hashPassword")]
         public IActionResult GetHashedPassword(string password) {

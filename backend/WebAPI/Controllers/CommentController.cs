@@ -37,10 +37,14 @@ namespace WebAPI.Controllers
             _commentService.Delete(id, accountId);
         }
 
+        [Authorize]
         [HttpPut("update")]
-        public Comment Edit([FromBody]CommentEdit commentEdit)
+        public IActionResult Edit([FromBody]CommentEditV2 commentEdit)
         {
-            return _commentService.Edit(commentEdit);
+            var result = _commentService.Edit(commentEdit, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result != null)
+                return Ok(result);
+            return BadRequest("Błąd podczas edytowania danych.");
         }
     }
 }

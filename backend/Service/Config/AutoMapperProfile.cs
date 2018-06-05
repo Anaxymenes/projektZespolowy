@@ -3,6 +3,7 @@ using Data.Add;
 using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
+using Data.EditViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -47,6 +48,15 @@ namespace Service.Config
                 .ForMember(dest => dest.PostId,
                 opt => opt.MapFrom(src => src.PostId))
                 ;
+
+            CreateMap<CommentEditV2, Comment>()
+               .BeforeMap((src, dest) => dest.Date = DateTime.Now)
+               .ForMember(dest => dest.Content,
+               opt => opt.MapFrom(src => src.content))
+               .ForMember(dest => dest.PostId,
+               opt => opt.MapFrom(src => src.Id))
+               ;
+
             CreateMap<EventDetails, EventDTO>()
                .ForMember(dest => dest.StartAt,
                 opt => opt.MapFrom(src => src.StartAt))

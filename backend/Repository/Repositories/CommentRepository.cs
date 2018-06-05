@@ -35,10 +35,31 @@ namespace Repository.Repositories
             _context.SaveChanges();
         }
 
-        public Comment Edit(Comment entity) {
-            _context.Update(entity);
-            _context.SaveChanges();
-            return _context.Comment.Last();
+        public Comment Edit(Comment entity, int userId)
+        {
+            var user = _context.Account.First(x => x.Id == userId);
+            var comment = _context.Comment.First(x => x.Id == entity.Id);
+            if (comment.AuthorId == userId)
+            {
+                try
+                {
+                    comment.Date = entity.Date;
+                    comment.Content = entity.Content;
+                    _context.Update(comment);
+                    _context.SaveChanges();
+                    return comment;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            };
+            return null;
+        }
+
+        public Comment Edit(Comment entity)
+        {
+            throw new NotImplementedException();
         }
 
         public IQueryable<Comment> GetAll() {

@@ -7,5 +7,6 @@ namespace Repository.Interfaces
 {
     public interface ICommentRepository : IRepository<Comment>
     {
+        Comment Edit(Comment entity, int userId);
     }
 }
