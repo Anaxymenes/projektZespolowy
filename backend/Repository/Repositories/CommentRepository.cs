@@ -17,9 +17,16 @@ namespace Repository.Repositories
         }
 
         public Comment Add(Comment entity) {
-            _context.Comment.Add(entity);
-            _context.SaveChanges();
-            return _context.Comment.Last();
+            try
+            {
+                _context.Add(entity);
+                _context.SaveChanges();
+                return _context.Comment.Last();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         public void Delete(int id) {

@@ -1,4 +1,6 @@
-﻿using Data.DBModel;
+﻿using AutoMapper;
+using Data.Add;
+using Data.DBModel;
 using Data.DTO;
 using Data.EditViewModel;
 using Repository;
@@ -13,25 +15,30 @@ namespace Service.Services
     public class CommentService : ICommentService{
 
         private readonly DatabaseContext _context;
+        private readonly IMapper _mapper;
         private readonly ICommentRepository _commentRepository;
 
-        public CommentService(ICommentRepository commentRepository, DatabaseContext context) {
+        public CommentService(ICommentRepository commentRepository, DatabaseContext context, IMapper mapper) {
             _commentRepository = commentRepository;
             _context = context;
+            _mapper = mapper;
         }
 
-        public Comment Add(CommentDTO commentDto)
+        public CommentDTO Add(CommentAdd commentAdd, List<ClaimDTO> claimsList)
         {
-            Comment comment = new Comment { };
-            comment.Content = commentDto.Content;
-            comment.Date = DateTime.Now;
-            comment.AuthorId = commentDto.AuthorId;
-            comment.PostId = commentDto.PostId;
+            int authorId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            var comment = _mapper.Map<Comment>(commentAdd);
+            comment.AuthorId = authorId;
 
-            if (_context.Post.Find(comment.PostId) != null && _context.Account.Find(comment.AuthorId) != null)
-            {
-                return _commentRepository.Add(comment);
-            }
+            var result = _commentRepository.Add(comment);
+            if (result != null)
+                return _mapper.Map<CommentDTO>(result);
+            return null;
+
+            //if (_context.Post.Find(comment.PostId) != null && _context.Account.Find(comment.AuthorId) != null)
+            //{
+            //    return _commentRepository.Add(comment);
+            //}
 
             return null;
         }

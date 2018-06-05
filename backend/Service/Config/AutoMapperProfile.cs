@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Add;
 using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
@@ -138,6 +139,14 @@ namespace Service.Config
                     Name = src.FirstName,
                     LastName = src.LastName
                 }))
+                ;
+
+            CreateMap<CommentAdd, Comment>()
+                .BeforeMap((src, dest) => dest.Date = DateTime.Now)
+                .ForMember(dest => dest.Content,
+                opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.PostId,
+                opt => opt.MapFrom(src => src.PostId))
                 ;
         }
     }

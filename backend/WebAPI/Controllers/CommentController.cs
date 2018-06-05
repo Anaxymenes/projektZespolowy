@@ -1,27 +1,34 @@
-﻿using Data.DBModel;
+﻿using Data.Add;
+using Data.DBModel;
 using Data.DTO;
 using Data.EditViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Utils;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class CommentController{
+    public class CommentController : Controller{
 
         private readonly ICommentService _commentService;
         public CommentController(ICommentService commentService) {
             _commentService = commentService;
         }
 
+        [Authorize]
         [HttpPost("add")]
-        public Comment Add([FromBody]CommentDTO commentDto)
+        public IActionResult Add([FromBody]CommentAdd commentAdd)
         {
-            return _commentService.Add(commentDto);
+            var result = _commentService.Add(commentAdd, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result != null)
+                return Ok(result);
+            return BadRequest();
         }
 
         [HttpDelete("delete")]
