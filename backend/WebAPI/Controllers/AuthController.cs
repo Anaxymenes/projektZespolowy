@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Service.Interfaces;
 using Swashbuckle.AspNetCore.Examples;
+using WebAPI.Utils;
 
 namespace WebAPI.Controllers
 {
@@ -43,15 +44,11 @@ namespace WebAPI.Controllers
             return response;
         }
 
-        [Authorize]
-        [HttpGet("test")]
-        public IActionResult Test(string email) {
-            //return Ok(_authService.SendVerificationEmail(email));
-            return Ok(HttpContext.User.Claims.Select(x => new {
-                Type = x.Type,
-                Value = x.Value
-            }
-                ));
+        [HttpPost("test")]
+        [AddSwaggerFileUploadButton]
+        public  async Task<IActionResult> Test(IFormFile file) {
+            await FileManagement.UploadFile(file, "test");
+            return Ok();
         }
 
         [HttpPost("hashPassword")]
@@ -62,8 +59,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        [AddSwaggerFileUploadButton]
-        public IActionResult RegisterNewAccount([FromBody]RegisterAccountDTO registerAccountDTO, IFormFile file) {
+        public IActionResult RegisterNewAccount([FromBody]RegisterAccountDTO registerAccountDTO) {
             if (registerAccountDTO == null)
                 return BadRequest("Błąd przesyłu danych");
             if (_authService.ExistUser(registerAccountDTO))

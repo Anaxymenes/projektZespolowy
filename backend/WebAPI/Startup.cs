@@ -130,7 +130,7 @@ namespace WebAPI
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
-
+            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseSession();
             app.UseMvc();
