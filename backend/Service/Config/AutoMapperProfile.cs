@@ -102,15 +102,16 @@ namespace Service.Config
                     }
                 })
                 ;
+
             CreateMap<RegisterAccountDTO, Account>()
                 .ForMember(dest => dest.Email,
                 opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.AccountDetails.Name,
-                opt => opt.MapFrom(src => src.FirstName))
-                .ForMember(dest => dest.AccountDetails.LastName,
-                opt => opt.MapFrom(src => src.LastName))
-                .ForMember(dest => dest.AccountDetails.BirthDate,
-                opt => opt.MapFrom(src => src.BirthDate))
+                .ForMember(dest => dest.AccountDetails,
+                opt => opt.MapFrom(src => new AccountDetails {
+                    BirthDate = src.BirthDate,
+                    Name = src.FirstName,
+                    LastName = src.LastName
+                }))
                 ;
         }
     }
