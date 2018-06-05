@@ -47,9 +47,12 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public Hobby Edit([FromBody]HobbyEdit hobbyEdit)
+        public IActionResult Edit([FromBody]HobbyEdit hobbyEdit)
         {
-            return _hobbyService.Edit(hobbyEdit);
+            var result = _hobbyService.Edit(hobbyEdit, ClaimsMethods.GetClaimsList(User.Claims));
+            if (result != null)
+                return Ok();
+            return BadRequest("Błąd podczas edytowania danych");
         }
     }
 }

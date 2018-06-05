@@ -11,8 +11,8 @@ namespace Service.Interfaces
     public interface IHobbyService {
         List<Hobby> GetAll();
         void Delete(int id, int accountId);
-        Hobby Edit(HobbyEdit hobbyEdit);
         Hobby Get(int id);
         bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> list);
+        HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> list);
     }
 }

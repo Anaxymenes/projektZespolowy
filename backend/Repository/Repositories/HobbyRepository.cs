@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Data.Edit;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -35,10 +36,26 @@ namespace Repository.Repositories
             _context.SaveChanges();
         }
 
-        public Hobby Edit(Hobby entity) {
-            _context.Update(entity);
-            _context.SaveChanges();
-            return _context.Hobby.Last();
+        public Hobby Edit(Hobby entity, int userId) {
+            //if (entity.AdministratorId == userId)
+           // {
+                try
+                {
+                    _context.Update(entity);
+                    _context.SaveChanges();
+                    return entity;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+           // }
+            //return null;
+        }
+
+        public Hobby Edit(Hobby entity)
+        {
+            throw new NotImplementedException();
         }
 
         public IQueryable<Hobby> GetAll() {

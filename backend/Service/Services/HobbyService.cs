@@ -66,23 +66,14 @@ namespace Service.Services
             }
         }
 
-        public Hobby Edit(HobbyEdit hobbyEdit)
+        public HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> claimList)
         {
-            Hobby hobby = _context.Hobby.Find(hobbyEdit.Id);
-
-            if(hobby != null)
-            {
-                if (hobby.AdministratorId == hobbyEdit.accountId)
-                {
-                    hobby.Name = hobbyEdit.name;
-                    hobby.Color = hobbyEdit.color;
-                    hobby.AdministratorId = hobbyEdit.newAdminId;
-                    hobby.Description = hobbyEdit.description;
-                    return _hobbyRepository.Edit(hobby);
-                }
-            }
-
+            var hobby = _mapper.Map<Hobby>(hobbyEdit);
+            var results = _hobbyRepository.Edit(hobby, Convert.ToInt32(claimList.Find(x => x.Type == "nameidentifier").Value));
+            if (results != null)
+                return _mapper.Map<HobbyDTO>(results);
             return null;
         }
+        
     }
 }

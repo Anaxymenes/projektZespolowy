@@ -8,7 +8,7 @@ namespace Data.Edit
     {
         public int Id { get; set; }
         public int accountId { get; set; }
-        public int newAdminId { get; set; }
+        //public int newAdminId { get; set; }
         public string name { get; set; }
         public string color { get; set; }
         public string description { get; set; }

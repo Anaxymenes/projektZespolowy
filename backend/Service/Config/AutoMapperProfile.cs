@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Data.DBModel;
 using Data.DTO;
+using Data.Edit;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -86,6 +87,19 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Color,
                 opt => opt.MapFrom(src => src.Color))
+                ;
+
+            CreateMap<HobbyEdit, Hobby>()
+                .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.AdministratorId,
+                opt => opt.MapFrom(src => src.accountId))
+                .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => src.name))
+                .ForMember(dest => dest.Description,
+                opt => opt.MapFrom(src => src.description))
+                .ForMember(dest => dest.Color,
+                opt => opt.MapFrom(src => src.color))
                 ;
 
             CreateMap<Post, PostDTO>()
