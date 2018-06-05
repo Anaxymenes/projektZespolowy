@@ -1,12 +1,14 @@
 ﻿using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Utils;
 
 namespace WebAPI.Controllers
 {
@@ -29,10 +31,13 @@ namespace WebAPI.Controllers
             return _hobbyService.Get(id);
         }
 
+        [Authorize]
         [HttpPost("add")]
-        public Hobby Add([FromBody]HobbyDTO hobbyDto)
+        public IActionResult Add([FromBody]HobbyAdd hobbyDTO)
         {
-            return _hobbyService.Add(hobbyDto);
+            if (_hobbyService.Add(hobbyDTO, ClaimsMethods.GetClaimsList(User.Claims)))
+                return Ok();
+            return BadRequest();
         }
 
         [HttpDelete("delete")]

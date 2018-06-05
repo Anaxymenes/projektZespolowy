@@ -8,5 +8,6 @@ namespace Repository.Interfaces
 {
     public interface IHobbyRepository : IRepository<Hobby> {
         Hobby GetHobby(int id);
+        bool Add(Hobby entity);
     }
 }

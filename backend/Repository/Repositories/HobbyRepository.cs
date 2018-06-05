@@ -14,10 +14,19 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public Hobby Add(Hobby entity) {
-            _context.Hobby.Add(entity);
-            _context.SaveChanges();
-            return _context.Hobby.Last();
+        public bool Add(Hobby entity) {
+            var result = false;
+                try
+                {
+                    _context.Hobby.Add(entity);
+                    _context.SaveChanges();
+                    result = true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            return result;
         }
 
         public void Delete(int id) {
@@ -42,6 +51,11 @@ namespace Repository.Repositories
         }
 
         public void Save() {
+            throw new NotImplementedException();
+        }
+
+        Hobby IRepository<Hobby>.Add(Hobby entity)
+        {
             throw new NotImplementedException();
         }
     }

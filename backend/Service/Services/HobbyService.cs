@@ -1,4 +1,5 @@
-﻿using Data.DBModel;
+﻿using AutoMapper;
+using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
 using Repository;
@@ -14,10 +15,12 @@ namespace Service.Services
     public class HobbyService : IHobbyService {
         private readonly IHobbyRepository _hobbyRepository;
         private readonly DatabaseContext _context;
+        private readonly IMapper _mapper;
 
-        public HobbyService(IHobbyRepository hobbyRepository, DatabaseContext context) {
+        public HobbyService(IHobbyRepository hobbyRepository, DatabaseContext context, IMapper mapper) {
             _hobbyRepository = hobbyRepository;
             _context = context;
+            _mapper = mapper;
         }
 
         public List<Hobby> GetAll() {
@@ -36,22 +39,18 @@ namespace Service.Services
             return null;
         }
 
-        public Hobby Add(HobbyDTO hobbyDto)
+        public bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> claimList)
         {
-            Hobby hobby = new Hobby { };
+            if (hobbyDTO == null)
+                return false;
+            int administratorId = Convert.ToInt32(claimList.Find(x => x.Type == "nameidentifier").Value);
 
-            hobby.Name = hobbyDto.Name;
-            hobby.Logo = hobbyDto.Logo;
-            hobby.Description = hobbyDto.Description;
-            hobby.Color = hobbyDto.Color;
-            hobby.AdministratorId = hobbyDto.AdministratorId;
+            var hobby = _mapper.Map<Hobby>(hobbyDTO);
+            hobby.AdministratorId = administratorId;
 
-            if(_context.Account.Find(hobby.AdministratorId) != null)
-            {
-                return _hobbyRepository.Add(hobby);
-            }
-
-            return null;
+            if (_hobbyRepository.Add(hobby))
+                return true;
+            return false;
         }
 
         public void Delete(int id, int accountId)

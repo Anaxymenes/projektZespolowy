@@ -67,6 +67,18 @@ namespace Service.Config
                 .ForMember(dest => dest.AdministratorId,
                 opt => opt.MapFrom(src => src.AdministratorId))
                 ;
+
+            CreateMap<HobbyAdd, Hobby>()
+               .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description,
+                opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Logo,
+                opt => opt.MapFrom(src => src.Logo))
+                .ForMember(dest => dest.Color,
+                opt => opt.MapFrom(src => src.Color))
+                ;
+
             CreateMap<Hobby, HobbyForPostDTO>()
                .ForMember(dest => dest.Name,
                 opt => opt.MapFrom(src => src.Name))
