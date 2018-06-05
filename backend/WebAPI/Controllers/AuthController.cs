@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         [HttpPost("test")]
         [AddSwaggerFileUploadButton]
         public  async Task<IActionResult> Test(IFormFile file) {
-            await FileManagement.UploadFile(file, "test");
+            await FileManagement.UploadFile(file, "test","asd");
             return Ok();
         }
 

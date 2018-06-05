@@ -2,6 +2,7 @@
 using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
+using Microsoft.AspNetCore.Http;
 using Repository;
 using Repository.Interfaces;
 using Service.Interfaces;
@@ -9,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using WebAPI.Utils;
 
 namespace Service.Services
 {
@@ -16,6 +19,7 @@ namespace Service.Services
         private readonly IHobbyRepository _hobbyRepository;
         private readonly DatabaseContext _context;
         private readonly IMapper _mapper;
+        private readonly string _module = "hobby";
 
         public HobbyService(IHobbyRepository hobbyRepository, DatabaseContext context, IMapper mapper) {
             _hobbyRepository = hobbyRepository;
@@ -38,18 +42,25 @@ namespace Service.Services
 
             return null;
         }
-
+        public async Task<string> UploadFile(IFormFile file) {
+            if (file != null && file.Length > 0) {
+                var filename = FileManagement.GetFileName(file);
+                await FileManagement.UploadFile(file, _module, filename);
+                return FileManagement.GetFilePathForDatabase(filename, _module);
+                }
+            return "";
+        }
         public bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> claimList)
         {
-            if (hobbyDTO == null)
-                return false;
-            int administratorId = Convert.ToInt32(claimList.Find(x => x.Type == "nameidentifier").Value);
+                if (hobbyDTO == null)
+                    return false;
+                int administratorId = Convert.ToInt32(claimList.Find(x => x.Type == "nameidentifier").Value);
 
-            var hobby = _mapper.Map<Hobby>(hobbyDTO);
-            hobby.AdministratorId = administratorId;
-
-            if (_hobbyRepository.Add(hobby))
-                return true;
+                var hobby = _mapper.Map<Hobby>(hobbyDTO);
+                hobby.AdministratorId = administratorId;
+                
+                if (_hobbyRepository.Add(hobby))
+                    return true;
             return false;
         }
 

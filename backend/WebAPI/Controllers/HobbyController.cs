@@ -2,8 +2,10 @@
 using Data.DTO;
 using Data.Edit;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
+using Swashbuckle.AspNetCore.Examples;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +35,7 @@ namespace WebAPI.Controllers
 
         [Authorize]
         [HttpPost("add")]
-        public IActionResult Add([FromBody]HobbyAdd hobbyDTO)
-        {
+        public IActionResult Add([FromBody]HobbyAdd hobbyDTO) { 
             if (_hobbyService.Add(hobbyDTO, ClaimsMethods.GetClaimsList(User.Claims)))
                 return Ok();
             return BadRequest();
@@ -53,6 +54,16 @@ namespace WebAPI.Controllers
             if (result != null)
                 return Ok();
             return BadRequest("Błąd podczas edytowania danych");
+        }
+
+        [Authorize]
+        [HttpPost("upload")]
+        [AddSwaggerFileUploadButton]
+        public async Task<IActionResult> UloadFile(IFormFile file) {
+            string result = await _hobbyService.UploadFile(file);
+            if (result != "")
+                return Ok(result);
+            return BadRequest();
         }
     }
 }
