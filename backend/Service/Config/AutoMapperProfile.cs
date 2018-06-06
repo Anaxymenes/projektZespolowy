@@ -122,18 +122,18 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
                 .ForMember(dest => dest.AuthorId,
                 opt => opt.MapFrom(src => src.AuthorId))
-                .ForMember(dest => dest.Hobbys,
-                opt => opt.Ignore())
-                .AfterMap((src, dest) =>
-                {
-                    List<HobbyForPostDTO> l = new List<HobbyForPostDTO>();
-                    foreach (var a in src.PostHobbies)
-                    {
-                        l.Add(_mapper.Map<HobbyForPostDTO>(a));
-                    }
+                //.ForMember(dest => dest.Hobbys,
+                //opt => opt.Ignore())
+                //.AfterMap((src, dest) =>
+                //{
+                //    List<HobbyForPostDTO> l = new List<HobbyForPostDTO>();
+                //    foreach (var a in src.PostHobbies)
+                //    {
+                //        l.Add(_mapper.Map<HobbyForPostDTO>(a));
+                //    }
 
-                    dest.Hobbys = l;
-                })
+                //    dest.Hobbys = l;
+                //})
                 .ForMember(dest => dest.Pictures,
                 opt => opt.Ignore())
                 .AfterMap((src, dest) =>
@@ -148,15 +148,15 @@ namespace Service.Config
                         dest.Pictures = l;
                     }
                 })
-                .ForMember(dest => dest.Event,
-                opt => opt.Ignore())
-                .AfterMap((src, dest) =>
-                {
-                    if (src.EventDetalis != null)
-                    {
-                        dest.Event = _mapper.Map<EventDTO>(src.EventDetalis);
-                    }
-                })          
+                //.ForMember(dest => dest.Event,
+                //opt => opt.Ignore())
+                //.AfterMap((src, dest) =>
+                //{
+                //    if (src.EventDetalis != null)
+                //    {
+                //        dest.Event = _mapper.Map<EventDTO>(src.EventDetalis);
+                //    }
+                //})          
                 ;
 
                // .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
