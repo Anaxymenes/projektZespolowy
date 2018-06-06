@@ -28,13 +28,16 @@ namespace WebAPI.Controllers
             var result = _commentService.Add(commentAdd, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
             if (result != null)
                 return Ok(result);
-            return BadRequest();
+            return BadRequest("Nie ma takiego posta.");
         }
 
+        [Authorize]
         [HttpDelete("delete")]
-        public void Delete(int id, int accountId)
+        public IActionResult Delete(int id)
         {
-            _commentService.Delete(id, accountId);
+            if (_commentService.Delete(id, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok();
+            return BadRequest("Nie ma takiego komentarza");
         }
 
         [Authorize]
