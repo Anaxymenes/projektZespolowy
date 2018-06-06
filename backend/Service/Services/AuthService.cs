@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Data.Edit;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -139,7 +140,7 @@ namespace Service.Services
             };
 
             AccountDetails accountDetails = new AccountDetails() {
-                Avatar = "personAvatar.png",
+                Avatar = "/img/account/defaultProfile.jpg",
                 BirthDate = registerAccountDTO.BirthDate,
                 LastName = registerAccountDTO.LastName,
                 Name = registerAccountDTO.FirstName
@@ -196,6 +197,18 @@ namespace Service.Services
                 return FileManagement.GetFilePathForDatabase(filename, _module);
             }
             return "";
+        }
+
+        public bool ChangePasswd(PasswordEdit passwordEdit) {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAvatar(string result, List<ClaimDTO> list) {
+            try {
+                _accountRepository.UpdateAvatar(result, Convert.ToInt32(list.Find(x=>x.Type== "nameidentifier").Value));
+            } catch(Exception e) {
+
+            }
         }
     }
 }

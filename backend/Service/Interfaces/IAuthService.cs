@@ -22,5 +22,6 @@ namespace Service.Interfaces
         bool ActiveAccount(ActivatedAccount activatedAccount);
         Task<string> UploadFile(IFormFile file);
         bool ChangePasswd(PasswordEdit passwordEdit);
+        void UpdateAvatar(string result, List<ClaimDTO> list);
     }
 }

@@ -76,6 +76,7 @@ namespace WebAPI.Controllers
         [AddSwaggerFileUploadButton]
         public async Task<IActionResult> UloadFile(IFormFile file) {
             string result = await _authService.UploadFile(file);
+            _authService.UpdateAvatar(result, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
             if (result != "")
                 return Ok(result);
             return BadRequest();

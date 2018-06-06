@@ -80,5 +80,16 @@ namespace Repository.Repositories
         public void Save() {
             throw new NotImplementedException();
         }
+
+        public void UpdateAvatar(string path, int accountId) {
+            try {
+                var accountDetails = _context.AccountDetails.First(x => x.AccountId == accountId);
+                accountDetails.Avatar = path;
+                _context.AccountDetails.Update(accountDetails);
+                _context.SaveChanges();
+            }catch(Exception e) {
+                throw e;
+            }
+        }
     }
 }

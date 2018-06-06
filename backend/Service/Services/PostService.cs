@@ -45,11 +45,12 @@ namespace Service.Services
             foreach (var result in resultDb) {
                 HashSet<HobbyForPostDTO> hobbies = new HashSet<HobbyForPostDTO>();
                 foreach (var hobby in result.PostHobbies)
-                    hobbies.Add(new HobbyForPostDTO {
-                        Color = hobby.Hobby.Color,
-                        Name = hobby.Hobby.Name,
-                        Id = hobby.Hobby.Id
-                    });
+                    //hobbies.Add(new HobbyForPostDTO {
+                    //    Color = hobby.Hobby.Color,
+                    //    Name = hobby.Hobby.Name,
+                    //    Id = hobby.Hobby.Id
+                    //});
+                    hobbies.Add(_mapper.Map<HobbyForPostDTO>(hobby));
                 List<string> pictures = new List<string>();
                 if (result.Pictures != null)
                     foreach (var picture in result.Pictures)
