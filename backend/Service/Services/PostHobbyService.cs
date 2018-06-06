@@ -1,4 +1,5 @@
-﻿using Data.DBModel;
+﻿using AutoMapper;
+using Data.DBModel;
 using Data.DTO;
 using Repository.Interfaces;
 using Service.Interfaces;
@@ -12,18 +13,23 @@ namespace Service.Services
     public class PostHobbyService : IPostHobbyService {
         private readonly IPostHobbyRepository _postHobbyRepository;
         private readonly IPostService _postService;
+        private readonly IMapper _mapper;
 
         public PostHobbyService(IPostHobbyRepository postHobbyRepository,
-                                IPostService postService) {
+                                IPostService postService,
+                                IMapper mapper) {
             _postHobbyRepository = postHobbyRepository;
             _postService = postService;
+            _mapper = mapper;
         }
 
         public List<PostHobby> GetAll() {
             return _postHobbyRepository.GetAll().ToList();
         }
 
-        public void CreatePostHobby(PostDTO postDTO) {
+        public void CreatePostHobby(PostAdd postAdd, List<ClaimDTO> claimsList) {
+            var postDTO = _mapper.Map<PostDTO>(postAdd);
+            postDTO.AuthorId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
             var post = _postService.Add(postDTO);
             foreach (var hobby in postDTO.Hobbys) {
                 _postHobbyRepository.Add(

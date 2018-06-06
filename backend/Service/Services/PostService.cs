@@ -1,4 +1,5 @@
-﻿using Data.DBModel;
+﻿using AutoMapper;
+using Data.DBModel;
 using Data.DTO;
 using Repository.Interfaces;
 using Service.Interfaces;
@@ -12,23 +13,23 @@ namespace Service.Services
     public class PostService : IPostService
     {
         private readonly IPostRepository _postRespository;
+        private readonly IMapper _mapper;
 
-        public PostService(IPostRepository postRespository)
+        public PostService(IPostRepository postRespository,
+                           IMapper mapper)
         {
             _postRespository = postRespository;
+            _mapper = mapper;
         }
         
         public Post Add(PostDTO postDTO)
         {
-            Post post = new Post { };
-            post.AuthorId = postDTO.AuthorId;
-            post.Date = DateTime.Now;
-            post.Content = postDTO.Content;
+            var post = _mapper.Map<Post>(postDTO);
 
-            if (postDTO.Pictures == null && postDTO.Event == null)
-            {
+            //if (postDTO.Pictures == null && postDTO.Event == null)
+            //{
                 post.PostTypeId = 1;
-            }
+            //}
             return _postRespository.Add(post);
         }
 

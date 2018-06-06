@@ -1,11 +1,13 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Utils;
 
 namespace WebAPI.Controllers
 {
@@ -22,12 +24,13 @@ namespace WebAPI.Controllers
             return _postHobbyService.GetAll();
         }
 
+        [Authorize]
         [HttpPost("create")]
-        public IActionResult CreatePostHobby([FromBody] PostDTO post) {
-            if (post == null) {
+        public IActionResult CreatePostHobby([FromBody] PostAdd postAdd) {
+            if (postAdd == null) {
                 return BadRequest("errorr");
             }
-            _postHobbyService.CreatePostHobby(post);
+            _postHobbyService.CreatePostHobby(postAdd, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
             return Ok();
         }
 

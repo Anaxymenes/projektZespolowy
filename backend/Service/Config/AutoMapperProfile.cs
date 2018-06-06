@@ -140,6 +140,25 @@ namespace Service.Config
                 })
                 ;
 
+            CreateMap<PostDTO, Post>()
+                .ForMember(dest => dest.Date,
+                opt => opt.MapFrom(src => src.Date))
+                .ForMember(dest => dest.Content,
+                opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.AuthorId,
+                opt => opt.MapFrom(src => src.AuthorId))
+                ;
+
+            CreateMap<PostAdd, PostDTO>()
+                .BeforeMap((src, dest) => dest.Date = DateTime.Now)
+                .ForMember(dest => dest.Content,
+                opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.Hobbys,
+                opt => opt.MapFrom(src => src.Hobbys))
+                .ForMember(dest => dest.Event,
+                opt => opt.MapFrom(src => src.Event))
+                ;
+
             CreateMap<RegisterAccountDTO, Account>()
                 .ForMember(dest => dest.Email,
                 opt => opt.MapFrom(src => src.Email))
