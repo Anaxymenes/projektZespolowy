@@ -17,6 +17,7 @@ namespace Repository.Repositories
 
         public PostHobby Add(PostHobby entity) {
             _context.PostHobby.Add(entity);
+            _context.SaveChanges();
             return _context.PostHobby.Last();
 
         }
