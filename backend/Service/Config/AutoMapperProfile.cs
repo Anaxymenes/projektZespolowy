@@ -122,6 +122,41 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
                 .ForMember(dest => dest.AuthorId,
                 opt => opt.MapFrom(src => src.AuthorId))
+                .ForMember(dest => dest.Hobbys,
+                opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                {
+                    List<HobbyForPostDTO> l = new List<HobbyForPostDTO>();
+                    foreach (var a in src.PostHobbies)
+                    {
+                        l.Add(_mapper.Map<HobbyForPostDTO>(a));
+                    }
+
+                    dest.Hobbys = l;
+                })
+                .ForMember(dest => dest.Pictures,
+                opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                {
+                    if (src.Pictures != null && src.Pictures.Count > 0)
+                    {
+                        List<string> l = new List<string>();
+                        foreach (var a in src.Pictures)
+                        {
+                            l.Add(a.Path);
+                        }
+                        dest.Pictures = l;
+                    }
+                })
+                .ForMember(dest => dest.Event,
+                opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                {
+                    if (src.EventDetalis != null)
+                    {
+                        dest.Event = _mapper.Map<EventDTO>(src.EventDetalis);
+                    }
+                })          
                 ;
 
                // .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
@@ -178,6 +213,18 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Event))
                 ;
 
+
+            CreateMap<Post, EventDTO>()
+                .ForMember(dest => dest.EndAt,
+                opt => opt.MapFrom(src => src.EventDetalis.EndAt))
+                .ForMember(dest => dest.StartAt,
+                opt => opt.MapFrom(src => src.EventDetalis.StartAt))
+                .ForMember(dest => dest.Latitude,
+                opt => opt.MapFrom(src => src.EventDetalis.Latitude))
+                .ForMember(dest => dest.Longitude,
+                opt => opt.MapFrom(src => src.EventDetalis.Longitude))
+                ;
+
             CreateMap<RegisterAccountDTO, Account>()
                 .ForMember(dest => dest.Email,
                 opt => opt.MapFrom(src => src.Email))
@@ -187,6 +234,17 @@ namespace Service.Config
                     Name = src.FirstName,
                     LastName = src.LastName
                 }))
+                ;
+
+            CreateMap<RegisterAccountDTO, AccountDetails>()
+                .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => src.FirstName))
+                .ForMember(dest => dest.LastName,
+                opt => opt.MapFrom(src => src.LastName))
+                .ForMember(dest => dest.BirthDate,
+                opt => opt.MapFrom(src => src.BirthDate))
+                .ForMember(dest => dest.Avatar,
+                opt => opt.UseValue("/img/account/defaultProfile.jpg"))
                 ;
 
             CreateMap<CommentAdd, Comment>()
