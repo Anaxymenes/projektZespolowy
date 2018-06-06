@@ -51,7 +51,20 @@ namespace Repository.Repositories
                 .ThenInclude(author => author.Author)
                 .Include(author => author.Author);
         }
-
+        public IQueryable<Post> GetAllPostByHobbyId(int hobbyId) {
+            var postId = _context.PostHobby.Where(x => x.HobbyId == hobbyId).Select(x => x.PostId).ToHashSet();
+            return _context.Post.Where(x => postId.Contains(x.Id))
+                .Include(x=>x.Author)
+                    .ThenInclude(x=>x.AccountDetails)
+                .Include(x=>x.PostHobbies)
+                    .ThenInclude(x=>x.Hobby)
+                .Include(x=>x.PostType)
+                .Include(x=>x.EventDetalis)
+                .Include(x=>x.Pictures)
+                .Include(x=>x.Comments)
+                    .ThenInclude(x=>x.Author)
+                        .ThenInclude(x=>x.AccountDetails);
+        }
         public void Save()
         {
             throw new NotImplementedException();

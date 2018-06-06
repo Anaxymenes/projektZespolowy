@@ -9,5 +9,6 @@ namespace Repository.Interfaces
     public interface IPostRepository : IRepository<Post>
     {
         IQueryable GetPost(int id);
+        IQueryable<Post> GetAllPostByHobbyId(int hobbyId);
     }
 }

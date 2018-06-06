@@ -14,5 +14,6 @@ namespace Service.Interfaces
         void Delete(int id);
         PostDTO GetPost(int id);
         List<Post> GetPosts();
+        List<PostDTO> GetAllPostsByHobbyId(int hobbyId);
     }
 }

@@ -38,6 +38,31 @@ namespace Service.Services
             _postRespository.Delete(id);
         }
 
+        public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
+            var resultDb = _postRespository.GetAllPostByHobbyId(hobbyId);
+            List<PostDTO> resultList = new List<PostDTO>();
+            
+            foreach (var result in resultDb) {
+                HashSet<HobbyForPostDTO> hobbies = new HashSet<HobbyForPostDTO>();
+                foreach (var hobby in result.PostHobbies)
+                    hobbies.Add(new HobbyForPostDTO {
+                        Color = hobby.Hobby.Color,
+                        Name = hobby.Hobby.Name,
+                        Id = hobby.Hobby.Id
+                    });
+                List<string> pictures = new List<string>();
+                if (result.Pictures != null)
+                    foreach (var picture in result.Pictures)
+                        pictures.Add(picture.Path);
+                PostDTO post = _mapper.Map<PostDTO>(result);
+                post.Hobbys = hobbies.ToList();
+                post.Pictures = pictures;
+                resultList.Add(post);
+            }
+                
+            return resultList;
+        }
+
         public PostDTO GetPost(int id)
         {
             var results = _postRespository.GetPost(id);
