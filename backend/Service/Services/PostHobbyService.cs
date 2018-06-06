@@ -45,20 +45,23 @@ namespace Service.Services
             var resultsDB = _postHobbyRepository.GetAllPostByHobbyId(hobbyId);
             List<PostDTO> results = new List<PostDTO>();
             foreach (var obj in resultsDB) {
+                List<HobbyForPostDTO> hobbys = new List<HobbyForPostDTO>();
 
-                EventDTO events = new EventDTO() {
-                    EndAt = obj.Post.EventDetalis.EndAt,
-                    Latitude = obj.Post.EventDetalis.Latitude,
-                    Longitude = obj.Post.EventDetalis.Longitude,
-                    StartAt = obj.Post.EventDetalis.StartAt
+                foreach (var hobby in obj.Post.PostHobbies)
+                {
+                    HobbyForPostDTO hobbyForPostDTO = _mapper.Map<HobbyForPostDTO>(hobby);
+                    hobbys.Add(hobbyForPostDTO);
+                }
 
-                };
-                PostDTO post = new PostDTO() {
-                    //Author = obj.Post.Author.Username,
-                    Content = obj.Post.Content,
-                    Date = obj.Post.Date,
-                    Event = events
-                };
+                PostDTO post = _mapper.Map<PostDTO>(obj.Post);
+                post.Hobbys = hobbys;
+                
+                if (obj.Post.EventDetalis != null)
+                {
+                    EventDTO events = _mapper.Map<EventDTO>(obj.Post.EventDetalis);
+                    post.Event = events;
+                }
+                
                 results.Add(post);
             }
             return results;

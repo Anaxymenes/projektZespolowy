@@ -114,31 +114,41 @@ namespace Service.Config
                 ;
 
             CreateMap<Post, PostDTO>()
-                .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
-               .ForMember(dest => dest.Date,
-                opt => opt.MapFrom(src => src.Date))
                 .ForMember(dest => dest.Content,
                 opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.Date,
+                opt => opt.MapFrom(src => src.Date))
                 .ForMember(dest => dest.Author,
                 opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
                 .ForMember(dest => dest.AuthorId,
                 opt => opt.MapFrom(src => src.AuthorId))
-                .ForMember(dest => dest.Content,
-                opt => opt.MapFrom(src => src.Content))
-                .ForMember(dest => dest.Event,
-                opt => opt.UseValue(eventDTO))
-                .ForMember(dest => dest.Pictures,
-                opt => opt.Ignore())
-                .AfterMap((src, dest) => {
-                    if (src.Pictures != null && src.Pictures.Count > 0)
-                    {
-                        List<string> pct = new List<string>();
-                        foreach (var obj in src.Pictures)
-                            pct.Add(obj.Path);
-                        dest.Pictures = pct;
-                    }
-                })
                 ;
+
+               // .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
+               //.ForMember(dest => dest.Date,
+               // opt => opt.MapFrom(src => src.Date))
+               // .ForMember(dest => dest.Content,
+               // opt => opt.MapFrom(src => src.Content))
+               // .ForMember(dest => dest.Author,
+               // opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
+               // .ForMember(dest => dest.AuthorId,
+               // opt => opt.MapFrom(src => src.AuthorId))
+               // .ForMember(dest => dest.Content,
+               // opt => opt.MapFrom(src => src.Content))
+               // .ForMember(dest => dest.Event,
+               // opt => opt.UseValue(eventDTO))
+               // .ForMember(dest => dest.Pictures,
+               // opt => opt.Ignore())
+               // .AfterMap((src, dest) => {
+               //     if (src.Pictures != null && src.Pictures.Count > 0)
+               //     {
+               //         List<string> pct = new List<string>();
+               //         foreach (var obj in src.Pictures)
+               //             pct.Add(obj.Path);
+               //         dest.Pictures = pct;
+               //     }
+               // })
+               // ;
 
             CreateMap<PostDTO, Post>()
                 .ForMember(dest => dest.Date,
@@ -147,6 +157,15 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Content))
                 .ForMember(dest => dest.AuthorId,
                 opt => opt.MapFrom(src => src.AuthorId))
+                ;
+
+            CreateMap<PostHobby, HobbyForPostDTO>()
+                .ForMember(dest => dest.Color,
+                opt => opt.MapFrom(src => src.Hobby.Color))
+                .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(src => src.Hobby.Id))
+                .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => src.Hobby.Name))
                 ;
 
             CreateMap<PostAdd, PostDTO>()
