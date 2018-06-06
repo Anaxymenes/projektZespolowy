@@ -53,6 +53,17 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
+        public Account GetById(int id) {
+            if (_context.Account.Any(x => x.Id == id))
+                return _context.Account.First(x => x.Id == id);
+            return null;
+
+        }
+
+        public object GetById(object p) {
+            throw new NotImplementedException();
+        }
+
         public  Account GetUserByUsernameOrEmail(string value) {
             try {
                 var results = _context.Account.AsQueryable()
@@ -79,6 +90,15 @@ namespace Repository.Repositories
 
         public void Save() {
             throw new NotImplementedException();
+        }
+
+        public void Update(Account user) {
+            try {
+                _context.Account.Update(user);
+                _context.SaveChanges();
+            }catch(Exception e) {
+                throw e;
+            }
         }
 
         public void UpdateAvatar(string path, int accountId) {

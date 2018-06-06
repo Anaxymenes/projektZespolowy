@@ -13,5 +13,8 @@ namespace Repository.Interfaces
         void RegisterUser(Account account, AccountDetails accountDetails, AccountVerification accountVerification);
         bool ActiveAccount(ActivatedAccount activatedAccount);
         void UpdateAvatar(string path, int accountId);
+        Account GetById(int id);
+        object GetById(object p);
+        void Update(Account user);
     }
 }

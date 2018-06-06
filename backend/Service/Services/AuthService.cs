@@ -199,8 +199,20 @@ namespace Service.Services
             return "";
         }
 
-        public bool ChangePasswd(PasswordEdit passwordEdit) {
-            throw new NotImplementedException();
+        public bool ChangePasswd(PasswordEdit passwordEdit, List<ClaimDTO> claims) {
+            try {
+                var user = _accountRepository.GetById(ClaimsMethods.GetIdFromClaim(claims));
+                if (user.Password.Equals(this.GetHashedPassword(passwordEdit.OldPassword, Encoding.UTF8.GetBytes(user.PasswordSalt)))) {
+                    byte[] salt = this.GetSalt();
+                    user.Password = this.GetHashedPassword(passwordEdit.NewPassword, salt);
+                    user.PasswordSalt = this.EncodeByteToString(salt);
+                    _accountRepository.Update(user);
+                    return true;
+                }
+                return false;
+            } catch(Exception e) {
+                return false;
+            }
         }
 
         public void UpdateAvatar(string result, List<ClaimDTO> list) {

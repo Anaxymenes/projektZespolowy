@@ -21,7 +21,7 @@ namespace Service.Interfaces
         bool SendVerificationEmail(IEnumerable<ClaimDTO> claimDTOEnumarable);
         bool ActiveAccount(ActivatedAccount activatedAccount);
         Task<string> UploadFile(IFormFile file);
-        bool ChangePasswd(PasswordEdit passwordEdit);
+        bool ChangePasswd(PasswordEdit passwordEdit, List<ClaimDTO> claims);
         void UpdateAvatar(string result, List<ClaimDTO> list);
     }
 }
