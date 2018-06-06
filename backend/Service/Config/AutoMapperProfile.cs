@@ -113,6 +113,13 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.color))
                 ;
 
+            CreateMap<Hobby, HobbyToList>()
+                .ForMember(dest => dest.Value,
+                opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Text,
+                opt => opt.MapFrom(src => src.Name))
+                ;
+
             CreateMap<Post, PostDTO>()
                 .ForMember(dest => dest.Content,
                 opt => opt.MapFrom(src => src.Content))
