@@ -65,5 +65,14 @@ namespace WebAPI.Controllers
                 return Ok(result);
             return BadRequest();
         }
+
+        [Authorize]
+        [HttpGet("getAllMyHobbies")]
+        public async Task<IActionResult> GetAllHobbiesByAccountId() {
+            var result = _hobbyService.GetAllHobbiesByAccountId(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result == null)
+                return BadRequest();
+            return Ok(result);
+        }
     }
 }

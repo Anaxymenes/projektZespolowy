@@ -85,6 +85,9 @@ namespace Service.Services
                 return _mapper.Map<HobbyDTO>(results);
             return null;
         }
-        
+
+        public async Task<List<HobbyToList>> GetAllHobbiesByAccountId(List<ClaimDTO> list) {
+            
+        }
     }
 }
