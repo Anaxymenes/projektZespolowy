@@ -159,31 +159,31 @@ namespace Service.Config
                 //})          
                 ;
 
-               // .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
-               //.ForMember(dest => dest.Date,
-               // opt => opt.MapFrom(src => src.Date))
-               // .ForMember(dest => dest.Content,
-               // opt => opt.MapFrom(src => src.Content))
-               // .ForMember(dest => dest.Author,
-               // opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
-               // .ForMember(dest => dest.AuthorId,
-               // opt => opt.MapFrom(src => src.AuthorId))
-               // .ForMember(dest => dest.Content,
-               // opt => opt.MapFrom(src => src.Content))
-               // .ForMember(dest => dest.Event,
-               // opt => opt.UseValue(eventDTO))
-               // .ForMember(dest => dest.Pictures,
-               // opt => opt.Ignore())
-               // .AfterMap((src, dest) => {
-               //     if (src.Pictures != null && src.Pictures.Count > 0)
-               //     {
-               //         List<string> pct = new List<string>();
-               //         foreach (var obj in src.Pictures)
-               //             pct.Add(obj.Path);
-               //         dest.Pictures = pct;
-               //     }
-               // })
-               // ;
+            // .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
+            //.ForMember(dest => dest.Date,
+            // opt => opt.MapFrom(src => src.Date))
+            // .ForMember(dest => dest.Content,
+            // opt => opt.MapFrom(src => src.Content))
+            // .ForMember(dest => dest.Author,
+            // opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
+            // .ForMember(dest => dest.AuthorId,
+            // opt => opt.MapFrom(src => src.AuthorId))
+            // .ForMember(dest => dest.Content,
+            // opt => opt.MapFrom(src => src.Content))
+            // .ForMember(dest => dest.Event,
+            // opt => opt.UseValue(eventDTO))
+            // .ForMember(dest => dest.Pictures,
+            // opt => opt.Ignore())
+            // .AfterMap((src, dest) => {
+            //     if (src.Pictures != null && src.Pictures.Count > 0)
+            //     {
+            //         List<string> pct = new List<string>();
+            //         foreach (var obj in src.Pictures)
+            //             pct.Add(obj.Path);
+            //         dest.Pictures = pct;
+            //     }
+            // })
+            // ;
 
             CreateMap<PostDTO, Post>()
                 .ForMember(dest => dest.Date,
@@ -207,10 +207,23 @@ namespace Service.Config
                 .BeforeMap((src, dest) => dest.Date = DateTime.Now)
                 .ForMember(dest => dest.Content,
                 opt => opt.MapFrom(src => src.Content))
-                .ForMember(dest => dest.Hobbys,
-                opt => opt.MapFrom(src => src.Hobbys))
                 .ForMember(dest => dest.Event,
                 opt => opt.MapFrom(src => src.Event))
+                .ForMember(dest => dest.Hobbys,
+                opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                {
+                    List<HobbyForPostDTO> list = new List<HobbyForPostDTO>();
+                    foreach (var a in src.Hobbys)
+                    {
+                        list.Add(new HobbyForPostDTO
+                        {
+                            Id = a
+                        });
+                    }
+
+                    dest.Hobbys = list;
+                })
                 ;
 
 
