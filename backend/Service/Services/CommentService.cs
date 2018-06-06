@@ -43,18 +43,9 @@ namespace Service.Services
             return null;
         }
 
-        public void Delete(int id, int accountId)
+        public bool Delete(int id, List<ClaimDTO> claims)
         {
-            Comment comment = _context.Comment.Find(id);
-            Account account = _context.Account.Find(accountId);
-
-            if (account != null && comment != null)
-            {
-                if (comment.AuthorId == accountId || account.RoleId == 1)
-                {
-                    _commentRepository.Delete(id);
-                }
-            }
+            return _commentRepository.Delete(id, Convert.ToInt32(claims.Find(x => x.Type == "nameidentifier").Value));
         }
 
         public CommentDTO Edit(CommentEditV2 commentEdit, List<ClaimDTO> claimsList)

@@ -29,10 +29,30 @@ namespace Repository.Repositories
             }
         }
 
-        public void Delete(int id) {
-            Comment comment = _context.Comment.SingleOrDefault(x => x.Id == id);
-            _context.Remove(comment);
-            _context.SaveChanges();
+        public bool Delete(int id, int userId)
+        {
+            var user = _context.Account.First(x => x.Id == userId);
+            var comment = _context.Comment.First(x => x.Id == id);
+            if (comment.AuthorId == userId)
+            {
+                try
+                {
+                    _context.Remove(comment);
+                    _context.SaveChanges();
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public Comment Edit(Comment entity, int userId)

@@ -10,8 +10,8 @@ namespace Service.Interfaces
 {
     public interface ICommentService
     {
-        void Delete(int id, int accountId);
         CommentDTO Add(CommentAdd commentDto, List<ClaimDTO> list);
         CommentDTO Edit(CommentEditV2 commentEdit, List<ClaimDTO> list);
+        bool Delete(int id, List<ClaimDTO> list);
     }
 }
