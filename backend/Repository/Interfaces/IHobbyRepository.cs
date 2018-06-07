@@ -13,5 +13,6 @@ namespace Repository.Interfaces
         bool Add(Hobby entity);
         Hobby Edit(Hobby hobbyEdit, int userId);
         IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId);
+        IQueryable<Hobby> GetAllWithPagination(int countOfItem, int page);
     }
 }

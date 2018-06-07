@@ -21,10 +21,13 @@ namespace WebAPI.Controllers
         public HobbyController(IHobbyService hobbyService) {
            _hobbyService = hobbyService;
         }
-
         [HttpGet("getall")]
         public List<Hobby> GetAll() {
             return _hobbyService.GetAll();
+        }
+        [HttpGet("getall/{countOfItem}/{page}")]
+        public List<HobbyInformation> GetAllPagination(int countOfItem, int page) {
+            return _hobbyService.GetAllPagination(countOfItem, page);
         }
 
         [HttpGet("get")]

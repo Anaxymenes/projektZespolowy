@@ -99,8 +99,23 @@ namespace Service.Services
             }
         }
 
-        public List<HobbyDTO> GetAllPagination(int countOfItem, int page) {
-            throw new NotImplementedException();
+        public List<HobbyInformation> GetAllPagination(int countOfItem, int page) {
+            try {
+                List<HobbyInformation> result = new List<HobbyInformation>();
+                foreach (var obj in _hobbyRepository.GetAllWithPagination(countOfItem, page))
+                    result.Add(new HobbyInformation {
+                        Administator = obj.Administrator.AccountDetails.Name + " " + obj.Administrator.AccountDetails.LastName,
+                        AdministratorId = obj.AdministratorId,
+                        Name = obj.Name,
+                        Color = obj.Color,
+                        Description = obj.Description,
+                        Id = obj.Id,
+                        Logo = obj.Logo
+                    });
+                return result;
+            }catch (Exception e) {
+                return null;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.Edit;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,17 @@ namespace Repository.Repositories
             return _context.Hobby.Where(x => hobbyId.Contains(x.Id)).AsQueryable();
         }
 
+        public IQueryable<Hobby> GetAllWithPagination(int countOfItem, int page) {
+            try {
+                return _context.Hobby
+                    .Include(x=> x.Administrator)
+                        .ThenInclude(x=>x.AccountDetails)
+                    .Skip((page - 1) * countOfItem).Take(countOfItem);
+            }catch(Exception e) {
+                throw e;
+            }
+        }
+
         public Hobby GetHobby(int id)
         {
             return _context.Hobby.Find(id);
@@ -77,8 +89,7 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
-        Hobby IRepository<Hobby>.Add(Hobby entity)
-        {
+        Hobby IRepository<Hobby>.Add(Hobby entity) {
             throw new NotImplementedException();
         }
     }
