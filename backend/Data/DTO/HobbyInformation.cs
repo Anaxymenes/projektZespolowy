@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Data.DTO
 {
-    public class HobbyDTO
+    class HobbyInformation
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -13,5 +13,6 @@ namespace Data.DTO
         public string Color { get; set; }
 
         public int AdministratorId { get; set; }
+        public string Administator { get; set; }
     }
 }
