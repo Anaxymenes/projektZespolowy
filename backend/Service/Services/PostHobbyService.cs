@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using Data.DBModel;
 using Data.DTO;
+using Microsoft.AspNetCore.Http;
 using Repository.Interfaces;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using WebAPI.Utils;
 
 namespace Service.Services
 {
@@ -14,6 +17,7 @@ namespace Service.Services
         private readonly IPostHobbyRepository _postHobbyRepository;
         private readonly IPostService _postService;
         private readonly IMapper _mapper;
+        private readonly string _module = "post";
 
         public PostHobbyService(IPostHobbyRepository postHobbyRepository,
                                 IPostService postService,
@@ -21,6 +25,17 @@ namespace Service.Services
             _postHobbyRepository = postHobbyRepository;
             _postService = postService;
             _mapper = mapper;
+        }
+
+        public async Task<string> UploadFile(IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                var filename = FileManagement.GetFileName(file);
+                await FileManagement.UploadFile(file, _module, filename);
+                return FileManagement.GetFilePathForDatabase(filename, _module);
+            }
+            return "";
         }
 
         public List<PostHobby> GetAll() {

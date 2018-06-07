@@ -1,12 +1,15 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Service.Interfaces
 {
     public interface IPostHobbyService {
+        Task<string> UploadFile(IFormFile file);
         List<PostHobby> GetAll();
         List<PostDTO> GetAllPostsByHobbyId(int hobbyId);
         void CreatePostHobby(PostAdd postAdd, List<ClaimDTO> list);

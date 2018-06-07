@@ -1,8 +1,10 @@
 ﻿using Data.DBModel;
 using Data.DTO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
+using Swashbuckle.AspNetCore.Examples;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,5 +77,15 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [Authorize]
+        [HttpPost("upload")]
+        [AddSwaggerFileUploadButton]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            string result = await _postHobbyService.UploadFile(file);
+            if (result != "")
+                return Ok(result);
+            return BadRequest();
+        }
     }
 }
