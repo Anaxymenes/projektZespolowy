@@ -98,5 +98,9 @@ namespace Service.Services
                 return null;
             }
         }
+
+        public List<HobbyDTO> GetAllPagination(int countOfItem, int page) {
+            throw new NotImplementedException();
+        }
     }
 }
