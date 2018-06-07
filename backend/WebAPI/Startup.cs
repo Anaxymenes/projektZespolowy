@@ -93,6 +93,9 @@ namespace WebAPI
             services.AddScoped<IAccountHobbyRepository, AccountHobbyRepository>();
             services.AddScoped<IAccountHobbyService, AccountHobbyService>();
 
+            services.AddScoped<IPictureService, PictureService>();
+            services.AddScoped<IPictureRepository, PictureRepository>();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //Token Param

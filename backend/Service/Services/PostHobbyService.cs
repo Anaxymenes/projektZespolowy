@@ -16,14 +16,17 @@ namespace Service.Services
     public class PostHobbyService : IPostHobbyService {
         private readonly IPostHobbyRepository _postHobbyRepository;
         private readonly IPostService _postService;
+        private readonly IPictureService _pictureService;
         private readonly IMapper _mapper;
         private readonly string _module = "post";
 
         public PostHobbyService(IPostHobbyRepository postHobbyRepository,
                                 IPostService postService,
+                                IPictureService pictureService,
                                 IMapper mapper) {
             _postHobbyRepository = postHobbyRepository;
             _postService = postService;
+            this._pictureService = pictureService;
             _mapper = mapper;
         }
 
@@ -54,32 +57,10 @@ namespace Service.Services
                     }
                     );
             }
+            _pictureService.AddPictures(postAdd, post);
         }
 
         public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
-            //var resultsDB = _postHobbyRepository.GetAllPostByHobbyId(hobbyId);
-            //List<PostDTO> results = new List<PostDTO>();
-            //foreach (var obj in resultsDB) {
-            //    List<HobbyForPostDTO> hobbys = new List<HobbyForPostDTO>();
-
-            //    foreach (var hobby in obj.Post.PostHobbies)
-            //    {
-            //        HobbyForPostDTO hobbyForPostDTO = _mapper.Map<HobbyForPostDTO>(hobby);
-            //        hobbys.Add(hobbyForPostDTO);
-            //    }
-
-            //    PostDTO post = _mapper.Map<PostDTO>(obj.Post);
-            //    post.Hobbys = hobbys;
-
-            //    if (obj.Post.EventDetalis != null)
-            //    {
-            //        EventDTO events = _mapper.Map<EventDTO>(obj.Post.EventDetalis);
-            //        post.Event = events;
-            //    }
-
-            //    results.Add(post);
-            //}
-            //return results;
             return _postService.GetAllPostsByHobbyId(hobbyId);
         }
 

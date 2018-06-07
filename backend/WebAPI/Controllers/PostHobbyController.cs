@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             return Ok();
         }
 
-        [HttpGet("findHobbyPosts")]
+        [HttpGet("findHobbyPosts/{hobbyId}")]
         public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
             return _postHobbyService.GetAllPostsByHobbyId(hobbyId);
         }
@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost("joinToGroup")]
+        [HttpPost("joinToGroup/{hobbyId}")]
         public IActionResult JoinToGroup(int hobbyId)
         {
             if (_accountHobbyService.JoinToGroup(hobbyId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims))) 
@@ -61,7 +61,7 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost("leaveGroup")]
+        [HttpPost("leaveGroup/{hobbyId}")]
         public IActionResult leaveGroup(int hobbyId)
         {
             if (_accountHobbyService.leaveGroup(hobbyId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers
             return BadRequest("Coś poszło nie tak.");
         }
 
-        [HttpGet("getUserPosts")]
+        [HttpGet("getUserPosts/{authorId}")]
         public IActionResult GetUserPostByAuthorId(int authorId) {
             var result = _postHobbyService.GetAllPostByAuthorId(authorId);
             if (result == null)
