@@ -21,9 +21,16 @@ namespace Repository.Repositories
         {
             try
             {
-                _context.Add(accountHobby);
-                _context.SaveChanges();
-                return _context.AccountHobby.Last();
+                if (_context.AccountHobby.Any(x => x.AccountId == accountHobby.AccountId && x.HobbyId == accountHobby.HobbyId))
+                {
+                    return null; 
+                }
+                else
+                {
+                    _context.Add(accountHobby);
+                    _context.SaveChanges();
+                    return _context.AccountHobby.Last();
+                }
             }
             catch (Exception e)
             {
