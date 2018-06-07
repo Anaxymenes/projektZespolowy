@@ -90,6 +90,9 @@ namespace WebAPI
             services.AddScoped<IAccountVerificationRepository, AccountVerificationRepository>();
             services.AddScoped<IAccountVerificationService, AccountVerificationService>();
 
+            services.AddScoped<IAccountHobbyRepository, AccountHobbyRepository>();
+            services.AddScoped<IAccountHobbyService, AccountHobbyService>();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //Token Param

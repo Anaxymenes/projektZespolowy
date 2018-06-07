@@ -14,9 +14,12 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class PostHobbyController : Controller {
         private IPostHobbyService _postHobbyService;
+        private readonly IAccountHobbyService _accountHobbyService;
 
-        public PostHobbyController(IPostHobbyService postHobbyService) {
+        public PostHobbyController(IPostHobbyService postHobbyService,
+                                   IAccountHobbyService accountHobbyService) {
             _postHobbyService = postHobbyService;
+            _accountHobbyService = accountHobbyService;
         }
 
         [HttpGet("")]
@@ -44,6 +47,15 @@ namespace WebAPI.Controllers
         public List<PostDTO> GetAllPostsByUserHobbys()
         {
             return _postHobbyService.GetAllPostsByUserHobbys(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+        }
+
+        [Authorize]
+        [HttpPost("joinToGroup")]
+        public IActionResult JoinToGroup(int hobbyId)
+        {
+            if (_accountHobbyService.JoinToGroup(hobbyId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims))) 
+                return Ok();
+            return BadRequest("Coś poszło nie tak.");
         }
 
     }
