@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall/{countOfItem}/{page}")]
         public IActionResult GetAllPagination(int countOfItem, int page) {
             try {
-                return Ok(_hobbyService.GetAllPagination(countOfItem, page));
+                return Ok(_hobbyService.GetAllPagination(countOfItem, page, ClaimsMethods.GetClaimsList(User.Claims)));
             }catch(Exception e) {
                 return BadRequest();
             }

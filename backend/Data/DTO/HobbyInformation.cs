@@ -11,6 +11,7 @@ namespace Data.DTO
         public string Description { get; set; }
         public string Logo { get; set; }
         public string Color { get; set; }
+        public bool Belong { get; set; }
 
         public int AdministratorId { get; set; }
         public string Administator { get; set; }

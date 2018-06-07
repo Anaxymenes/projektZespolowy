@@ -18,6 +18,6 @@ namespace Service.Interfaces
         HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> list);
         Task<string> UploadFile(IFormFile file);
         List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list);
-        List<HobbyInformation> GetAllPagination(int countOfItem, int page);
+        List<HobbyInformation> GetAllPagination(int countOfItem, int page, List<ClaimDTO> list);
     }
 }

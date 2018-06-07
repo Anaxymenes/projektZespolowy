@@ -66,7 +66,9 @@ namespace Repository.Repositories
 
         public IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId) {
             var hobbyId = _context.AccountHobby.Where(x => x.AccountId == accountId).Select(z => z.HobbyId).ToHashSet();
-            return _context.Hobby.Where(x => hobbyId.Contains(x.Id)).AsQueryable();
+            return _context.Hobby.Where(x => hobbyId.Contains(x.Id)).AsQueryable()
+                    .Include(x => x.AccountHobbies);
+
         }
 
         public IQueryable<Hobby> GetAllWithPagination(int countOfItem, int page) {
@@ -74,6 +76,7 @@ namespace Repository.Repositories
                 return _context.Hobby
                     .Include(x=> x.Administrator)
                         .ThenInclude(x=>x.AccountDetails)
+                    .Include(x => x.AccountHobbies)
                     .Skip((page - 1) * countOfItem).Take(countOfItem);
             }catch(Exception e) {
                 throw e;

@@ -87,23 +87,28 @@ namespace Service.Services
             return null;
         }
 
-        public List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list) {
+        public List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> claimsList) {
             try {
-                var resultDb = _hobbyRepository.GetAllHobbiesForAccountId(ClaimsMethods.GetIdFromClaim(list)); 
+                var resultDb = _hobbyRepository.GetAllHobbiesForAccountId(ClaimsMethods.GetIdFromClaim(claimsList)); 
                 List<HobbyToList> results = new List<HobbyToList>();
                 foreach (var obj in resultDb)
-                    results.Add(_mapper.Map<HobbyToList>(obj));
+                {
+                    var temp = _mapper.Map<HobbyToList>(obj);
+                    results.Add(temp);
+                }
                 return results;
             }catch (Exception e) {
                 return null;
             }
         }
 
-        public List<HobbyInformation> GetAllPagination(int countOfItem, int page) {
+        public List<HobbyInformation> GetAllPagination(int countOfItem, int page, List<ClaimDTO> claimsList) {
             try {
+                int accountId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
                 List<HobbyInformation> result = new List<HobbyInformation>();
                 foreach (var obj in _hobbyRepository.GetAllWithPagination(countOfItem, page))
-                    result.Add(new HobbyInformation {
+                {
+                    var temp = new HobbyInformation {
                         Administator = obj.Administrator.AccountDetails.Name + " " + obj.Administrator.AccountDetails.LastName,
                         AdministratorId = obj.AdministratorId,
                         Name = obj.Name,
@@ -111,7 +116,13 @@ namespace Service.Services
                         Description = obj.Description,
                         Id = obj.Id,
                         Logo = obj.Logo
-                    });
+                    };
+                    if (obj.AccountHobbies.Any(x => x.AccountId == accountId))
+                        temp.Belong = true;
+                    else
+                        temp.Belong = false;
+                    result.Add(temp);
+                }
                 return result;
             }catch (Exception e) {
                 return null;
