@@ -58,6 +58,7 @@ namespace Service.Services
                 if (result.Pictures != null)
                     foreach (var picture in result.Pictures)
                         pictures.Add(picture.Path);
+
                 PostDTO post = _mapper.Map<PostDTO>(result);
                 post.Hobbys = hobbies.ToList();
                 post.Pictures = pictures;
@@ -82,7 +83,13 @@ namespace Service.Services
                 var posts = _postRespository.GetAllPostByHobbyId(hobbyId);
                 foreach(var post in posts)
                 {
-                    result.Add(_mapper.Map<PostDTO>(post));
+                    HashSet<HobbyForPostDTO> hobbies = new HashSet<HobbyForPostDTO>();
+                    foreach (var hobby in post.PostHobbies)
+                        hobbies.Add(_mapper.Map<HobbyForPostDTO>(hobby));
+
+                    PostDTO postResult = _mapper.Map<PostDTO>(post);
+                    postResult.Hobbys = hobbies.ToList();
+                    result.Add(postResult);
                 }
             }
             return result;
