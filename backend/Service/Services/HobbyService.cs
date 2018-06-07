@@ -88,7 +88,7 @@ namespace Service.Services
 
         public List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list) {
             try {
-                var resultDb = _hobbyRepository.GetAllHobbiesForAccountId(ClaimsMethods.GetIdFromClaim(list)); H
+                var resultDb = _hobbyRepository.GetAllHobbiesForAccountId(ClaimsMethods.GetIdFromClaim(list)); 
                 List<HobbyToList> results = new List<HobbyToList>();
                 foreach (var obj in resultDb)
                     results.Add(_mapper.Map<HobbyToList>(obj));
