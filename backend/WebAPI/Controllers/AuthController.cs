@@ -85,8 +85,13 @@ namespace WebAPI.Controllers
         [Authorize]
         [HttpPost("changePasswd")]
         public IActionResult ChangePassword([FromBody] PasswordEdit passwordEdit) {
-            if (passwordEdit == null || !_authService.ChangePasswd(passwordEdit, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+            if (passwordEdit == null)
                 return BadRequest();
+            else if (!_authService.CheckOldPasswd(passwordEdit.OldPassword,
+                ClaimsMethods.GetIdFromClaim(ClaimsMethods.GetClaimsList(HttpContext.User.Claims))))
+                return BadRequest("Stare hasło nie jest poprawne");
+            else if (!_authService.ChangePasswd(passwordEdit, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return BadRequest("Nie można zmienić hasła. Spróbuj ponownie później");
             return Ok();
         }
     }
