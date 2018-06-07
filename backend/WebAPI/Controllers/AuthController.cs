@@ -85,7 +85,7 @@ namespace WebAPI.Controllers
         [Authorize]
         [HttpPost("changePasswd")]
         public IActionResult ChangePassword([FromBody] PasswordEdit passwordEdit) {
-            if (passwordEdit == null || !_authService.ChangePasswd(passwordEdit))
+            if (passwordEdit == null || !_authService.ChangePasswd(passwordEdit, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
                 return BadRequest();
             return Ok();
         }
