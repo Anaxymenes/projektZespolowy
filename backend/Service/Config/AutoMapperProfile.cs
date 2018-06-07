@@ -276,6 +276,21 @@ namespace Service.Config
                 .ForMember(dest => dest.PostId,
                 opt => opt.MapFrom(src => src.PostId))
                 ;
+            CreateMap<Hobby, HobbyInformation>()
+                .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description,
+                opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Logo,
+                opt => opt.MapFrom(src => src.Logo))
+                .ForMember(dest => dest.Color,
+                opt => opt.MapFrom(src => src.Color))
+                .ForMember(dest => dest.AdministratorId,
+                opt => opt.MapFrom(src => src.AdministratorId))
+                ;
+
         }
     }
 }
