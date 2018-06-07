@@ -123,6 +123,8 @@ namespace Service.Config
                 ;
 
             CreateMap<Post, PostDTO>()
+                .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Content,
                 opt => opt.MapFrom(src => src.Content))
                 .ForMember(dest => dest.Date,
@@ -131,18 +133,8 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
                 .ForMember(dest => dest.AuthorId,
                 opt => opt.MapFrom(src => src.AuthorId))
-                //.ForMember(dest => dest.Hobbys,
-                //opt => opt.Ignore())
-                //.AfterMap((src, dest) =>
-                //{
-                //    List<HobbyForPostDTO> l = new List<HobbyForPostDTO>();
-                //    foreach (var a in src.PostHobbies)
-                //    {
-                //        l.Add(_mapper.Map<HobbyForPostDTO>(a));
-                //    }
-
-                //    dest.Hobbys = l;
-                //})
+                .ForMember(dest => dest.AuthorAvatar,
+                opt => opt.MapFrom(src => src.Author.AccountDetails.Avatar))
                 .ForMember(dest => dest.Pictures,
                 opt => opt.Ignore())
                 .AfterMap((src, dest) =>
