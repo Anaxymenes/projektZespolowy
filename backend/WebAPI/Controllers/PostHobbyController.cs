@@ -38,5 +38,13 @@ namespace WebAPI.Controllers
         public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
             return _postHobbyService.GetAllPostsByHobbyId(hobbyId);
         }
+
+        [Authorize]
+        [HttpGet("findUserHobbyPosts")]
+        public List<PostDTO> GetAllPostsByUserHobbys()
+        {
+            return _postHobbyService.GetAllPostsByUserHobbys(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+        }
+
     }
 }

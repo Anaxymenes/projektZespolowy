@@ -10,5 +10,6 @@ namespace Service.Interfaces
         List<PostHobby> GetAll();
         List<PostDTO> GetAllPostsByHobbyId(int hobbyId);
         void CreatePostHobby(PostAdd postAdd, List<ClaimDTO> list);
+        List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> list);
     }
 }

@@ -67,11 +67,10 @@ namespace Service.Services
             //return results;
             return _postService.GetAllPostsByHobbyId(hobbyId);
         }
-        /*
-        List<PostHobby> IPostHobbyService.GetAllPostsByHobbyId(int id)
+
+        public List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> claimsList)
         {
-            throw new NotImplementedException();
+            return _postService.GetAllPostsByUserHobbys(claimsList);
         }
-        */
     }
 }

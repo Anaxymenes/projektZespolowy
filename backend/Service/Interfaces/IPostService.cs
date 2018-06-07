@@ -15,5 +15,6 @@ namespace Service.Interfaces
         PostDTO GetPost(int id);
         List<Post> GetPosts();
         List<PostDTO> GetAllPostsByHobbyId(int hobbyId);
+        List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> claimsList);
     }
 }

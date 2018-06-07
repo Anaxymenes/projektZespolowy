@@ -13,12 +13,15 @@ namespace Service.Services
     public class PostService : IPostService
     {
         private readonly IPostRepository _postRespository;
+        private readonly IHobbyRepository _hobbyRepository;
         private readonly IMapper _mapper;
 
         public PostService(IPostRepository postRespository,
+                           IHobbyRepository hobbyRepository,
                            IMapper mapper)
         {
             _postRespository = postRespository;
+            _hobbyRepository = hobbyRepository;
             _mapper = mapper;
         }
         
@@ -62,6 +65,27 @@ namespace Service.Services
             }
                 
             return resultList;
+        }
+
+        public List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> claimsList)
+        {
+            int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            IQueryable<Hobby> userHobbys = _hobbyRepository.GetAllHobbiesForAccountId(userId);
+            List<int> hobbysId = new List<int>();
+            foreach(var hobby in userHobbys)
+            {
+                hobbysId.Add(hobby.Id);
+            }
+            List<PostDTO> result = new List<PostDTO>();
+            foreach(var hobbyId in hobbysId)
+            {
+                var posts = _postRespository.GetAllPostByHobbyId(hobbyId);
+                foreach(var post in posts)
+                {
+                    result.Add(_mapper.Map<PostDTO>(post));
+                }
+            }
+            return result;
         }
 
         public PostDTO GetPost(int id)
