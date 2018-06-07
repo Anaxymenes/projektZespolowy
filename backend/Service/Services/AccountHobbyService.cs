@@ -25,7 +25,20 @@ namespace Service.Services
                 AccountId = authorId,
                 HobbyId = hobbyId
             };
-            if (_accountHobbyRepository.JoinToGroup(accountHobby) != null)
+            if (_accountHobbyRepository.JoinToGroup(accountHobby))
+                return true;
+            return false;
+        }
+
+        public bool leaveGroup(int hobbyId, List<ClaimDTO> claimsList)
+        {
+            int authorId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            AccountHobby accountHobby = new AccountHobby()
+            {
+                AccountId = authorId,
+                HobbyId = hobbyId
+            };
+            if (_accountHobbyRepository.leaveGroup(accountHobby))
                 return true;
             return false;
         }

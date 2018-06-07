@@ -17,24 +17,46 @@ namespace Repository.Repositories
         }
 
         
-        public AccountHobby JoinToGroup(AccountHobby accountHobby)
+        public bool JoinToGroup(AccountHobby accountHobby)
         {
             try
             {
                 if (_context.AccountHobby.Any(x => x.AccountId == accountHobby.AccountId && x.HobbyId == accountHobby.HobbyId))
                 {
-                    return null; 
+                    return false; 
                 }
                 else
                 {
                     _context.Add(accountHobby);
                     _context.SaveChanges();
-                    return _context.AccountHobby.Last();
+                    return true;
                 }
             }
             catch (Exception e)
             {
-                return null;
+                return false;
+            }
+        }
+
+        public bool leaveGroup(AccountHobby accountHobby)
+        {
+            try
+            {
+                if (_context.AccountHobby.Any(x => x.AccountId == accountHobby.AccountId && x.HobbyId == accountHobby.HobbyId))
+                {
+                    var temp = _context.AccountHobby.First(x => x.HobbyId == accountHobby.HobbyId && x.AccountId == accountHobby.AccountId);
+                    _context.Remove(temp);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
 
@@ -62,5 +84,6 @@ namespace Repository.Repositories
         {
             throw new NotImplementedException();
         }
+
     }
 }

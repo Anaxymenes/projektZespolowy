@@ -58,6 +58,15 @@ namespace WebAPI.Controllers
             return BadRequest("Coś poszło nie tak.");
         }
 
+        [Authorize]
+        [HttpPost("leaveGroup")]
+        public IActionResult leaveGroup(int hobbyId)
+        {
+            if (_accountHobbyService.leaveGroup(hobbyId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok();
+            return BadRequest("Coś poszło nie tak.");
+        }
+
         [HttpGet("getUserPosts")]
         public IActionResult GetUserPostByAuthorId(int authorId) {
             var result = _postHobbyService.GetAllPostByAuthorId(authorId);

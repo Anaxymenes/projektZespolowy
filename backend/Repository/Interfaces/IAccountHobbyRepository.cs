@@ -7,6 +7,7 @@ namespace Repository.Interfaces
 {
     public interface IAccountHobbyRepository : IRepository<AccountHobby>
     {
-        AccountHobby JoinToGroup(AccountHobby accountHobby);
+        bool JoinToGroup(AccountHobby accountHobby);
+        bool leaveGroup(AccountHobby accountHobby);
     }
 }
