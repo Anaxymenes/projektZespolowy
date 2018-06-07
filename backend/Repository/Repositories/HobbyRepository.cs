@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
@@ -60,6 +61,11 @@ namespace Repository.Repositories
 
         public IQueryable<Hobby> GetAll() {
             return _context.Hobby.AsQueryable();
+        }
+
+        public IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId) {
+            var hobbyId = _context.AccountHobby.Where(x => x.AccountId == accountId).Select(z => z.HobbyId).ToHashSet();
+            return _context.Hobby.Where(x => hobbyId.Contains(x.Id)).AsQueryable();
         }
 
         public Hobby GetHobby(int id)

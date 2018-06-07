@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
 
         [Authorize]
         [HttpGet("getAllMyHobbies")]
-        public async Task<IActionResult> GetAllHobbiesByAccountId() {
+        public IActionResult GetAllHobbiesByAccountId() {
             var result = _hobbyService.GetAllHobbiesByAccountId(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
             if (result == null)
                 return BadRequest();

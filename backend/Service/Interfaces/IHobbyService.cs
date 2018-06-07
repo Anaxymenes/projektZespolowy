@@ -17,6 +17,6 @@ namespace Service.Interfaces
         bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> list);
         HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> list);
         Task<string> UploadFile(IFormFile file);
-        Task<List<HobbyToList>> GetAllHobbiesByAccountId(List<ClaimDTO> list);
+        List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list);
     }
 }

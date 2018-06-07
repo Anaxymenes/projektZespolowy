@@ -86,8 +86,16 @@ namespace Service.Services
             return null;
         }
 
-        public async Task<List<HobbyToList>> GetAllHobbiesByAccountId(List<ClaimDTO> list) {
-            
+        public List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list) {
+            try {
+                var resultDb = _hobbyRepository.GetAllHobbiesForAccountId(ClaimsMethods.GetIdFromClaim(list)); H
+                List<HobbyToList> results = new List<HobbyToList>();
+                foreach (var obj in resultDb)
+                    results.Add(_mapper.Map<HobbyToList>(obj));
+                return results;
+            }catch (Exception e) {
+                return null;
+            }
         }
     }
 }
