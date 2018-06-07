@@ -26,8 +26,12 @@ namespace WebAPI.Controllers
             return _hobbyService.GetAll();
         }
         [HttpGet("getall/{countOfItem}/{page}")]
-        public List<HobbyInformation> GetAllPagination(int countOfItem, int page) {
-            return _hobbyService.GetAllPagination(countOfItem, page);
+        public IActionResult GetAllPagination(int countOfItem, int page) {
+            try {
+                return Ok(_hobbyService.GetAllPagination(countOfItem, page));
+            }catch(Exception e) {
+                return BadRequest();
+            }
         }
 
         [HttpGet("get")]
