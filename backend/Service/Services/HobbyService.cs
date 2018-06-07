@@ -58,7 +58,8 @@ namespace Service.Services
 
                 var hobby = _mapper.Map<Hobby>(hobbyDTO);
                 hobby.AdministratorId = administratorId;
-                
+            if (hobbyDTO.Logo == null || hobbyDTO.Logo == "")
+                hobby.Logo = "/img/hobby/defaultHobby.png";
                 if (_hobbyRepository.Add(hobby))
                     return true;
             return false;
