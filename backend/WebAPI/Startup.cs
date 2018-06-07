@@ -96,6 +96,9 @@ namespace WebAPI
             services.AddScoped<IPictureService, PictureService>();
             services.AddScoped<IPictureRepository, PictureRepository>();
 
+            services.AddScoped<IConversationRepository, ConversationRepository>();
+            services.AddScoped<IConversationService, ConversationService>();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //Token Param
