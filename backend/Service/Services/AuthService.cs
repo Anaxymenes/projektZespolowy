@@ -68,7 +68,8 @@ namespace Service.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString(),"Id"),
                 new Claim(ClaimTypes.Email,user.Email,"Email"),
                 new Claim(ClaimTypes.Name, user.FirstName+" " + user.LastName,"FirstName"),
-                new Claim(ClaimTypes.Role, user.Role, "Role")
+                new Claim(ClaimTypes.Role, user.Role, "Role"),
+                new Claim(ClaimTypes.Uri, user.Avatar, "Avatar")
             };
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(issuer: Configuration["JWT:issuer"],
