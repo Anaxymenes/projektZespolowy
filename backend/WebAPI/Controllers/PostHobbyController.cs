@@ -58,5 +58,13 @@ namespace WebAPI.Controllers
             return BadRequest("Coś poszło nie tak.");
         }
 
+        [HttpGet("getUserPosts")]
+        public IActionResult GetUserPostByAuthorId(int authorId) {
+            var result = _postHobbyService.GetAllPostByAuthorId(authorId);
+            if (result == null)
+                return BadRequest();
+            return Ok(result);
+        }
+
     }
 }

@@ -72,5 +72,9 @@ namespace Service.Services
         {
             return _postService.GetAllPostsByUserHobbys(claimsList);
         }
+
+        public List<PostDTO> GetAllPostByAuthorId(int authorId) {
+            return _postService.GetAllPostByAuthorId(authorId);
+        }
     }
 }
