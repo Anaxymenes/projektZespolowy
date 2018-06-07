@@ -57,7 +57,7 @@ namespace Service.Services
                     }
                     );
             }
-            _pictureService.AddPictures(postAdd, post);
+            _pictureService.Add(postAdd, post);
         }
 
         public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {

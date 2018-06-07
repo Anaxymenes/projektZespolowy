@@ -8,5 +8,6 @@ namespace Service.Interfaces
 {
     public interface IPictureService {
         bool AddPictures(PostAdd postAdd, Post post);
+        Picture Add(PostAdd postAdd, Post post);
     }
 }

@@ -15,12 +15,19 @@ namespace Repository.Repositories
         }
 
         public Picture Add(Picture entity) {
-            throw new NotImplementedException();
+            try {
+                _context.Picture.Add(entity);
+                _context.SaveChanges();
+                return _context.Picture.Last();
+            }catch(Exception e) {
+                return null;
+            }
         }
 
         public bool AddAll(List<Picture> entities) {
             try {
                 _context.Picture.AddRange(entities);
+                _context.SaveChanges();
                 return true;
             }catch(Exception e) {
                 return false;

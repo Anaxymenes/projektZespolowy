@@ -99,6 +99,8 @@ namespace WebAPI
             services.AddScoped<IConversationRepository, ConversationRepository>();
             services.AddScoped<IConversationService, ConversationService>();
 
+            services.AddScoped<ISearchService, SearchService>();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //Token Param

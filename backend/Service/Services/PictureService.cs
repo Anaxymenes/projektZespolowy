@@ -15,13 +15,24 @@ namespace Service.Services
             this._pictureRepository = pictureRepository;
         }
 
-        public bool AddPictures(PostAdd postAdd, Post post) {
-            if (postAdd.Pictures == null || postAdd.Pictures.Count == 0)
-                return true;
-            List<Picture> pictureList = new List<Picture>();
-            foreach (var picture in postAdd.Pictures)
-                pictureList.Add(new Picture { Path = picture, PostId = post.Id });
-            return _pictureRepository.AddAll(pictureList);
+        public Picture Add(PostAdd postAdd, Post post) {
+            if (postAdd.Picture == null || postAdd.Picture == "")
+                return null;
+            Picture picture = new Picture (){ Path = postAdd.Picture, PostId = post.Id };
+            return _pictureRepository.Add(picture);
         }
+
+        public bool AddPictures(PostAdd postAdd, Post post) {
+            throw new NotImplementedException();
+        }
+
+        //public bool AddPictures(PostAdd postAdd, Post post) {
+        //    if (postAdd.Pictures == null || postAdd.Pictures.Count == 0)
+        //        return true;
+        //    List<Picture> pictureList = new List<Picture>();
+        //    foreach (var picture in postAdd.Pictures)
+        //        pictureList.Add(new Picture { Path = picture, PostId = post.Id });
+        //    return _pictureRepository.AddAll(pictureList);
+        //}
     }
 }
