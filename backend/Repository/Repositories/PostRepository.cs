@@ -69,5 +69,21 @@ namespace Repository.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public IQueryable<Post> GetAllPostByAuthorId(int authorId) {
+            if (!_context.Post.Any())
+                return null;
+            return _context.Post.Where(x=>x.AuthorId == authorId)
+                .Include(x => x.Author)
+                    .ThenInclude(x => x.AccountDetails)
+                .Include(x => x.PostHobbies)
+                    .ThenInclude(x => x.Hobby)
+                .Include(x => x.PostType)
+                .Include(x => x.EventDetalis)
+                .Include(x => x.Pictures)
+                .Include(x => x.Comments)
+                    .ThenInclude(x => x.Author)
+                        .ThenInclude(x => x.AccountDetails);
+        }
     }
 }

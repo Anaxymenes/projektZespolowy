@@ -41,27 +41,29 @@ namespace Service.Services
             _postRespository.Delete(id);
         }
 
+        public List<PostDTO> GetAllPostByAuthorId(int authorId) {
+            try {
+                List<PostDTO> results = new List<PostDTO>();
+                foreach (var result in _postRespository.GetAllPostByAuthorId(authorId)) {
+                    PostDTO post = _mapper.Map<PostDTO>(result);
+                    post.Hobbys = this.GetAllHobbyForPostDTOFromPost(result);
+                    post.Pictures = this.GetAllPicturesForPostDTO(result);
+                    results.Add(post);
+                }
+                return results;
+            }catch (Exception e) {
+                return null;
+            }
+        }
+
         public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
             var resultDb = _postRespository.GetAllPostByHobbyId(hobbyId);
             List<PostDTO> resultList = new List<PostDTO>();
             
             foreach (var result in resultDb) {
-                HashSet<HobbyForPostDTO> hobbies = new HashSet<HobbyForPostDTO>();
-                foreach (var hobby in result.PostHobbies)
-                    //hobbies.Add(new HobbyForPostDTO {
-                    //    Color = hobby.Hobby.Color,
-                    //    Name = hobby.Hobby.Name,
-                    //    Id = hobby.Hobby.Id
-                    //});
-                    hobbies.Add(_mapper.Map<HobbyForPostDTO>(hobby));
-                List<string> pictures = new List<string>();
-                if (result.Pictures != null)
-                    foreach (var picture in result.Pictures)
-                        pictures.Add(picture.Path);
-
                 PostDTO post = _mapper.Map<PostDTO>(result);
-                post.Hobbys = hobbies.ToList();
-                post.Pictures = pictures;
+                post.Hobbys = this.GetAllHobbyForPostDTOFromPost(result);
+                post.Pictures = this.GetAllPicturesForPostDTO(result);
                 resultList.Add(post);
             }
                 
@@ -83,12 +85,9 @@ namespace Service.Services
                 var posts = _postRespository.GetAllPostByHobbyId(hobbyId);
                 foreach(var post in posts)
                 {
-                    HashSet<HobbyForPostDTO> hobbies = new HashSet<HobbyForPostDTO>();
-                    foreach (var hobby in post.PostHobbies)
-                        hobbies.Add(_mapper.Map<HobbyForPostDTO>(hobby));
-
                     PostDTO postResult = _mapper.Map<PostDTO>(post);
-                    postResult.Hobbys = hobbies.ToList();
+                    postResult.Hobbys = this.GetAllHobbyForPostDTOFromPost(post);
+                    postResult.Pictures = this.GetAllPicturesForPostDTO(post);
                     result.Add(postResult);
                 }
             }
@@ -113,6 +112,21 @@ namespace Service.Services
         public void Test(Post post)
         {
             _postRespository.Add(post);
+        }
+
+        protected List<HobbyForPostDTO> GetAllHobbyForPostDTOFromPost(Post post) {
+            HashSet<HobbyForPostDTO> hobbies = new HashSet<HobbyForPostDTO>();
+            foreach (var hobby in post.PostHobbies)
+                hobbies.Add(_mapper.Map<HobbyForPostDTO>(hobby));
+            return hobbies.ToList();
+        }
+
+        protected List<string> GetAllPicturesForPostDTO (Post post) {
+            List<string> pictures = new List<string>();
+            if (post.Pictures != null)
+                foreach (var picture in post.Pictures)
+                    pictures.Add(picture.Path);
+            return pictures;
         }
     }
 }
