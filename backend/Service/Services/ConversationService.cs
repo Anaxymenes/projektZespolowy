@@ -61,7 +61,8 @@ namespace Service.Services
         public List<MessageDTO> ShowConversation(int secondUserId, List<ClaimDTO> claimsList)
         {
             int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
-            var messages = _conversationRepository.ReturnConversationMessages(userId, secondUserId);
+            var conversationId = _conversationRepository.FindConversation(userId, secondUserId).Id;
+            var messages = _conversationRepository.ReturnConversationMessages(conversationId);
             if (messages != null)
             {
                 List<MessageDTO> result = new List<MessageDTO>();
@@ -71,6 +72,32 @@ namespace Service.Services
                 }
 
                 List<MessageDTO> sortedResult = result.OrderBy(d => d.Date).ToList();
+                return sortedResult;
+            }
+            return null;
+        }
+
+        public List<ConversationDTO> ShowConversationsList(List<ClaimDTO> claimsList)
+        {
+            int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            var conversations = _conversationRepository.ReturnUserConversations(userId);
+            if (conversations != null)
+            {
+                List<ConversationDTO> result = new List<ConversationDTO>();
+                foreach (var conversation in conversations)
+                {
+                    var conv = _mapper.Map<ConversationDTO>(conversation);
+
+                    List<MessageDTO> messageList = new List<MessageDTO>();
+                    var messages = _conversationRepository.ReturnConversationMessages(conversation.Id).ToList();
+                    foreach(var message in messages) {
+                        messageList.Add(_mapper.Map<MessageDTO>(message));
+                    }
+                    conv.Messages = messageList;
+                    result.Add(conv);
+                }
+
+                List<ConversationDTO> sortedResult = result.OrderByDescending(d => d.StartDate).ToList();
                 return sortedResult;
             }
             return null;

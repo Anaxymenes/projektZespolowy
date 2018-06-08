@@ -311,7 +311,16 @@ namespace Service.Config
                 .ForMember(dest => dest.Author,
                 opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
                 ;
-
+            CreateMap<Conversation, ConversationDTO>()
+                .ForMember(dest => dest.StartDate,
+                opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.SecondUserId,
+                opt => opt.MapFrom(src => src.SecondUserId))
+                .ForMember(dest => dest.SecondUser,
+                opt => opt.MapFrom(src => src.SecondUser.AccountDetails.Name + " " + src.SecondUser.AccountDetails.LastName))
+                ;
         }
     }
 }

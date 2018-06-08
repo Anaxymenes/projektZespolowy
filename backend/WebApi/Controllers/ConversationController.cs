@@ -1,4 +1,5 @@
-﻿using Data.DTO;
+﻿using Data.DBModel;
+using Data.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
@@ -51,6 +52,19 @@ namespace WebAPI.Controllers
         public List<MessageDTO> ShowConversation(int secondUserId)
         {
             var result = _converationService.ShowConversation(secondUserId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result != null)
+            {
+                return result;
+            }
+            else
+                return null;
+        }
+
+        [Authorize]
+        [HttpGet("my conversations")]
+        public List<ConversationDTO> ShowConversationsList()
+        {
+            var result = _converationService.ShowConversationsList(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
             if (result != null)
             {
                 return result;

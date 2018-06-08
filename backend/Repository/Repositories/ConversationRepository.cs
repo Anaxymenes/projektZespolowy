@@ -90,13 +90,28 @@ namespace Repository.Repositories
             }
         }
 
-        public IQueryable<Message> ReturnConversationMessages(int userId, int secondUserId)
+        public IQueryable<Message> ReturnConversationMessages(int conversationId)
         {
-            var conversationId = FindConversation(userId, secondUserId).Id;
             return _context.Message.AsQueryable().Where(x => x.ConversationId == conversationId)
                 .Include(a => a.Author)
                     .ThenInclude(aD => aD.AccountDetails);
+        }
+        
+
+        public IQueryable<Conversation> ReturnUserConversations(int userId)
+        {
+            var result = _context.Conversation.AsQueryable().Where(x => x.FirstUserId == userId || x.SecondUserId == userId)
+                .Include(s => s.SecondUser)
+                    .ThenInclude(a => a.AccountDetails);
+            foreach(var conversation in result)
+            {
+                if (conversation.SecondUserId == userId)
+                {
+                    conversation.SecondUser = conversation.FirstUser;
+                }
             }
+            return result;
+        }
 
         public Message SendMessage(int userId, int conversationId, string content)
         {

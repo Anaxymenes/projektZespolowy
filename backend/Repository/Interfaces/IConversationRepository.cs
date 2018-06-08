@@ -14,6 +14,7 @@ namespace Repository.Interfaces
         Conversation CreateConversation(int userId, int secondUserId);
         bool DeleteMessage(int messageId, int authorId);
         bool DeleteConversation(int conversationId, int authorId);
-        IQueryable<Message> ReturnConversationMessages(int userId, int secondUserId);
+        IQueryable<Message> ReturnConversationMessages(int conversationId);
+        IQueryable<Conversation> ReturnUserConversations(int userId);
     }
 }
