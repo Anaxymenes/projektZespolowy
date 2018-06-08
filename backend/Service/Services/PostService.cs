@@ -91,7 +91,8 @@ namespace Service.Services
                     result.Add(postResult);
                 }
             }
-            return result;
+            List<PostDTO> sortedResult = result.OrderByDescending(o => o.Date).ToList();
+            return sortedResult;
         }
 
         public PostDTO GetPost(int id)
