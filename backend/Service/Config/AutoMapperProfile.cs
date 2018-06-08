@@ -149,15 +149,29 @@ namespace Service.Config
                         dest.Pictures = l;
                     }
                 })
-                //.ForMember(dest => dest.Event,
-                //opt => opt.Ignore())
-                //.AfterMap((src, dest) =>
-                //{
-                //    if (src.EventDetalis != null)
-                //    {
-                //        dest.Event = _mapper.Map<EventDTO>(src.EventDetalis);
-                //    }
-                //})          
+                .ForMember(dest => dest.Comments,
+                opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                {
+                    if(src.Comments!=null && src.Comments.Count > 0)
+                    {
+                        List<CommentDTO> l = new List<CommentDTO>();
+
+                        foreach(var comment in src.Comments)
+                        {
+                            var com = new CommentDTO()
+                            {
+                                AuthorId = src.AuthorId,
+                                Content = src.Content,
+                                Date = src.Date,
+                                PostId = src.Id
+                            };
+                            l.Add(com);
+                        }
+
+                        dest.Comments = l;
+                    }
+                })
                 ;
 
             // .BeforeMap((src, dest) => eventDTO = _mapper.Map<EventDTO>(src.EventDetalis))
@@ -185,6 +199,7 @@ namespace Service.Config
             //     }
             // })
             // ;
+
 
             CreateMap<PostDTO, Post>()
                 .ForMember(dest => dest.Date,

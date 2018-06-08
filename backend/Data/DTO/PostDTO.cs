@@ -14,6 +14,7 @@ namespace Data.DTO
         public int AuthorId { get; set; }
         public string AuthorAvatar { get; set; }
         public List<HobbyForPostDTO> Hobbys { get; set; }
+        public List<CommentDTO> Comments { get; set; }
         public List<string> Pictures { get; set; }
         public EventDTO Event { get; set; }    
     }
