@@ -60,15 +60,26 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
-        public IQueryable<Hobby> GetAll() {
-            return _context.Hobby.AsQueryable();
-        }
-
         public IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId) {
             var hobbyId = _context.AccountHobby.Where(x => x.AccountId == accountId).Select(z => z.HobbyId).ToHashSet();
             return _context.Hobby.Where(x => hobbyId.Contains(x.Id)).AsQueryable()
                     .Include(x => x.AccountHobbies);
 
+        }
+
+        public IQueryable<Hobby> GetAll()
+        {
+            try
+            {
+                return _context.Hobby
+                    .Include(x => x.Administrator)
+                        .ThenInclude(x => x.AccountDetails)
+                    .Include(x => x.AccountHobbies);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IQueryable<Hobby> GetAllWithPagination(int countOfItem, int page) {

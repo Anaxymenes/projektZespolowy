@@ -22,8 +22,15 @@ namespace WebAPI.Controllers
            _hobbyService = hobbyService;
         }
         [HttpGet("getall")]
-        public List<Hobby> GetAll() {
-            return _hobbyService.GetAll();
+        public IActionResult GetAll() {
+            try
+            {
+                return Ok(_hobbyService.GetAll(ClaimsMethods.GetClaimsList(User.Claims)));
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
         [HttpGet("getall/{countOfItem}/{page}")]
         public IActionResult GetAllPagination(int countOfItem, int page) {

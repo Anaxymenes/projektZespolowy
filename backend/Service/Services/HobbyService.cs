@@ -27,9 +27,6 @@ namespace Service.Services
             _mapper = mapper;
         }
 
-        public List<Hobby> GetAll() {
-            return _hobbyRepository.GetAll().ToList();
-        }
 
         public Hobby Get(int id)
         {
@@ -98,6 +95,38 @@ namespace Service.Services
                 }
                 return results;
             }catch (Exception e) {
+                return null;
+            }
+        }
+
+        public List<HobbyInformation> GetAll(List<ClaimDTO> claimsList)
+        {
+            try
+            {
+                int accountId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+                List<HobbyInformation> result = new List<HobbyInformation>();
+                foreach (var obj in _hobbyRepository.GetAll())
+                {
+                    var temp = new HobbyInformation
+                    {
+                        Administator = obj.Administrator.AccountDetails.Name + " " + obj.Administrator.AccountDetails.LastName,
+                        AdministratorId = obj.AdministratorId,
+                        Name = obj.Name,
+                        Color = obj.Color,
+                        Description = obj.Description,
+                        Id = obj.Id,
+                        Logo = obj.Logo
+                    };
+                    if (obj.AccountHobbies.Any(x => x.AccountId == accountId))
+                        temp.Belong = true;
+                    else
+                        temp.Belong = false;
+                    result.Add(temp);
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
                 return null;
             }
         }

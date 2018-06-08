@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace Service.Interfaces
 {
     public interface IHobbyService {
-        List<Hobby> GetAll();
         void Delete(int id, int accountId);
         Hobby Get(int id);
         bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> list);
@@ -19,5 +18,6 @@ namespace Service.Interfaces
         Task<string> UploadFile(IFormFile file);
         List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list);
         List<HobbyInformation> GetAllPagination(int countOfItem, int page, List<ClaimDTO> list);
+        List<HobbyInformation> GetAll(List<ClaimDTO> list);
     }
 }
