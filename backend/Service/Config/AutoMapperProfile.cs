@@ -297,6 +297,20 @@ namespace Service.Config
                 .ForMember(dest => dest.AdministratorId,
                 opt => opt.MapFrom(src => src.AdministratorId))
                 ;
+            CreateMap<Message, MessageDTO>()
+                .ForMember(dest => dest.MessageId,
+                opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Date,
+                opt => opt.MapFrom(src => src.Date))
+                .ForMember(dest => dest.Content,
+                opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.ConversationId,
+                opt => opt.MapFrom(src => src.ConversationId))
+                .ForMember(dest => dest.AuthorId,
+                opt => opt.MapFrom(src => src.AuthorId))
+                .ForMember(dest => dest.Author,
+                opt => opt.MapFrom(src => src.Author.AccountDetails.Name + " " + src.Author.AccountDetails.LastName))
+                ;
 
         }
     }

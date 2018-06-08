@@ -1,5 +1,6 @@
 ﻿using Data.DBModel;
 using Data.DTO;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -80,7 +81,7 @@ namespace Repository.Repositories
         {
             try
             {
-                var conversation = _context.Conversation.First(x => ((x.FirstUser.Id == userId || x.FirstUser.Id == secondUserId) && (x.SecondUser.Id == userId || x.SecondUser.Id == secondUserId)));
+                var conversation = _context.Conversation.First(x => ((x.FirstUser.Id == userId && x.SecondUser.Id == secondUserId) || (x.FirstUser.Id == secondUserId && x.SecondUser.Id == userId)));
                 return conversation;
             }
             catch
@@ -88,6 +89,14 @@ namespace Repository.Repositories
                 return null;
             }
         }
+
+        public IQueryable<Message> ReturnConversationMessages(int userId, int secondUserId)
+        {
+            var conversationId = FindConversation(userId, secondUserId).Id;
+            return _context.Message.AsQueryable().Where(x => x.ConversationId == conversationId)
+                .Include(a => a.Author)
+                    .ThenInclude(aD => aD.AccountDetails);
+            }
 
         public Message SendMessage(int userId, int conversationId, string content)
         {

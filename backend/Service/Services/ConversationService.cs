@@ -1,9 +1,11 @@
-﻿using Data.DBModel;
+﻿using AutoMapper;
+using Data.DBModel;
 using Data.DTO;
 using Repository.Interfaces;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Service.Services
@@ -11,10 +13,13 @@ namespace Service.Services
     public class ConversationService : IConversationService
     {
         private readonly IConversationRepository _conversationRepository;
+        private readonly IMapper _mapper;
 
-        public ConversationService(IConversationRepository conversationRepository)
+        public ConversationService(IConversationRepository conversationRepository,
+                                   IMapper mapper)
         {
             _conversationRepository = conversationRepository;
+            _mapper = mapper;
         }
 
         public bool DeleteConversation(int conversationId, List<ClaimDTO> claimsList)
@@ -51,6 +56,24 @@ namespace Service.Services
                     return true;
                 return false;
             }
+        }
+
+        public List<MessageDTO> ShowConversation(int secondUserId, List<ClaimDTO> claimsList)
+        {
+            int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            var messages = _conversationRepository.ReturnConversationMessages(userId, secondUserId);
+            if (messages != null)
+            {
+                List<MessageDTO> result = new List<MessageDTO>();
+                foreach (var message in messages)
+                {
+                    result.Add(_mapper.Map<MessageDTO>(message));
+                }
+
+                List<MessageDTO> sortedResult = result.OrderBy(d => d.Date).ToList();
+                return sortedResult;
+            }
+            return null;
         }
     }
 }

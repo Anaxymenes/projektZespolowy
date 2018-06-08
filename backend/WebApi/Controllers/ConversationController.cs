@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Data.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System;
@@ -43,6 +44,19 @@ namespace WebAPI.Controllers
             if (_converationService.DeleteConversation(conversationId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
                 return Ok("Konwersacja została usunięta.");
             return BadRequest("Nie udało się usunąć wiadomości.");
+        }
+
+        [Authorize]
+        [HttpGet("show conversation")]
+        public List<MessageDTO> ShowConversation(int secondUserId)
+        {
+            var result = _converationService.ShowConversation(secondUserId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result != null)
+            {
+                return result;
+            }
+            else
+                return null;
         }
     }
 }

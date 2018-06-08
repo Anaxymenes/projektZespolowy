@@ -2,6 +2,7 @@
 using Data.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Repository.Interfaces
@@ -13,5 +14,6 @@ namespace Repository.Interfaces
         Conversation CreateConversation(int userId, int secondUserId);
         bool DeleteMessage(int messageId, int authorId);
         bool DeleteConversation(int conversationId, int authorId);
+        IQueryable<Message> ReturnConversationMessages(int userId, int secondUserId);
     }
 }
