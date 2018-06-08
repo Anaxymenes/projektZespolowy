@@ -21,6 +21,8 @@ namespace WebAPI.Controllers
         public HobbyController(IHobbyService hobbyService) {
            _hobbyService = hobbyService;
         }
+
+        [Authorize]
         [HttpGet("getall")]
         public IActionResult GetAll() {
             try
