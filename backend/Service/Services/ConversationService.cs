@@ -38,6 +38,20 @@ namespace Service.Services
             return false;
         }
 
+        public bool RenameConversation(string newName, int conversationId, List<ClaimDTO> claimsList)
+        {
+            int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            var conversation = _conversationRepository.FindConversationById(conversationId);
+            if(conversation.FirstUserId == userId || conversation.SecondUserId == userId)
+            {
+                conversation.Name = newName;
+                if(_conversationRepository.RenameConversation(conversation))
+                    return true;
+                return false;
+            }
+            return false;
+        }
+
         public bool SendMessage(string content, int secondUserId, List<ClaimDTO> claimsList)
         {
             int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);

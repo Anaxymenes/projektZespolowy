@@ -90,6 +90,33 @@ namespace Repository.Repositories
             }
         }
 
+        public Conversation FindConversationById(int conversationId)
+        {
+            try
+            {
+                var conversation = _context.Conversation.First(x => x.Id == conversationId);
+                return conversation;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool RenameConversation(Conversation conversation)
+        {
+            try
+            {
+                _context.Update(conversation);
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public IQueryable<Message> ReturnConversationMessages(int conversationId)
         {
             return _context.Message.AsQueryable().Where(x => x.ConversationId == conversationId)
@@ -97,7 +124,6 @@ namespace Repository.Repositories
                     .ThenInclude(aD => aD.AccountDetails);
         }
         
-
         public IQueryable<Conversation> ReturnUserConversations(int userId)
         {
             var result = _context.Conversation.AsQueryable().Where(x => x.FirstUserId == userId || x.SecondUserId == userId)

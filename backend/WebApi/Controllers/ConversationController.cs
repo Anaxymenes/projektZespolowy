@@ -19,34 +19,7 @@ namespace WebAPI.Controllers
         {
             _converationService = converationService;
         }
-
-        [Authorize]
-        [HttpPost("send message")]
-        public IActionResult SendMessage(string content, int secondUserId)
-        {
-            if(_converationService.SendMessage(content, secondUserId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
-                 return Ok("Wysłano pomyślnie.");
-            return BadRequest("Nie udało się wysłać wiadomości.");
-        }
-
-        [Authorize]
-        [HttpDelete("delete message")]
-        public IActionResult DeleteMessage(int messageId)
-        {
-            if(_converationService.DeleteMessage(messageId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
-                return Ok("Wiadomość została usunięta.");
-            return BadRequest("Nie udało się usunąć wiadomości.");
-        }
         
-        [Authorize]
-        [HttpDelete("delete conversation")]
-        public IActionResult DeleteConversation(int conversationId)
-        {
-            if (_converationService.DeleteConversation(conversationId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
-                return Ok("Konwersacja została usunięta.");
-            return BadRequest("Nie udało się usunąć wiadomości.");
-        }
-
         [Authorize]
         [HttpGet("show conversation")]
         public List<MessageDTO> ShowConversation(int secondUserId)
@@ -71,6 +44,42 @@ namespace WebAPI.Controllers
             }
             else
                 return null;
+        }
+        
+        [Authorize]
+        [HttpPost("send message")]
+        public IActionResult SendMessage(string content, int secondUserId)
+        {
+            if(_converationService.SendMessage(content, secondUserId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                 return Ok("Wysłano pomyślnie.");
+            return BadRequest("Nie udało się wysłać wiadomości.");
+        }
+
+        [Authorize]
+        [HttpPut("rename conversation")]
+        public IActionResult RenameConversation(string newName, int conversationId)
+        {
+            if (_converationService.RenameConversation(newName, conversationId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok("Nazwa grupy została zmieniona.");
+            return BadRequest("");
+        }
+        
+        [Authorize]
+        [HttpDelete("delete message")]
+        public IActionResult DeleteMessage(int messageId)
+        {
+            if (_converationService.DeleteMessage(messageId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok("Wiadomość została usunięta.");
+            return BadRequest("Nie udało się usunąć wiadomości.");
+        }
+
+        [Authorize]
+        [HttpDelete("delete conversation")]
+        public IActionResult DeleteConversation(int conversationId)
+        {
+            if (_converationService.DeleteConversation(conversationId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok("Konwersacja została usunięta.");
+            return BadRequest("Nie udało się usunąć wiadomości.");
         }
     }
 }
