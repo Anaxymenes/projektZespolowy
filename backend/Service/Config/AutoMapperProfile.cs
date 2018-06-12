@@ -120,6 +120,8 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Text,
                 opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Color,
+                opt => opt.MapFrom(src => src.Color))
                 ;
 
             CreateMap<Post, PostDTO>()
