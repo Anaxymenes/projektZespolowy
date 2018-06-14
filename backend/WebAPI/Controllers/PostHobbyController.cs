@@ -29,6 +29,29 @@ namespace WebAPI.Controllers
             return _postHobbyService.GetAll();
         }
 
+        [HttpGet("findHobbyPosts/{hobbyId}")]
+        public List<PostDTO> GetAllPostsByHobbyId(int hobbyId)
+        {
+            return _postHobbyService.GetAllPostsByHobbyId(hobbyId);
+        }
+
+
+        [Authorize]
+        [HttpGet("findUserHobbyPosts")]
+        public List<PostDTO> GetAllPostsByUserHobbys()
+        {
+            return _postHobbyService.GetAllPostsByUserHobbys(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+        }
+        
+        [HttpGet("getUserPosts/{authorId}")]
+        public IActionResult GetUserPostByAuthorId(int authorId)
+        {
+            var result = _postHobbyService.GetAllPostByAuthorId(authorId);
+            if (result == null)
+                return BadRequest();
+            return Ok(result);
+        }
+
         [Authorize]
         [HttpPost("create")]
         public IActionResult CreatePostHobby([FromBody] PostAdd postAdd) {
@@ -38,19 +61,7 @@ namespace WebAPI.Controllers
             _postHobbyService.CreatePostHobby(postAdd, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
             return Ok();
         }
-
-        [HttpGet("findHobbyPosts/{hobbyId}")]
-        public List<PostDTO> GetAllPostsByHobbyId(int hobbyId) {
-            return _postHobbyService.GetAllPostsByHobbyId(hobbyId);
-        }
-
-        [Authorize]
-        [HttpGet("findUserHobbyPosts")]
-        public List<PostDTO> GetAllPostsByUserHobbys()
-        {
-            return _postHobbyService.GetAllPostsByUserHobbys(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
-        }
-
+        
         [Authorize]
         [HttpPost("joinToGroup/{hobbyId}")]
         public IActionResult JoinToGroup(int hobbyId)
@@ -69,13 +80,6 @@ namespace WebAPI.Controllers
             return BadRequest("Coś poszło nie tak.");
         }
 
-        [HttpGet("getUserPosts/{authorId}")]
-        public IActionResult GetUserPostByAuthorId(int authorId) {
-            var result = _postHobbyService.GetAllPostByAuthorId(authorId);
-            if (result == null)
-                return BadRequest();
-            return Ok(result);
-        }
 
         [Authorize]
         [HttpPost("upload")]
@@ -86,6 +90,16 @@ namespace WebAPI.Controllers
             if (result != "")
                 return Ok(result);
             return BadRequest();
+        }
+
+        [Authorize]
+        [HttpDelete("delete/{postId}")]
+        public IActionResult Delete(int postId)
+        {
+            if (_postHobbyService.Delete(postId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok("Post został pomyślnie usunięty.");
+            return BadRequest("Coś poszło nie tak...");
+
         }
     }
 }

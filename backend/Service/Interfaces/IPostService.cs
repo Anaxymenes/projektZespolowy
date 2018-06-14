@@ -11,12 +11,12 @@ namespace Service.Interfaces
     {
         Post Add(PostDTO post);
         void Test(Post post);
-        void Delete(int id);
         PostDTO GetPost(int id);
         List<Post> GetPosts();
         List<PostDTO> GetAllPostsByHobbyId(int hobbyId);
         List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> claimsList);
         List<PostDTO> GetAllPostByAuthorId(int authorId);
         List<PostDTO> GetAll();
+        bool Delete(int postId, List<ClaimDTO> list);
     }
 }

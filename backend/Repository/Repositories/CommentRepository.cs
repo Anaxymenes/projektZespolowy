@@ -81,6 +81,8 @@ namespace Repository.Repositories
             return null;
         }
 
+
+
         public Comment Edit(Comment entity)
         {
             throw new NotImplementedException();
@@ -93,5 +95,11 @@ namespace Repository.Repositories
         public void Save() {
             throw new NotImplementedException();
         }
+
+        public IQueryable<Comment> GetCommentByPostId(int postId)
+        {
+            return _context.Comment.Where(x => x.PostId == postId);
+        }
+        
     }
 }

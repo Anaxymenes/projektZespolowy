@@ -43,10 +43,10 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
-        public Hobby Get(int id)
+        [HttpGet("get/{hobbyId}")]
+        public Hobby Get(int hobbyId)
         {
-            return _hobbyService.Get(id);
+            return _hobbyService.Get(hobbyId);
         }
 
         [Authorize]

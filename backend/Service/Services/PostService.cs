@@ -14,14 +14,17 @@ namespace Service.Services
     {
         private readonly IPostRepository _postRespository;
         private readonly IHobbyRepository _hobbyRepository;
+        private readonly ICommentRepository _commentRepository;
         private readonly IMapper _mapper;
 
         public PostService(IPostRepository postRespository,
                            IHobbyRepository hobbyRepository,
+                           ICommentRepository commentRepository,
                            IMapper mapper)
         {
             _postRespository = postRespository;
             _hobbyRepository = hobbyRepository;
+            _commentRepository = commentRepository;
             _mapper = mapper;
         }
         
@@ -35,12 +38,6 @@ namespace Service.Services
             //}
             return _postRespository.Add(post);
         }
-
-        public void Delete(int id)
-        {
-            _postRespository.Delete(id);
-        }
-
 
         public List<PostDTO> GetAllPostByAuthorId(int authorId) {
             try {
@@ -144,6 +141,14 @@ namespace Service.Services
                 foreach (var picture in post.Pictures)
                     pictures.Add(picture.Path);
             return pictures;
+        }
+
+        public bool Delete(int postId, List<ClaimDTO> claimsList)
+        {
+            int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            if (_postRespository.Delete(postId, userId))
+                return true;
+            return false;
         }
     }
 }

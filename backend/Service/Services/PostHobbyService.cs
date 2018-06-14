@@ -72,5 +72,10 @@ namespace Service.Services
         public List<PostDTO> GetAllPostByAuthorId(int authorId) {
             return _postService.GetAllPostByAuthorId(authorId);
         }
+
+        public bool Delete(int postId, List<ClaimDTO> list)
+        {
+            return _postService.Delete(postId, list);
+        }
     }
 }

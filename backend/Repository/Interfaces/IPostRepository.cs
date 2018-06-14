@@ -11,5 +11,6 @@ namespace Repository.Interfaces
         IQueryable GetPost(int id);
         IQueryable<Post> GetAllPostByHobbyId(int hobbyId);
         IQueryable<Post> GetAllPostByAuthorId(int authorId);
+        bool Delete(int postId, int userId);
     }
 }

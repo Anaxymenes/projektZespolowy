@@ -92,5 +92,36 @@ namespace Repository.Repositories
                     .ThenInclude(x => x.Author)
                         .ThenInclude(x => x.AccountDetails);
         }
+        
+        public bool Delete(int postId, int userId)
+        {
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var post = _context.Post.First(x => x.Id == postId);
+                    if (post.AuthorId == userId || post.Author.RoleId == 1)
+                    {
+                        var comments = _context.Comment.Where(x => x.PostId == postId);
+                        if (comments != null)
+                        {
+                            _context.RemoveRange(comments);
+                        }
+
+                        _context.Remove(post);
+                        _context.SaveChanges();
+                        transaction.Commit();
+                        return true;
+                    }
+                    return false;
+                    
+                }
+                catch (Exception e)
+                {
+                    transaction.Rollback();
+                    return false;
+                }
+            }
+        }
     }
 }

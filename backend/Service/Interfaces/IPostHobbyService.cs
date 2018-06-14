@@ -15,5 +15,6 @@ namespace Service.Interfaces
         void CreatePostHobby(PostAdd postAdd, List<ClaimDTO> list);
         List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> list);
         List<PostDTO> GetAllPostByAuthorId(int authorId);
+        bool Delete(int postId, List<ClaimDTO> list);
     }
 }
