@@ -10,7 +10,7 @@ namespace Service.Interfaces
 {
     public interface IPostHobbyService {
         Task<string> UploadFile(IFormFile file);
-        List<PostHobby> GetAll();
+        List<PostDTO> GetAll();
         List<PostDTO> GetAllPostsByHobbyId(int hobbyId);
         void CreatePostHobby(PostAdd postAdd, List<ClaimDTO> list);
         List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> list);

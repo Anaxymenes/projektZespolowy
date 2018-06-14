@@ -47,6 +47,8 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.AuthorId))
                 .ForMember(dest => dest.PostId,
                 opt => opt.MapFrom(src => src.PostId))
+                .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(src => src.Id))
                 ;
 
             CreateMap<CommentEditV2, Comment>()
@@ -166,7 +168,8 @@ namespace Service.Config
                                 AuthorId = src.AuthorId,
                                 Content = src.Content,
                                 Date = src.Date,
-                                PostId = src.Id
+                                PostId = src.Id,
+                                Id = src.Id
                             };
                             l.Add(com);
                         }

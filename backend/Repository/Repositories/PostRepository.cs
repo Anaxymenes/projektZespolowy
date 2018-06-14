@@ -39,9 +39,13 @@ namespace Repository.Repositories
         public IQueryable<Post> GetAll()
         {
             return _context.Post.AsQueryable()
+                .Include(x=> x.Author)
+                    .ThenInclude(x=>x.AccountDetails)
                 .Include(comment => comment.Comments)
                 .ThenInclude(author => author.Author)
-                .Include(author => author.Author);
+                .Include(x=>x.EventDetalis)
+                .Include(x=>x.Pictures)
+                .Include(x=>x.PostType);
         }
 
         public IQueryable GetPost(int id)

@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("")]
-        public List<PostHobby> GetAll() {
+        public List<PostDTO> GetAll() {
             return _postHobbyService.GetAll();
         }
 

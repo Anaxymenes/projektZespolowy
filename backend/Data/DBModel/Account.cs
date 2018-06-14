@@ -13,7 +13,9 @@ namespace Data.DBModel
         public int RoleId { get; set; }
         public AccountRole AccountRole { get; set; }
         public AccountDetails AccountDetails { get; set; }
+        [JsonIgnore]
         public AccountVerification AccountVerification { get; set; }
+        [JsonIgnore]
         public AccountToken AccountToken { get; set; }
         [JsonIgnore]
         public ICollection<AccountHobby> AccountHobbies { get; set; }

@@ -41,8 +41,8 @@ namespace Service.Services
             return "";
         }
 
-        public List<PostHobby> GetAll() {
-            return _postHobbyRepository.GetAll().ToList();
+        public List<PostDTO> GetAll() {
+            return _postService.GetAll();
         }
 
         public void CreatePostHobby(PostAdd postAdd, List<ClaimDTO> claimsList) {

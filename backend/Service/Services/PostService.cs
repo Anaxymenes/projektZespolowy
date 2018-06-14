@@ -41,6 +41,16 @@ namespace Service.Services
             _postRespository.Delete(id);
         }
 
+        public List<PostDTO> GetAll() {
+            var result = _postRespository.GetAll();
+            if (result == null || result.Count() == 0)
+                return null;
+            List<PostDTO> list = new List<PostDTO>();
+            foreach (var obj in result)
+                list.Add(_mapper.Map<PostDTO>(obj));
+            return list;
+        }
+
         public List<PostDTO> GetAllPostByAuthorId(int authorId) {
             try {
                 List<PostDTO> results = new List<PostDTO>();
