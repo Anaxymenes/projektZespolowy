@@ -125,7 +125,7 @@ namespace Repository.Repositories
             }
         }
 
-        public bool Update(Post post, int userId)
+        public bool Update(PostEdit post, int userId)
         {
             try
             {

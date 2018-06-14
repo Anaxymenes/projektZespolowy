@@ -154,8 +154,8 @@ namespace Service.Services
         public bool Update(PostEdit postEdit, List<ClaimDTO> claimsList)
         {
             int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
-            var post = _mapper.Map<Post>(postEdit);
-            if (_postRespository.Update(post, userId))
+            
+            if (_postRespository.Update(postEdit, userId))
                 return true;
             return false;
 
