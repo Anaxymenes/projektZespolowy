@@ -50,6 +50,10 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.PostId))
                 .ForMember(dest => dest.Id,
                 opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Avatar,
+                opt => opt.MapFrom(src => src.Author.AccountDetails.Avatar))
+                .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(x => x.Author.AccountDetails.Name + " " + x.Author.AccountDetails.LastName))
                 ;
 
             CreateMap<CommentEditV2, Comment>()
@@ -172,7 +176,7 @@ namespace Service.Config
                                 PostId = comment.Id,
                                 Id = comment.Id,
                                 Avatar = comment.Author.AccountDetails.Avatar,
-                                Name = comment.Author.AccountDetails.Name + comment.Author.AccountDetails.LastName
+                                Name = comment.Author.AccountDetails.Name + " " + comment.Author.AccountDetails.LastName
 
 
                             };

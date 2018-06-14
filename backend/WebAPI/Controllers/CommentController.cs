@@ -23,12 +23,10 @@ namespace WebAPI.Controllers
 
         [Authorize]
         [HttpPost("add")]
-        public IActionResult Add([FromBody]CommentAdd commentAdd)
+        public CommentDTO Add([FromBody]CommentAdd commentAdd)
         {
-            var result = _commentService.Add(commentAdd, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
-            if (result != null)
-                return Ok(result);
-            return BadRequest("Nie ma takiego posta.");
+            return _commentService.Add(commentAdd, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            
         }
 
         [Authorize]

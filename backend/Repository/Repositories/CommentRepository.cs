@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,10 @@ namespace Repository.Repositories
             {
                 _context.Add(entity);
                 _context.SaveChanges();
-                return _context.Comment.Last();
+                var comments = _context.Comment
+                    .Include(x => x.Author)
+                        .ThenInclude(a => a.AccountDetails);
+                return comments.Last();
             }
             catch (Exception e)
             {
