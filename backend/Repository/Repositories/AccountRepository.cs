@@ -49,6 +49,19 @@ namespace Repository.Repositories
             return _context.Account.Any(x => x.Email == email);
         }
 
+        public IQueryable<Account> FindAccountsByValue(string value) {
+            if(_context.Account.Any(x=>x.AccountDetails.LastName.Contains(value)) ||
+               _context.Account.Any(x => x.AccountDetails.Name.Contains(value)) ||
+               _context.Account.Any(x => x.Email.Contains(value)))
+                return _context.Account.Where(
+                            x => x.AccountDetails.LastName.Contains(value) ||
+                            x.AccountDetails.Name.Contains(value) ||
+                            x.Email.Contains(value))
+                     .Include(x => x.AccountDetails)
+                     .Include(x => x.AccountRole).AsQueryable();
+            return null;
+        }
+
         public IQueryable<Account> GetAll() {
             throw new NotImplementedException();
         }
@@ -99,7 +112,7 @@ namespace Repository.Repositories
         }
 
         public void Save() {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(Account user) {

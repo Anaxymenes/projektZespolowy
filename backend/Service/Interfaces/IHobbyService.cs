@@ -1,6 +1,7 @@
 ﻿using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
+using Data.Search;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,6 @@ namespace Service.Interfaces
         List<HobbyInformation> GetAll(List<ClaimDTO> list);
         List<HobbyInformation> GetHobbysByUserId(int userId);
         List<HobbyDTO> GetHobbysWhereIAmAdmin(List<ClaimDTO> list);
+        List<HobbyDTO> FindHobbyByValue(string value);
     }
 }

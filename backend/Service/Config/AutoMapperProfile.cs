@@ -4,6 +4,7 @@ using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
 using Data.EditViewModel;
+using Data.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -339,6 +340,16 @@ namespace Service.Config
                 .ForMember(dest => dest.SecondUser,
                 opt => opt.MapFrom(src => src.SecondUser.AccountDetails.Name + " " + src.SecondUser.AccountDetails.LastName))
                 ;
+
+            CreateMap<Account, SearchResult>()
+                .ForMember(dest => dest.Value,
+                opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Text,
+                opt => opt.MapFrom(src => src.AccountDetails.Name + " " + src.AccountDetails.LastName))
+                .ForMember(dest => dest.Picture,
+                opt => opt.MapFrom(src => src.AccountDetails.Avatar))
+                .ForMember(dest => dest.Description,
+                opt => opt.UseValue("eHobby User"));
         }
     }
 }

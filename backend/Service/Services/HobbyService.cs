@@ -178,5 +178,15 @@ namespace Service.Services
             }
             return hobbysDTO;
         }
+
+        public List<HobbyDTO> FindHobbyByValue(string value) {
+            var resultDb = _hobbyRepository.FindHobbyByValue(value);
+            List<HobbyDTO> result = new List<HobbyDTO>();
+            if (resultDb == null)
+                return null;
+            foreach (var obj in resultDb)
+                result.Add(_mapper.Map<HobbyDTO>(obj));
+            return result;
+        }
     }
 }

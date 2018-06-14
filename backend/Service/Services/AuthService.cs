@@ -2,6 +2,7 @@
 using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
+using Data.Search;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -244,6 +245,16 @@ namespace Service.Services
             foreach(var use in user)
                 return _mapper.Map<AccountDTO>(use);
             return null;
+        }
+
+        public List<AccountDTO> FindAccountsByValue(string value) {
+            var resultDb  = _accountRepository.FindAccountsByValue(value);
+            List<AccountDTO> result = new List<AccountDTO>();
+            if(resultDb == null)
+                return null;
+            foreach (var obj in resultDb)
+                result.Add(_mapper.Map<AccountDTO>(obj));
+            return result;
         }
     }
 }

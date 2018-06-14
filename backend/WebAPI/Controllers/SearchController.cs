@@ -17,7 +17,10 @@ namespace WebAPI.Controllers
 
         [HttpGet("{value}")]
         public IActionResult GetSearchResult(string value) {
-            return BadRequest();
+            var result = _searchService.FindIntoDb(value);
+            if(result==null)
+                return BadRequest();
+            return Ok(result);
         }
     }
 }

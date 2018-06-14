@@ -181,5 +181,13 @@ namespace Repository.Repositories
                 return null;
             }
         }
+
+        public IQueryable<Hobby> FindHobbyByValue(string value) {
+            if (_context.Hobby.Any(x => x.Name.Contains(value)))
+                return _context.Hobby.Where(
+                            x => x.Name.Contains(value))
+                        .AsQueryable();
+            return null;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Data.DBModel;
 using Data.DTO;
 using Data.Edit;
+using Data.Search;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Service.Interfaces
         bool RegisterUser(RegisterAccountDTO registerAccountDTO);
         bool SendVerificationEmail(string email);
         bool SendVerificationEmail(IEnumerable<ClaimDTO> claimDTOEnumarable);
+        List<AccountDTO> FindAccountsByValue(string value);
         bool ActiveAccount(ActivatedAccount activatedAccount);
         Task<string> UploadFile(IFormFile file);
         bool ChangePasswd(PasswordEdit passwordEdit, List<ClaimDTO> claims);

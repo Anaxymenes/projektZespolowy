@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Search;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,13 @@ namespace Service.Services
             this._mapper = mapper;
             this._authService = authService;
             this._hobbyService = hobbyService;
+        }
+
+        public SearchDTO FindIntoDb(string value) {
+            SearchDTO result = new SearchDTO();
+            result.AccountResults = _authService.FindAccountsByValue(value);
+            result.HobbyResults = _hobbyService.FindHobbyByValue(value);
+            return result;
         }
     }
 }

@@ -16,5 +16,6 @@ namespace Repository.Interfaces
         IQueryable<Account> GetByIdEXT(int id);
         Account GetById(int id);
         void Update(Account user);
+        IQueryable<Account> FindAccountsByValue(string value);
     }
 }
