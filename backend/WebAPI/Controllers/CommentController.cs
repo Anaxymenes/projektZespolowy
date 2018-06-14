@@ -32,10 +32,10 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpDelete("delete")]
-        public IActionResult Delete(int id)
+        [HttpDelete("delete/{commentId}")]
+        public IActionResult Delete(int commentId)
         {
-            if (_commentService.Delete(id, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+            if (_commentService.Delete(commentId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
                 return Ok();
             return BadRequest("Nie ma takiego komentarza");
         }
