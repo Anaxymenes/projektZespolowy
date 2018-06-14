@@ -15,5 +15,6 @@ namespace Repository.Interfaces
         IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId);
         IQueryable<Hobby> GetAllWithPagination(int countOfItem, int page);
         bool Delete(int hobbyId, int accountId);
+        IQueryable<Hobby> GetHobbysWhereIAmAdmin(int accountId);
     }
 }

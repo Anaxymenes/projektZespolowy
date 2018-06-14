@@ -102,5 +102,15 @@ namespace WebAPI.Controllers
                 return BadRequest();
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpGet("getHobbysWhereIAmAdmin")]
+        public IActionResult GetHobbysWhereIAmAdmin()
+        {
+            var result = _hobbyService.GetHobbysWhereIAmAdmin(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result == null)
+                return BadRequest();
+            return Ok(result);
+        }
     }
 }

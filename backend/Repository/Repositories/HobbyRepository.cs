@@ -169,5 +169,17 @@ namespace Repository.Repositories
                 }
                 }
         }
+
+        public IQueryable<Hobby> GetHobbysWhereIAmAdmin(int accountId)
+        {
+            try
+            {
+                return _context.Hobby.Where(x => x.AdministratorId == accountId);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

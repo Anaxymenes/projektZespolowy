@@ -165,5 +165,18 @@ namespace Service.Services
             var accountId = ClaimsMethods.GetIdFromClaim(claims);
             return _hobbyRepository.Delete(hobbyId, accountId);
         }
+
+        public List<HobbyDTO> GetHobbysWhereIAmAdmin(List<ClaimDTO> claims)
+        {
+            var accountId = ClaimsMethods.GetIdFromClaim(claims);
+            var hobbys = _hobbyRepository.GetHobbysWhereIAmAdmin(accountId);
+            List<HobbyDTO> hobbysDTO = new List<HobbyDTO>();
+            foreach(var hobby in hobbys)
+            {
+                var hobbyDTO = _mapper.Map<HobbyDTO>(hobby);
+                hobbysDTO.Add(hobbyDTO);
+            }
+            return hobbysDTO;
+        }
     }
 }
