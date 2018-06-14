@@ -94,5 +94,18 @@ namespace WebAPI.Controllers
                 return BadRequest("Nie można zmienić hasła. Spróbuj ponownie później");
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("getUserById")]
+        public AccountDTO GetUserById(int id)
+        {
+            if (id < 0)
+                return null;
+            AccountDTO result = _authService.GetUserById(id);
+            if (result == null)
+                return null;
+            return result;
+
+        }
     }
 }

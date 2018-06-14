@@ -53,15 +53,25 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
-        public Account GetById(int id) {
+        public Account GetById(int id)
+        {
             if (_context.Account.Any(x => x.Id == id))
+            {
                 return _context.Account.First(x => x.Id == id);
+            }
             return null;
-
         }
 
-        public object GetById(object p) {
-            throw new NotImplementedException();
+        public  IQueryable<Account> GetByIdEXT(int id) {
+            if (_context.Account.Any(x => x.Id == id))
+            {
+                var users = _context.Account
+                    .Include(d => d.AccountDetails)
+                    .Include(a => a.AccountRole);
+                return users.Where(x => x.Id == id).Take(1);
+            }
+            return null;
+
         }
 
         public  Account GetUserByUsernameOrEmail(string value) {

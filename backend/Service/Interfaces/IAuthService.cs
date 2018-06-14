@@ -24,5 +24,6 @@ namespace Service.Interfaces
         bool ChangePasswd(PasswordEdit passwordEdit, List<ClaimDTO> claims);
         void UpdateAvatar(string result, List<ClaimDTO> list);
         bool CheckOldPasswd(string oldPassword, int vaccountId);
+        AccountDTO GetUserById(int id);
     }
 }
