@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
         
         [Authorize]
-        [HttpGet("show conversation")]
+        [HttpGet("showConversation")]
         public List<MessageDTO> ShowConversation(int secondUserId)
         {
             var result = _converationService.ShowConversation(secondUserId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpGet("my conversations")]
+        [HttpGet("myConversations")]
         public List<ConversationDTO> ShowConversationsList()
         {
             var result = _converationService.ShowConversationsList(ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         }
         
         [Authorize]
-        [HttpPost("send message")]
+        [HttpPost("sendMessage")]
         public IActionResult SendMessage(string content, int secondUserId)
         {
             if(_converationService.SendMessage(content, secondUserId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
@@ -56,16 +56,16 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPut("rename conversation")]
+        [HttpPut("renameConversation")]
         public IActionResult RenameConversation(string newName, int conversationId)
         {
             if (_converationService.RenameConversation(newName, conversationId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
                 return Ok("Nazwa grupy została zmieniona.");
-            return BadRequest("");
+            return BadRequest("Nazwa grupy nie została zmieniona.");
         }
         
         [Authorize]
-        [HttpDelete("delete message")]
+        [HttpDelete("deleteMessage")]
         public IActionResult DeleteMessage(int messageId)
         {
             if (_converationService.DeleteMessage(messageId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
@@ -74,12 +74,12 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpDelete("delete conversation")]
+        [HttpDelete("deleteConversation")]
         public IActionResult DeleteConversation(int conversationId)
         {
             if (_converationService.DeleteConversation(conversationId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
                 return Ok("Konwersacja została usunięta.");
-            return BadRequest("Nie udało się usunąć wiadomości.");
+            return BadRequest("Nie udało się usunąć konwersacji.");
         }
     }
 }
