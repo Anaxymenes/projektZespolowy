@@ -96,7 +96,7 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpGet("getUserById")]
+        [HttpGet("getUserById/{id}")]
         public AccountDTO GetUserById(int id)
         {
             if (id < 0)
