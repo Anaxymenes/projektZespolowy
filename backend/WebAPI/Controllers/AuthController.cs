@@ -97,14 +97,14 @@ namespace WebAPI.Controllers
 
         [Authorize]
         [HttpGet("getUserById/{id}")]
-        public AccountDTO GetUserById(int id)
+        public IActionResult GetUserById(int id)
         {
             if (id < 0)
                 return null;
             AccountDTO result = _authService.GetUserById(id);
             if (result == null)
-                return null;
-            return result;
+                return BadRequest();
+            return Ok(result);
 
         }
     }

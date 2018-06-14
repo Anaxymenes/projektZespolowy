@@ -239,7 +239,8 @@ namespace Service.Services
         public AccountDTO GetUserById(int id)
         {
             var user = _accountRepository.GetByIdEXT(id);
-            
+            if (user == null)
+                return null;
             foreach(var use in user)
                 return _mapper.Map<AccountDTO>(use);
             return null;
