@@ -178,7 +178,7 @@ namespace Service.Config
                             };
                             l.Add(com);
                         }
-                        List<CommentDTO> sortedList = l.OrderBy(x => x.Date).ToList();
+                        List<CommentDTO> sortedList = l.OrderByDescending(x => x.Date).ToList();
                         dest.Comments = l;
                     }
                 })
