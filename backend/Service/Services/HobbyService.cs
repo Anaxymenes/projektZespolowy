@@ -164,7 +164,11 @@ namespace Service.Services
             if (result == null || result.Count() == 0)
                 return null;
             foreach (var obj in result)
-                list.Add(_mapper.Map<HobbyInformation>(obj));
+            {
+                var temp = _mapper.Map<HobbyInformation>(obj);
+                temp.Belong = true;
+                list.Add(temp);
+            }
             return list;
         }
     }
