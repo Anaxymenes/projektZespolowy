@@ -16,5 +16,6 @@ namespace Service.Interfaces
         List<PostDTO> GetAllPostsByUserHobbys(List<ClaimDTO> list);
         List<PostDTO> GetAllPostByAuthorId(int authorId);
         bool Delete(int postId, List<ClaimDTO> list);
+        bool Update(PostEdit postEdit, List<ClaimDTO> list);
     }
 }

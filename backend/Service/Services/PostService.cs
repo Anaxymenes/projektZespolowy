@@ -150,5 +150,15 @@ namespace Service.Services
                 return true;
             return false;
         }
+
+        public bool Update(PostEdit postEdit, List<ClaimDTO> claimsList)
+        {
+            int userId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            var post = _mapper.Map<Post>(postEdit);
+            if (_postRespository.Update(post, userId))
+                return true;
+            return false;
+
+        }
     }
 }

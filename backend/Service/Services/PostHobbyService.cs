@@ -77,5 +77,10 @@ namespace Service.Services
         {
             return _postService.Delete(postId, list);
         }
+
+        public bool Update(PostEdit postEDIT, List<ClaimDTO> list)
+        {
+            return _postService.Update(postEDIT, list);
+        }
     }
 }

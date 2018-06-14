@@ -93,6 +93,15 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
+        [HttpPut("update")]
+        public IActionResult Update([FromBody] PostEdit postEdit)
+        {
+            if (_postHobbyService.Update(postEdit, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)))
+                return Ok("Edytowano pomyślnie.");
+            return BadRequest("Coś poszło nie tak.");
+        }
+
+        [Authorize]
         [HttpDelete("delete/{postId}")]
         public IActionResult Delete(int postId)
         {
@@ -101,5 +110,6 @@ namespace WebAPI.Controllers
             return BadRequest("Coś poszło nie tak...");
 
         }
+        
     }
 }

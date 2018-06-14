@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Data.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Repository.Interfaces
         IQueryable<Post> GetAllPostByHobbyId(int hobbyId);
         IQueryable<Post> GetAllPostByAuthorId(int authorId);
         bool Delete(int postId, int userId);
+        bool Update(Post post, int userId);
     }
 }

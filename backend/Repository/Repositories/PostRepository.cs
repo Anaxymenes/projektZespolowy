@@ -1,4 +1,5 @@
 ﻿using Data.DBModel;
+using Data.DTO;
 using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 using System;
@@ -121,6 +122,26 @@ namespace Repository.Repositories
                     transaction.Rollback();
                     return false;
                 }
+            }
+        }
+
+        public bool Update(Post post, int userId)
+        {
+            try
+            {
+                var postData = _context.Post.First(x => x.Id == post.Id);
+                if(postData.AuthorId == userId)
+                {
+                    postData.Content = post.Content;
+                    _context.Update(postData);
+                    _context.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch(Exception e)
+            {
+                return false;
             }
         }
     }
