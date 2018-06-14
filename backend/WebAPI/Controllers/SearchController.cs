@@ -15,7 +15,9 @@ namespace WebAPI.Controllers
             this._searchService = searchService;
         }
 
-        //[HttpGet]
-        //public 
+        [HttpGet("{value}")]
+        public IActionResult GetSearchResult(string value) {
+            return BadRequest();
+        }
     }
 }

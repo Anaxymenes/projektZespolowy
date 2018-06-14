@@ -57,10 +57,14 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("delete")]
-        public void Delete(int id, int accountId)
+        [Authorize]
+        [HttpDelete("delete/{hobbyId}")]
+        public IActionResult Delete(int hobbyId)
         {
-            _hobbyService.Delete(id, accountId);
+            var result = _hobbyService.Delete(hobbyId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims));
+            if (result)
+                return Ok();
+            return BadRequest();
         }
 
         [HttpPut("update")]

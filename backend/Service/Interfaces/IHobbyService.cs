@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Service.Interfaces
 {
     public interface IHobbyService {
-        void Delete(int id, int accountId);
+        bool Delete(int hobbyId, List<ClaimDTO> claims);
         Hobby Get(int id);
         bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> list);
         HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> list);

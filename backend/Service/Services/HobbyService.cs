@@ -62,18 +62,7 @@ namespace Service.Services
             return false;
         }
 
-        public void Delete(int id, int accountId)
-        {
-            Hobby hobby = _context.Hobby.Find(id);
-
-            if (hobby != null) 
-            {
-                if (hobby.AdministratorId == accountId) 
-                {
-                    _hobbyRepository.Delete(id);
-                }
-            }
-        }
+        
 
         public HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> claimList)
         {
@@ -170,6 +159,11 @@ namespace Service.Services
                 list.Add(temp);
             }
             return list;
+        }
+
+        public bool Delete(int hobbyId, List<ClaimDTO> claims) {
+            var accountId = ClaimsMethods.GetIdFromClaim(claims);
+            return _hobbyRepository.Delete(hobbyId, accountId);
         }
     }
 }

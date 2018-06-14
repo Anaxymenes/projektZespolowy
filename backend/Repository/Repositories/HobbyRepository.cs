@@ -118,5 +118,56 @@ namespace Repository.Repositories
         Hobby IRepository<Hobby>.Add(Hobby entity) {
             throw new NotImplementedException();
         }
+
+        public bool Delete(int hobbyId, int accountId) {
+            if (!_context.Hobby.Any(x => x.Id == hobbyId) ||
+                !_context.Account.Any(x=>x.Id == accountId)
+                )
+                return false;
+            var hobby = _context.Hobby.First(x => x.Id == hobbyId);
+            if (!(hobby.AdministratorId == accountId
+                || _context.Account.First(x => x.Id == accountId).RoleId != 3))
+                return false;
+
+            using(var transaction  = _context.Database.BeginTransaction()) {
+                try {
+                    var postsId = _context.PostHobby
+                       .Where(x => x.HobbyId == hobbyId)
+                       .Select(y => y.PostId).ToList();
+                    foreach(var id in postsId) {
+                        if(_context.PostHobby.Where(x=>x.PostId == id).Count() == 1) {
+                            var post = _context.Post.First(x => x.Id == id);
+                            if(_context.Comment.Any(x=>x.PostId==id))
+                            _context.RemoveRange(_context.Comment.Where(x => x.PostId == id).ToList());
+                            if(_context.Picture.Any(x=>x.PostId==id))
+                            _context.Picture.RemoveRange(
+                                _context.Picture.Where(x => x.PostId == id).ToList());
+                            if(_context.EventDetails.Any(x=>x.PostId==id))
+                            _context.EventDetails.Remove(
+                                _context.EventDetails.First(x => x.PostId == id));
+                            if(!_context.PostHobby.Any(x=> x.PostId == id && x.HobbyId != hobbyId))
+                                _context.Remove(post);
+                        }
+                    }
+                    _context.AccountHobby.RemoveRange(
+                        _context.AccountHobby.Where(x=>x.HobbyId==hobbyId).ToList()
+                        );
+                    _context.Hobby.Remove(hobby);
+                    _context.SaveChanges();
+                    //var posthobbies = _context.PostHobby.Where(x => x.HobbyId == hobbyId).ToList();
+                    //var postsId = posthobbies.Select(x => x.PostId).ToList();
+                    //var posts = _context.Post.Where(x => postsId.Contains(x.Id));
+                    //_context.PostHobby.RemoveRange(posthobbies);
+                    //_context.Post.RemoveRange(posts);
+                    //var hobby = _context.Hobby.First(x => x.Id == hobbyId);
+                    //_context.Remove(hobby);
+                    transaction.Commit();
+                    return true;
+                }catch(Exception e) {
+                    transaction.Rollback();
+                    return false;
+                }
+                }
+        }
     }
 }
