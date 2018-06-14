@@ -179,7 +179,7 @@ namespace Service.Config
                             l.Add(com);
                         }
                         List<CommentDTO> sortedList = l.OrderByDescending(x => x.Date).ToList();
-                        dest.Comments = l;
+                        dest.Comments = sortedList;
                     }
                 })
                 ;
