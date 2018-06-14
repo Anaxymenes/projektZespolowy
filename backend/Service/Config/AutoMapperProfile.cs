@@ -165,11 +165,11 @@ namespace Service.Config
                         {
                             var com = new CommentDTO()
                             {
-                                AuthorId = src.AuthorId,
-                                Content = src.Content,
-                                Date = src.Date,
-                                PostId = src.Id,
-                                Id = src.Id
+                                AuthorId = comment.AuthorId,
+                                Content = comment.Content,
+                                Date = comment.Date,
+                                PostId = comment.Id,
+                                Id = comment.Id
                             };
                             l.Add(com);
                         }
