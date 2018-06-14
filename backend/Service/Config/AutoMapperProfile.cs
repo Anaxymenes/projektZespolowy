@@ -38,6 +38,8 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.AccountDetails.LastName))
                 .ForMember(dest => dest.Role,
                 opt => opt.MapFrom(src => src.AccountRole.Name))
+                .ForMember(dest => dest.BirthDate,
+                opt => opt.MapFrom(src => src.AccountDetails.BirthDate))
                 ;
             CreateMap<Comment, CommentDTO>()
                .ForMember(dest => dest.Date,
