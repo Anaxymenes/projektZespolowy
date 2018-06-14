@@ -41,15 +41,6 @@ namespace Service.Services
             _postRespository.Delete(id);
         }
 
-        public List<PostDTO> GetAll() {
-            var result = _postRespository.GetAll();
-            if (result == null || result.Count() == 0)
-                return null;
-            List<PostDTO> list = new List<PostDTO>();
-            foreach (var obj in result)
-                list.Add(_mapper.Map<PostDTO>(obj));
-            return list;
-        }
 
         public List<PostDTO> GetAllPostByAuthorId(int authorId) {
             try {
@@ -123,6 +114,21 @@ namespace Service.Services
         public void Test(Post post)
         {
             _postRespository.Add(post);
+        }
+
+        public List<PostDTO> GetAll()
+        {
+            var result = _postRespository.GetAll();
+            if (result == null || result.Count() == 0)
+                return null;
+            List<PostDTO> list = new List<PostDTO>();
+            foreach (var obj in result)
+            {
+                var postDTO = _mapper.Map<PostDTO>(obj);
+                postDTO.Hobbys = this.GetAllHobbyForPostDTOFromPost(obj);
+                list.Add(postDTO);
+            }
+            return list;
         }
 
         protected List<HobbyForPostDTO> GetAllHobbyForPostDTOFromPost(Post post) {

@@ -36,6 +36,7 @@ namespace Repository.Repositories
                     .ThenInclude(hobby => hobby.Administrator)
                 .Include(c => c.Post)
                      .ThenInclude(v => v.Author)
+                        .ThenInclude(d => d.AccountDetails)
                 .Include(c => c.Post)
                     .ThenInclude(v => v.Comments)
                         .ThenInclude(b => b.Author)

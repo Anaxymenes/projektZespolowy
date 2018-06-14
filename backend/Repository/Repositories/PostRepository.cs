@@ -42,9 +42,12 @@ namespace Repository.Repositories
                 .Include(x=> x.Author)
                     .ThenInclude(x=>x.AccountDetails)
                 .Include(comment => comment.Comments)
-                .ThenInclude(author => author.Author)
+                    .ThenInclude(a => a.Author)
+                        .ThenInclude(d => d.AccountDetails)
                 .Include(x=>x.EventDetalis)
                 .Include(x=>x.Pictures)
+                .Include(x => x.PostHobbies)
+                    .ThenInclude(a => a.Hobby)
                 .Include(x=>x.PostType);
         }
 
