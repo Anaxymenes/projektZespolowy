@@ -43,7 +43,17 @@ namespace Repository.Repositories
            // {
                 try
                 {
-                    _context.Update(entity);
+                    var hobby = _context.Hobby.First(x => x.Id == entity.Id);
+                    if (entity.Description != null)
+                        hobby.Description = entity.Description;
+                    if (entity.Name != null)
+                        hobby.Name = entity.Name;
+                    if (entity.Color != null)
+                        hobby.Color = entity.Color;
+                    if (entity.Logo != null)
+                        hobby.Logo = entity.Logo;
+
+                    _context.Update(hobby);
                     _context.SaveChanges();
                     return entity;
                 }

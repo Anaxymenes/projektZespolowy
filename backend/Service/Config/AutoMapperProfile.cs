@@ -112,8 +112,6 @@ namespace Service.Config
             CreateMap<HobbyEdit, Hobby>()
                 .ForMember(dest => dest.Id,
                 opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.AdministratorId,
-                opt => opt.MapFrom(src => src.accountId))
                 .ForMember(dest => dest.Name,
                 opt => opt.MapFrom(src => src.name))
                 .ForMember(dest => dest.Description,
