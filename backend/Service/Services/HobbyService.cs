@@ -157,5 +157,15 @@ namespace Service.Services
                 return null;
             }
         }
+
+        public List<HobbyInformation> GetHobbysByUserId(int userId) {
+            List<HobbyInformation> list = new List<HobbyInformation>();
+            var result = _hobbyRepository.GetAllHobbiesForAccountId(userId);
+            if (result == null || result.Count() == 0)
+                return null;
+            foreach (var obj in result)
+                list.Add(_mapper.Map<HobbyInformation>(obj));
+            return list;
+        }
     }
 }

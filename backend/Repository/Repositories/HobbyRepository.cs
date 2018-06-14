@@ -63,7 +63,9 @@ namespace Repository.Repositories
         public IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId) {
             var hobbyId = _context.AccountHobby.Where(x => x.AccountId == accountId).Select(z => z.HobbyId).ToHashSet();
             return _context.Hobby.Where(x => hobbyId.Contains(x.Id)).AsQueryable()
-                    .Include(x => x.AccountHobbies);
+                    .Include(x => x.AccountHobbies)
+                    .Include(x => x.Administrator)
+                        .ThenInclude( x => x.AccountDetails);
 
         }
 

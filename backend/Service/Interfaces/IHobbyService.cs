@@ -19,5 +19,6 @@ namespace Service.Interfaces
         List<HobbyToList> GetAllHobbiesByAccountId(List<ClaimDTO> list);
         List<HobbyInformation> GetAllPagination(int countOfItem, int page, List<ClaimDTO> list);
         List<HobbyInformation> GetAll(List<ClaimDTO> list);
+        List<HobbyInformation> GetHobbysByUserId(int userId);
     }
 }

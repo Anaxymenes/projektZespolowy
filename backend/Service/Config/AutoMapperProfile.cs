@@ -298,6 +298,10 @@ namespace Service.Config
                 opt => opt.MapFrom(src => src.Color))
                 .ForMember(dest => dest.AdministratorId,
                 opt => opt.MapFrom(src => src.AdministratorId))
+                .ForMember(dest => dest.Administator, 
+                opt => opt.MapFrom(src => src.Administrator.AccountDetails.Name 
+                        + " " 
+                        + src.Administrator.AccountDetails.LastName))
                 ;
             CreateMap<Message, MessageDTO>()
                 .ForMember(dest => dest.MessageId,

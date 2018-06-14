@@ -90,5 +90,13 @@ namespace WebAPI.Controllers
                 return BadRequest();
             return Ok(result);
         }
+
+        [HttpGet("getHobbysByUserId/{userId}")]
+        public IActionResult GetHobbysByUserId(int userId) {
+            var result = _hobbyService.GetHobbysByUserId(userId);
+            if (result == null)
+                return BadRequest();
+            return Ok(result);
+        }
     }
 }
