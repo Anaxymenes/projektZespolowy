@@ -6,6 +6,7 @@ using Data.Edit;
 using Data.EditViewModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Service.Config
@@ -169,11 +170,15 @@ namespace Service.Config
                                 Content = comment.Content,
                                 Date = comment.Date,
                                 PostId = comment.Id,
-                                Id = comment.Id
+                                Id = comment.Id,
+                                Avatar = comment.Author.AccountDetails.Avatar,
+                                Name = comment.Author.AccountDetails.Name + comment.Author.AccountDetails.LastName
+
+
                             };
                             l.Add(com);
                         }
-
+                        List<CommentDTO> sortedList = l.OrderBy(x => x.Date).ToList();
                         dest.Comments = l;
                     }
                 })
