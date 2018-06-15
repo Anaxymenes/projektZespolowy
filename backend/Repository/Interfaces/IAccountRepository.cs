@@ -17,5 +17,6 @@ namespace Repository.Interfaces
         Account GetById(int id);
         void Update(Account user);
         IQueryable<Account> FindAccountsByValue(string value);
+        void SaveToken(AccountToken accToken);
     }
 }

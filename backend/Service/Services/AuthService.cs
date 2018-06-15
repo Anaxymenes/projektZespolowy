@@ -42,7 +42,17 @@ namespace Service.Services
         }
 
         public JWTBearerToken GetToken(AccountLoginVerificationDTO user) {
-            return this.JwtTokenBuilder(user);
+            var token = this.JwtTokenBuilder(user);
+            var accToken = new AccountToken()
+            {
+                AccountId = user.Id,
+                AuthToken = token.Token,
+                AuthTokenExpires = token.Expires,
+                RefreshToken = token.Token,
+                RefreshTokenExpires = token.Expires
+            };
+            _accountRepository.SaveToken(accToken);
+            return token;
         }
 
         public bool IsValid(AccountLoginVerificationDTO user, LoginDTO loginDTO) {

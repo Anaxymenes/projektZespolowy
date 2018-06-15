@@ -115,6 +115,19 @@ namespace Repository.Repositories
             _context.SaveChanges();
         }
 
+        public void SaveToken(AccountToken accToken)
+        {
+            try
+            {
+                _context.AccountToken.Add(accToken);
+                _context.SaveChanges();
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+
         public void Update(Account user) {
             try {
                 _context.Account.Update(user);
