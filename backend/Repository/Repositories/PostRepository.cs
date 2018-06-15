@@ -100,8 +100,9 @@ namespace Repository.Repositories
             {
                 try
                 {
+                    var admin = _context.Account.First(x => x.Id == userId);
                     var post = _context.Post.First(x => x.Id == postId);
-                    if (post.AuthorId == userId || post.Author.RoleId == 1)
+                    if (post.AuthorId == userId || admin.RoleId == 1)
                     {
                         var comments = _context.Comment.Where(x => x.PostId == postId);
                         if (comments != null)
