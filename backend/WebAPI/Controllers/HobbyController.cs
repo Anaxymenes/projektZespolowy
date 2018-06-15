@@ -44,9 +44,16 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get/{hobbyId}")]
-        public Hobby Get(int hobbyId)
+        public IActionResult Get(int hobbyId)
         {
-            return _hobbyService.Get(hobbyId);
+            try
+            {
+                return Ok(_hobbyService.Get(hobbyId, ClaimsMethods.GetClaimsList(HttpContext.User.Claims)));
+            }
+            catch(Exception e)
+            {
+                return BadRequest("Coś poszło nie tak.");
+            }
         }
 
         [Authorize]

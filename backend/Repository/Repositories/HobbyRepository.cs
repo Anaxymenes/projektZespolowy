@@ -116,7 +116,7 @@ namespace Repository.Repositories
 
         public Hobby GetHobby(int id)
         {
-            return _context.Hobby.Find(id);
+            return _context.Hobby.First(x => x.Id == id);
         }
 
         public void Save() {

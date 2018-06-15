@@ -28,17 +28,6 @@ namespace Service.Services
         }
 
 
-        public Hobby Get(int id)
-        {
-            Hobby hobby = _context.Hobby.Find(id);
-
-            if(hobby != null)
-            {
-                return _hobbyRepository.GetHobby(id);
-            }
-
-            return null;
-        }
         public async Task<string> UploadFile(IFormFile file) {
             if (file != null && file.Length > 0) {
                 var filename = FileManagement.GetFileName(file);
@@ -86,6 +75,21 @@ namespace Service.Services
             }catch (Exception e) {
                 return null;
             }
+        }
+
+
+        public HobbyInformation Get(int id, List<ClaimDTO> claimsList)
+        {
+            int administratorId = Convert.ToInt32(claimsList.Find(x => x.Type == "nameidentifier").Value);
+            var hobbys = _hobbyRepository.GetAll();
+            var hobby = hobbys.First(x => x.Id == id);
+            var hobbyInformation = _mapper.Map<HobbyInformation>(hobby);
+
+            if (hobby.AccountHobbies.Any(x => x.AccountId == administratorId))
+                hobbyInformation.Belong = true;
+            else
+                hobbyInformation.Belong = false;
+            return hobbyInformation;
         }
 
         public List<HobbyInformation> GetAll(List<ClaimDTO> claimsList)

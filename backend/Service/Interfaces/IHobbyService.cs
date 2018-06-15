@@ -13,7 +13,6 @@ namespace Service.Interfaces
 {
     public interface IHobbyService {
         bool Delete(int hobbyId, List<ClaimDTO> claims);
-        Hobby Get(int id);
         bool Add(HobbyAdd hobbyDTO, List<ClaimDTO> list);
         HobbyDTO Edit(HobbyEdit hobbyEdit, List<ClaimDTO> list);
         Task<string> UploadFile(IFormFile file);
@@ -23,5 +22,6 @@ namespace Service.Interfaces
         List<HobbyInformation> GetHobbysByUserId(int userId);
         List<HobbyDTO> GetHobbysWhereIAmAdmin(List<ClaimDTO> list);
         List<HobbyDTO> FindHobbyByValue(string value);
+        HobbyInformation Get(int hobbyId, List<ClaimDTO> list);
     }
 }
