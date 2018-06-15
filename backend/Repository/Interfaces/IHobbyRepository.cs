@@ -10,7 +10,7 @@ namespace Repository.Interfaces
 {
     public interface IHobbyRepository : IRepository<Hobby> {
         Hobby GetHobby(int id);
-        bool Add(Hobby entity);
+        bool Add(Hobby entity, int administrator);
         Hobby Edit(Hobby hobbyEdit, int userId);
         IQueryable<Hobby> GetAllHobbiesForAccountId(int accountId);
         IQueryable<Hobby> GetAllWithPagination(int countOfItem, int page);

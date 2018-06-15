@@ -57,7 +57,7 @@ namespace Service.Services
                 hobby.AdministratorId = administratorId;
             if (hobbyDTO.Logo == null || hobbyDTO.Logo == "")
                 hobby.Logo = "/img/hobby/defaultHobby.png";
-                if (_hobbyRepository.Add(hobby))
+                if (_hobbyRepository.Add(hobby, administratorId))
                     return true;
             return false;
         }

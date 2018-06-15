@@ -17,13 +17,21 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public bool Add(Hobby entity) {
+        public bool Add(Hobby entity, int adminId) {
             var result = false;
                 try
                 {
                     _context.Hobby.Add(entity);
                     _context.SaveChanges();
-                    result = true;
+                    var lastHobby = _context.Hobby.Last();   
+                    var accountHobby = new AccountHobby()
+                    {
+                        AccountId = adminId,
+                        HobbyId = lastHobby.Id
+                    };
+                _context.AccountHobby.Add(accountHobby);
+                _context.SaveChanges();
+                result = true;
                 }
                 catch (Exception e)
                 {
