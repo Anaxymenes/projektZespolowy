@@ -37,7 +37,7 @@ namespace Repository.Repositories
         {
             var user = _context.Account.First(x => x.Id == userId);
             var comment = _context.Comment.First(x => x.Id == id);
-            if (comment.AuthorId == userId)
+            if (comment.AuthorId == userId || comment.Author.RoleId == 1)
             {
                 try
                 {
