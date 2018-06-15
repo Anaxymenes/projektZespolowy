@@ -22,7 +22,7 @@ namespace WebAPI
             using(var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
                 var context = services.GetService<DatabaseContext>();
-                DatabaseSeeder.SeedAccountRole(context);
+                DatabaseSeeder.SeedData(context);
             }
             host.Run();
         }
