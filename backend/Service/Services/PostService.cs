@@ -86,7 +86,11 @@ namespace Service.Services
                     PostDTO postResult = _mapper.Map<PostDTO>(post);
                     postResult.Hobbys = this.GetAllHobbyForPostDTOFromPost(post);
                     postResult.Pictures = this.GetAllPicturesForPostDTO(post);
-                    result.Add(postResult);
+                    var exist = false;
+                    foreach (var results in result)
+                        if (results.Id == postResult.Id)
+                            exist = true;
+                    if(!exist)result.Add(postResult);
                 }
             }
             List<PostDTO> sortedResult = result.OrderByDescending(o => o.Date).ToList();
