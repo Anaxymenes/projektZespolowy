@@ -119,7 +119,17 @@ namespace Repository.Repositories
         {
             try
             {
-                _context.AccountToken.Add(accToken);
+                if (!_context.AccountToken.Any(x => x.AccountId == accToken.AccountId))
+                    _context.AccountToken.Add(accToken);
+                else
+                {
+                    var token = _context.AccountToken.First(x => x.AccountId == accToken.AccountId);
+                    token.AuthToken = accToken.AuthToken;
+                    token.AuthTokenExpires = accToken.AuthTokenExpires;
+                    token.RefreshToken = accToken.RefreshToken;
+                    token.RefreshTokenExpires = accToken.RefreshTokenExpires;
+                    _context.AccountToken.Update(token);
+                }
                 _context.SaveChanges();
             }
             catch(Exception e)
